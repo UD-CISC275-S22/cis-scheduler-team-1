@@ -7,3 +7,5 @@
 5) Sophomore computer science major 
    Goal: plan out potential schedules for different concentrations, finalize how to graduate on time 
    Main Barrier: different options, must decide which ones and how to plan to get all courses in time
+7) Senior computer science major
+   Goal: ensure that their graduation major/minor requirements have been met
