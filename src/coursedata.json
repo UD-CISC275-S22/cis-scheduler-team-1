@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "code": "CISC-101",
+        "title": "Principles of Computing",
+        "credit": 3,
+        "description": "Introduces students to the central ideas of computing and computer science including programs, algorithms, abstraction, the internet, and information systems. Instills ideas and practices of computational thinking and engages students in activities that show how computing and computer science change the world. Explores computing as a creative activity and empowers students to apply computational thinking to all disciplines including the arts, humanities, business, social and physical sciences, health, and entertainment. RESTRICTIONS: Does not count toward graduation if taken after any other CISC course. Not open to students with credit for MISY160 or 260, or FREC135."
+    },
+    {
+        "id": 2,
+        "code": "CISC-103",
+        "title": "Introduction to Computer Science with Web Applications",
+        "credit": 3,
+        "description": "Principles of computer science illustrated through programming in scripting languages such as JavaScript and VBScript. Topics include control structures, arrays, functions, and procedures. Programming projects illustrate web-based applications. RESTRICTIONS: Open to non-majors. Student may not receive credit for CISC103 after receiving credit for CISC106 or CISC108."
+    },
+    {
+        "id": 3,
+        "code": "CISC-106",
+        "title": "General Computer Science for Engineers",
+        "credit": 3,
+        "description": "Principles of computer science illustrated and applied through programming in a general-purpose language. Programming projects illustrate computational problems, styles, and issues that arise in engineering. COREQ: MATH241 or any higher level MATH course. RESTRICTIONS: Student may not receive credit for both CISC106 and CISC108."
+    },
+    {
+        "id": 4,
+        "code": "CISC-108",
+        "title": "Introduction to Computer Science I",
+        "credit": 3,
+        "description": "Computing and principles of programming with an emphasis on systematic program design. Topics include functional programming, data abstraction, procedural abstraction, use of control and state, recursion, testing, and object-oriented programming concepts. Requires no prior programming experience, open to any major, but intended primarily for majors and minors in computer science or mathematics. COREQ: MATH115, MATH117, or higher math course or math placement. RESTRICTIONS: Student may not receive credit for both CISC106 and CISC108."
+    },
+    {
+        "id": 5,
+        "code": "CISC-181",
+        "title": "Introduction to Computer Science II",
+        "credit": 3,
+        "description": "Principles of computer science illustrated and applied through programming in an object oriented language. Programming projects illustrate computational problems, styles and issues that arise in computer systems development and in all application areas of computation. PREREQ: Grade of C- or better in CISC108 or CISC106. COREQ: MATH221, MATH241, or a higher level math course or math placement."
+    },
+    {
+        "id": 6,
+        "code": "CISC-210",
+        "title": "Introduction to Systems Programming",
+        "credit": 3,
+        "description": "Principles of computer systems programming for software and hardware platforms to achieve efficient resource usage. Topics include the C programming language, memory management, and awareness of system constraints and interfacing. Projects include programming embedded systems and interactive objects. PREREQ: Grade of C- or better in CISC106 or CISC108. COREQ: MATH221, MATH241, or a higher level math course or math placement."
+    },
+    {
+        "id": 7,
+        "code": "CISC-220",
+        "title": "Data Structures",
+        "credit": 3,
+        "description": "Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching. PREREQ: A minimum grade of C- in CISC181. COREQ: MATH210 or MATH241."
+    }
+]
