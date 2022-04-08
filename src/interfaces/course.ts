@@ -5,5 +5,5 @@ export interface course {
     credit: number; //number of credits
     description: string; //course description
     //if course is offered during a particular semester???
-    //reqs boolean --> if you can take a course or not
+    //reqs boolean --> if you can take a course or no
 }
