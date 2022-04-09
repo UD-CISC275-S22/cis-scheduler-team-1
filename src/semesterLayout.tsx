@@ -22,7 +22,7 @@ export function SemesterLayout(): JSX.Element {
                     placeholder="Type semester here"
                 ></Form.Control>
             </Form.Group>
-            <Button onClick={addCourse}>Add Course</Button>
+            <DisplayCourse></DisplayCourse>
         </div>
     );
 }
