@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { DisplayCourse } from "./DisplayCourse";
 
-function addCourse(): JSX.Element {
-    return <DisplayCourse></DisplayCourse>;
-}
-
 export function SemesterLayout(): JSX.Element {
     const [semester, setSemester] = useState<string>(""); // current inputted semester
     const [semesterList, setSemesterList] = useState<string[]>([]); // store inputted semester into an array of semesters
