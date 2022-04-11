@@ -3,7 +3,7 @@
 > react-scripts test "--coverage"
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (64 ms)
+  ✕ renders the course name somewhere (63 ms)
 
   ● renders the course name somewhere
 
@@ -18,14 +18,10 @@ FAIL src/App.test.tsx
           [36m<header[39m
             [33mclass[39m=[32m"App-header"[39m
           [36m>[39m
-            [0mUD Course Scheduler[0m
+            [0mWelcome to UD Course Scheduler[0m
           [36m</header>[39m
           [36m<p>[39m
-            [0mEdit [0m
-            [36m<code>[39m
-              [0msrc/App.tsx[0m
-            [36m</code>[39m
-            [0m and save. This page will automatically reload.[0m
+            [0mTo add a new semester, click Add Semester. To add classes, enter a valid course ID and click Add Course.[0m
           [36m</p>[39m
           [0mTeam 1: Jenn Werth and Disha Thakar[0m
           [36m<div[39m
@@ -70,10 +66,10 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   17.39 |        0 |      20 |   17.39 |                   
- src                 |   17.39 |        0 |      20 |   17.39 |                   
+All files            |   16.66 |        0 |      20 |   16.66 |                   
+ src                 |   16.66 |        0 |      20 |   16.66 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
-  DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 7-50              
+  DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 7-57              
   semesterLayout.tsx |    37.5 |        0 |      25 |    37.5 | 10-17,23          
  src/interfaces      |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
@@ -84,5 +80,5 @@ All files            |   17.39 |        0 |      20 |   17.39 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.938 s
+Time:        2.853 s
 Ran all test suites.
