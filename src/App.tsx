@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { SemesterLayout } from "./semesterLayout";
 
 function App(): JSX.Element {
     return (
@@ -12,6 +13,7 @@ function App(): JSX.Element {
                 next four years!
             </p>
             Team 1: Jenn Werth and Disha Thakar
+            <SemesterLayout></SemesterLayout>
         </div>
     );
 }
