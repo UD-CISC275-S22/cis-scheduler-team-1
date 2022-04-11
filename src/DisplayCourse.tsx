@@ -8,7 +8,7 @@ export function DisplayCourse(): JSX.Element {
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<string[]>([]); // a comprehensive course list for the semester
     //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
-    const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
+    //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
 
     const COURSES: Record<string, Record<string, course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -34,6 +34,7 @@ export function DisplayCourse(): JSX.Element {
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
         const newCourse = Course + " " + id;
+        // will only add course if valid -- work on displaying error message
         if (
             newCourse.substring(0, 4) in COURSES &&
             newCourse in COURSES[newCourse.substring(0, 4)]
