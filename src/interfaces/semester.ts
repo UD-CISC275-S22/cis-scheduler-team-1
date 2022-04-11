@@ -1,8 +1,8 @@
-import { courseType } from "./courseType";
+import { course } from "./course";
 
 export interface semester {
     id: number;
-    courses: courseType[];
+    courses: course[];
     title: string; //semester name (i.e. "Spring 2022")
     coursetotal: number; //total courses in the semester
 }
