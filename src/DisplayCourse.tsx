@@ -7,14 +7,11 @@ export function DisplayCourse(): JSX.Element {
     const [Course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<string[]>([]); // a comprehensive course list for the semester
-    const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
-    const [index, setIndex] = useState<number>(0); // index in big data that matches inputted course
+    //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
+    //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
 
-    const COURSES = coursedata.map(
-        (courseName: course): course => ({
-            ...courseName
-        })
-    );
+    const COURSES: Record<string, Record<string, course>> = coursedata;
+    // creates a dictionary (record) or dictionaries of courses using json data
 
     // updates the course that is being typed in
     function updateCourse(event: React.ChangeEvent<HTMLInputElement>) {
@@ -36,43 +33,48 @@ export function DisplayCourse(): JSX.Element {
 
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
-        const newCourse = Course + "-" + id;
-        if (!courseList.includes(newCourse)) {
-            setCourseList([...courseList, newCourse]);
-            setCredits(credits + COURSES[index].credit);
+        const newCourse = Course + " " + id;
+        // will only add course if valid -- work on displaying error message
+        if (
+            newCourse.substring(0, 4) in COURSES &&
+            newCourse in COURSES[newCourse.substring(0, 4)]
+        ) {
+            if (!courseList.includes(newCourse)) {
+                setCourseList([...courseList, newCourse]);
+                //creditVal = coursedata[Course][Course + " " + id][credits];
+                //setCredits(credits + 3);
+            }
         }
-        getIndex(newCourse);
-        setID("");
+        setID(""); // sets the id back to "" so that placeholder displays
         setCourse("");
-    }
-
-    function getIndex(courseName: string) {
-        const index = COURSES.findIndex(
-            (element) => element.code === courseName
-        );
-        //const index = COURSES.indexOf(found);
-        setIndex(index);
     }
 
     return (
         <div>
-            <div>Total Credits: {credits}</div>
+            <div>Total Credits:</div>
             <h5>Courses: </h5>
             {courseList.map((course: string) => (
                 <Container key={course}>
-                    <h6>
-                        {course}: {COURSES[index].title}
-                    </h6>
-                    <p>
-                        {COURSES[index].description}
-                        <div>
-                            {" "}
-                            <p>
-                                This class is worth {COURSES[index].credit}{" "}
-                                credits
-                            </p>
-                        </div>
-                    </p>
+                    <div>
+                        <h6>
+                            {course}:{" "}
+                            {COURSES[course.substring(0, 4)][course].name}
+                        </h6>
+                        <p>
+                            {COURSES[course.substring(0, 4)][course].descr}
+                            <div>
+                                {" "}
+                                <p>
+                                    This class is worth{" "}
+                                    {
+                                        COURSES[course.substring(0, 4)][course]
+                                            .credits
+                                    }{" "}
+                                    credits
+                                </p>
+                            </div>
+                        </p>
+                    </div>
                 </Container>
             ))}
             <Container>
