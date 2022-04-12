@@ -6,11 +6,11 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                Welcome to UD Course Scheduler
+                Welcome to the University of Delaware Course Scheduler!
             </header>
             <p>
-                To add a new semester, click Add Semester. To add classes, enter
-                a valid course ID and click Add Course.
+                Click through course, semester, and degree options to plan your
+                next four years!
             </p>
             Team 1: Jenn Werth and Disha Thakar
             <SemesterLayout></SemesterLayout>
