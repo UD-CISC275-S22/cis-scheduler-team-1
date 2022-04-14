@@ -49,6 +49,10 @@ export function DisplayCourse(): JSX.Element {
         setCourse("");
     }
 
+    function clearCourses() {
+        setCourseList([]);
+    }
+
     return (
         <div>
             <div>Total Credits:</div>
@@ -97,6 +101,7 @@ export function DisplayCourse(): JSX.Element {
                     </Col>
                 </Row>
                 <Button onClick={addCourse}>Add Course</Button>
+                <Button onClick={clearCourses}>Clear Course Selections</Button>
             </Container>
         </div>
     );
