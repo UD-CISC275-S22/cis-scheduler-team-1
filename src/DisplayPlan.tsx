@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { DisplayCourse } from "./DisplayCourse";
+//import { DisplayCourse } from "./DisplayCourse";
 import { SemesterLayout } from "./semesterLayout";
 
 export function DisplayPlan(): JSX.Element {
