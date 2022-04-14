@@ -49,6 +49,17 @@ export function DisplayCourse(): JSX.Element {
         setCourse("");
     }
 
+    function clearCourses() {
+        setCourseList([]);
+    }
+
+    function removeCourse(course: string) {
+        const updatedList = [...courseList];
+        const index = updatedList.indexOf(course);
+        updatedList.splice(index, 1);
+        setCourseList(updatedList);
+    }
+
     return (
         <div>
             <h5>Courses: </h5>
@@ -77,6 +88,9 @@ export function DisplayCourse(): JSX.Element {
                                 </p>
                             </div>
                         </p>
+                        <Button onClick={() => removeCourse(course)}>
+                            Remove Course
+                        </Button>
                     </div>
                 </Container>
             ))}
@@ -101,6 +115,8 @@ export function DisplayCourse(): JSX.Element {
                     </Col>
                 </Row>
                 <Button onClick={addCourse}>Add Course</Button>
+                <span> </span>
+                <Button onClick={clearCourses}>Clear Courses</Button>
             </Container>
         </div>
     );

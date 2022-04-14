@@ -17,6 +17,13 @@ export function SemesterLayout(): JSX.Element {
         setSemester("");
     }
 
+    function deleteSemester(semester: string) {
+        const updatedList = [...semesterList];
+        const index = updatedList.indexOf(semester);
+        updatedList.splice(index, 1);
+        setSemesterList(updatedList);
+    }
+
     return (
         <div style={{ border: "1px solid black", padding: "10px" }}>
             {semesterList.map((semester: string) => (
@@ -25,6 +32,9 @@ export function SemesterLayout(): JSX.Element {
                         <h4>{semester}</h4>
                     </div>
                     <DisplayCourse></DisplayCourse>
+                    <Button onClick={() => deleteSemester(semester)}>
+                        Delete Semester
+                    </Button>
                     <hr></hr>
                 </Container>
             ))}
