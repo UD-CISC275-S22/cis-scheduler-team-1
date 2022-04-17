@@ -3,7 +3,7 @@
 > react-scripts test "--coverage"
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (54 ms)
+  ✕ renders the course name somewhere (47 ms)
 
   ● renders the course name somewhere
 
@@ -24,22 +24,15 @@ FAIL src/App.test.tsx
             [0mClick through course, semester, and degree options to plan your next four years![0m
           [36m</p>[39m
           [0mTeam 1: Jenn Werth and Disha Thakar[0m
-          [36m<div[39m
-            [33mstyle[39m=[32m"border: 1px solid black; padding: 10px;"[39m
-          [36m>[39m
-            [36m<div>[39m
-              [36m<input[39m
-                [33mclass[39m=[32m"form-control"[39m
-                [33mplaceholder[39m=[32m"Type semester here"[39m
-                [33mvalue[39m=[32m""[39m
-              [36m/>[39m
-            [36m</div>[39m
+          [36m<div>[39m
+            [36m<div />[39m
             [36m<button[39m
               [33mclass[39m=[32m"btn btn-primary"[39m
               [33mtype[39m=[32m"button"[39m
             [36m>[39m
-              [0mAdd New Semester[0m
+              [0mCreate New Degree Plan[0m
             [36m</button>[39m
+            [36m<div />[39m
           [36m</div>[39m
         [36m</div>[39m
       [36m</div>[39m
@@ -66,12 +59,13 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |    8.33 |        0 |    9.52 |    8.33 |                   
- src                 |    8.33 |        0 |    9.52 |    8.33 |                   
-  App.tsx            |     100 |      100 |     100 |     100 |                   
+All files            |   15.38 |        0 |    7.14 |   15.87 |                   
+ src                 |   15.38 |        0 |    7.14 |   15.87 |                   
+  AddPlanModal.tsx   |   38.46 |        0 |      20 |   38.46 | 25-43,81-93       
+  App.tsx            |   29.41 |        0 |    12.5 |   33.33 | 18-29,45-47       
   DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 7-91              
-  DisplayPlan.tsx    |       0 |        0 |       0 |       0 | 7-35              
-  semesterLayout.tsx |   23.07 |        0 |   16.66 |   23.07 | 10-24,30-35       
+  DisplayPlan.tsx    |       0 |        0 |       0 |       0 | 33                
+  semesterLayout.tsx |       0 |        0 |       0 |       0 | 6-35              
  src/interfaces      |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
   degreeplan.ts      |       0 |        0 |       0 |       0 |                   
@@ -80,5 +74,5 @@ All files            |    8.33 |        0 |    9.52 |    8.33 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.826 s
+Time:        2.182 s
 Ran all test suites.
