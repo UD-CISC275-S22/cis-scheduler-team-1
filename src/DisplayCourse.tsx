@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { course as Course } from "./interfaces/course";
 import coursedata from "./coursedata.json";
-import { CourseEditor } from "./CourseEditor";
+//import { CourseEditor } from "./CourseEditor";
 
 export function DisplayCourse(): /*{}: //course
 //editCourse
@@ -15,15 +15,15 @@ export function DisplayCourse(): /*{}: //course
     const [courseList, setCourseList] = useState<string[]>([]); // a comprehensive course list for the semester
     //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
     //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
-    const [editing, setEditing] = useState<boolean>(false);
+    //const [editing, setEditing] = useState<boolean>(false);
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
     const [thesecourses, setTheseCourses] = useState<Course[]>([]);
 
-    function changeEditing() {
+    /*function changeEditing() {
         setEditing(!editing);
-    }
+    }*/
 
     // updates the course that is being typed in
     function updateCourse(event: React.ChangeEvent<HTMLInputElement>) {
