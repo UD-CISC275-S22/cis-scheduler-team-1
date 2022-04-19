@@ -1,10 +1,5 @@
 import React from "react";
-import {
-    getAllByText,
-    getByText,
-    render,
-    screen
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
@@ -56,7 +51,7 @@ test("Can add additional degree plans, add Plan button remains visible", () => {
     userEvent.click(button[0]);
     userEvent.click(save);
     const semester = screen.getAllByText(/BS/i);
-    expect(semester).toHaveLength(2);
+    expect(semester).toHaveLength(2); // should have two semeseter layouts displayed
 });
 
 test("Can delete degree plan", () => {
