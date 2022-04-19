@@ -1,66 +1,52 @@
 import React, { useState } from "react";
-import { Form, Container, Col, Row, Button } from "react-bootstrap";
-import { course as Course } from "./interfaces/course";
-//import coursedata from "./coursedata.json";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { course } from "./interfaces/course";
 
-/* interface CourseProps {
-    course: Course;
-    setCourse: (code: string, newCourse: Course) => void;
-} */
-
-export function CourseEditor(
-    {
-        changeEditing,
-        course,
-        editCourse
-    }: /*course,
-    setCourse */
-    {
-        changeEditing: () => void;
-        course: Course;
-        editCourse: (code: string, newCourse: Course) => void;
-    } /*CourseProps*/
-): JSX.Element {
-    const [code, setCode] = useState<string>(course.code);
-    const [name, setName] = useState<string>(course.name);
+export function CourseEditor({
+    changeEditing,
+    course,
+    editCourse
+}: //editCourse, deleteCourse
+{
+    changeEditing: () => void;
+    course: course;
+    editCourse: (code: string, newCourse: course) => void;
+    //deleteCourse: (id: string) => void;
+}): JSX.Element {
+    // create state variables for every attribute in course
+    const [name, setName] = useState<string>(course.name); // original name for course
     const [credits, setCredits] = useState<string>(course.credits);
+    const [description, setDescription] = useState<string>(course.descr);
+    const [preReq, setPreReq] = useState<string>(course.preReq);
+    const [restrict, setRestrict] = useState<string>(course.restrict);
+    const [breadth, setBreadth] = useState<string>(course.breadth);
+    const [type, setType] = useState<string>(course.typ);
 
-    function save() {
+    function saveChanges() {
         editCourse(course.code, {
             ...course,
-            code: course.code,
-            name: course.name,
-            credits: course.credits
+            name: name,
+            credits: credits,
+            descr: description,
+            preReq: preReq,
+            restrict: restrict,
+            breadth: breadth,
+            typ: type
         });
         changeEditing();
     }
 
-    function cancel() {
-        changeEditing();
+    function close() {
+        changeEditing(); // close without saving
     }
 
     return (
         <Container>
             <Row>
                 <Col>
-                    {/* Course Code */}
-                    <Form.Group controlId="formCourseCode" as={Row}>
-                        <Form.Label column sm={2}>
-                            Code:
-                        </Form.Label>
-                        <Col>
-                            <Form.Control
-                                value={code}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setCode(event.target.value)}
-                            />
-                        </Col>
-                    </Form.Group>
-                    {/* Course Name */}
-                    <Form.Group controlId="formCourseName" as={Row}>
-                        <Form.Label column sm={2}>
-                            Name:
+                    <Form.Group controlId="courseName" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Name:
                         </Form.Label>
                         <Col>
                             <Form.Control
@@ -71,10 +57,22 @@ export function CourseEditor(
                             />
                         </Col>
                     </Form.Group>
-                    {/* Course Credits */}
-                    <Form.Group controlId="formCourseCredits" as={Row}>
-                        <Form.Label column sm={2}>
-                            Credits:
+                    <Form.Group controlId="courseDescr" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Description:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={description}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setDescription(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group controlId="courseCredits" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Credits:
                         </Form.Label>
                         <Col>
                             <Form.Control
@@ -85,109 +83,68 @@ export function CourseEditor(
                             />
                         </Col>
                     </Form.Group>
-                    {/* Save/Cancel */}
-                    <Button onClick={save} variant="success" className="me-4">
-                        Save
-                    </Button>
-                    <Button onClick={cancel} variant="warning" className="me-5">
-                        Cancel
-                    </Button>
+                    <Form.Group controlId="coursePreReqs" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course PreRequisites:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={preReq}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setPreReq(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group controlId="courseRestrict" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Restrictions:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={restrict}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setRestrict(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group controlId="courseBreadth" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Breadth Fulfillments:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={breadth}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setBreadth(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group controlId="courseType" as={Row}>
+                        <Form.Label column sm={3}>
+                            Course Offered In:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={type}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setType(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
                 </Col>
+                <Button onClick={saveChanges}>Save Changes</Button>
+                <Button onClick={close}>Cancel</Button>
             </Row>
         </Container>
     );
-
-    /*
-
-    return (
-        <Form.Control
-            value={course.code}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setCourse(course.code, {
-                    ...course,
-                    code: event.target.value
-                })
-            }
-        />
-    );
 }
 
-export function CourseNameEditor({
-    course,
-    setCourse
-}: CourseProps): JSX.Element {
-    return (
-        <Form.Control
-            value={course.name}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setCourse(course.code, {
-                    ...course,
-                    name: event.target.value
-                })
-            }
-        />
-    );
-}
-
-export function CourseCreditsEditor({
-    course,
-    setCourse
-}: CourseProps): JSX.Element {
-    return (
-        <Form.Control
-            value={course.credits}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setCourse(course.code, {
-                    ...course,
-                    credits: event.target.value
-                })
-            }
-        />
-    );
-}
-
-export function CourseEditor({
-    courses,
-    setCourses
-}: {
-    courses: Course[];
-    setCourses: (courses: Course[]) => void;
-}): JSX.Element {
-    //id: coursedata[0].toString
-    function setCourse(code: string, newCourse: Course) {
-        setCourses(
-            courses.map((course: Course) =>
-                course.code === code ? newCourse : course
-            )
-        );
-    } */
-    /*return (
-        <ListGroup as="ol" numbered>
-            {courses.map((course: Course) => (
-                <ListGroup.Item
-                    as="li"
-                    key={course.code}
-                    className="d-flex align-items-start"
-                >
-                    <div className="ms-2 me-auto">
-                        {/* Course Code */ //}
-    /*<CourseCodeEditor
-                            course={course}
-                            setCourse={setCourse}
-                        ></CourseCodeEditor>
-                        {/* Course Name */ //}
-    /*<CourseNameEditor
-                            course={course}
-                            setCourse={setCourse}
-                        ></CourseNameEditor>
-                        {/* Course Credits */ //}
-    /*<CourseCreditsEditor
-                            course={course}
-                            setCourse={setCourse}
-                        ></CourseCreditsEditor>
-                    </div>
-                </ListGroup.Item>
-            ))}
-        </ListGroup>
-    );*/
-}
+/*
+                <Button onClick={() => deleteCourse(course.code)}>
+                    Delete Course
+                </Button>
+                */

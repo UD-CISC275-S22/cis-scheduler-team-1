@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { course as Course } from "./interfaces/course";
 import coursedata from "./coursedata.json";
-//import { CourseEditor } from "./CourseEditor";
+import { CourseEditor } from "./CourseEditor";
 
-export function DisplayCourse(): /*{}: //course
-//editCourse
-//{
-    //course: Course;
-    //editCourse: (code: string, newCourse: Course) => void;
-/*})*/ JSX.Element {
+export function DisplayCourse(): JSX.Element {
+    //deleteCourse: (code: string) => void;
+    //editCourse: (code: string, newCourse: course) => void;
     const [Course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
-    const [courseList, setCourseList] = useState<string[]>([]); // a comprehensive course list for the semester
+    const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
+
     //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
     //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
     //const [editing, setEditing] = useState<boolean>(false);
 
+    const [editing, setEditing] = useState<boolean>(false);
+
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
-    const [thesecourses, setTheseCourses] = useState<Course[]>([]);
+    // const [thesecourses, setTheseCourses] = useState<Course[]>([]);
 
     /*function changeEditing() {
         setEditing(!editing);
@@ -43,27 +43,19 @@ export function DisplayCourse(): /*{}: //course
         setID(event.target.value.toUpperCase());
     }
 
-    function editCourse(code: string, newCourse: Course) {
-        setTheseCourses(
-            thesecourses.map(
-                (thiscourse: Course): Course =>
-                    thiscourse.code === code ? newCourse : thiscourse
-            )
-        );
-    }
-
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
-        const newCourse = Course + " " + id;
+        const newCourseCode = Course + " " + id;
         // will only add course if valid -- work on displaying error message
         if (
-            newCourse.substring(0, 4) in COURSES &&
-            newCourse in COURSES[newCourse.substring(0, 4)]
+            newCourseCode.substring(0, 4) in COURSES &&
+            newCourseCode in COURSES[newCourseCode.substring(0, 4)]
         ) {
+            const newCourse = {
+                ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
+            };
             if (!courseList.includes(newCourse)) {
                 setCourseList([...courseList, newCourse]);
-                //creditVal = coursedata[Course][Course + " " + id][credits];
-                //setCredits(credits + 3);
             }
         }
         setID(""); // sets the id back to "" so that placeholder displays
@@ -74,53 +66,77 @@ export function DisplayCourse(): /*{}: //course
         setCourseList([]);
     }
 
-    function removeCourse(course: string) {
+    function removeCourse(courseRemove: Course) {
         const updatedList = [...courseList];
-        const index = updatedList.indexOf(course);
+        const index = updatedList.indexOf(courseRemove);
         updatedList.splice(index, 1);
         setCourseList(updatedList);
     }
 
-    //return //editing ? (
-    //<CourseEditor
-    //changeEditing={changeEditing}
-    //course={course}
-    //editCourse={editCourse}
-    //></CourseEditor>
-    /*) : */ return (
+    function changeEditing() {
+        setEditing(!editing);
+    }
+
+    function editCourse(code: string, newCourse: Course) {
+        setCourseList(
+            courseList.map(
+                (course: Course): Course =>
+                    course.code === code ? newCourse : course
+            )
+        );
+    }
+
+    /*         <CourseEditor>
+            changeEditing={changeEditing}
+            course={Course}
+            editCourse={editCourse}
+            deleteCourse={deleteCourse}
+        </CourseEditor>
+    ) : ( */
+
+    return (
         <div>
             <h5>Courses: </h5>
             <div>Total Credits:</div>
-            {courseList.map((course: string) => (
-                <Container
-                    key={course}
-                    style={{ border: "1px solid white", padding: "6px" }}
-                >
-                    <div style={{ border: "1px solid black", padding: "6px" }}>
-                        <h6>
-                            {course}:{" "}
-                            {COURSES[course.substring(0, 4)][course].name}
-                        </h6>
-                        <p>
-                            {COURSES[course.substring(0, 4)][course].descr}
-                            <div>
-                                {" "}
-                                <p>
-                                    This class is worth{" "}
-                                    {
-                                        COURSES[course.substring(0, 4)][course]
-                                            .credits
-                                    }{" "}
-                                    credits
-                                </p>
-                            </div>
-                        </p>
-                        <Button onClick={() => removeCourse(course)}>
-                            Remove Course
-                        </Button>
-                    </div>
-                </Container>
-            ))}
+            {courseList.map((course: Course) =>
+                editing ? (
+                    <CourseEditor
+                        changeEditing={changeEditing}
+                        course={course}
+                        editCourse={editCourse}
+                    ></CourseEditor>
+                ) : (
+                    <Container
+                        key={course.code}
+                        style={{ border: "1px solid white", padding: "6px" }}
+                    >
+                        <div
+                            style={{
+                                border: "1px solid black",
+                                padding: "6px"
+                            }}
+                        >
+                            <h6>
+                                {course.code}: {course.name}
+                            </h6>
+                            <p>
+                                {course.descr}
+                                <div>
+                                    {" "}
+                                    <p>
+                                        This class is worth {course.credits}{" "}
+                                        credits
+                                    </p>
+                                </div>
+                            </p>
+                            <Button onClick={changeEditing}>Edit Course</Button>
+                            <Button onClick={() => removeCourse(course)}>
+                                Remove Course
+                            </Button>
+                        </div>
+                    </Container>
+                )
+            )}
             <div></div>
             <Container>
                 <Row>
