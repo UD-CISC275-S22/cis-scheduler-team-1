@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { course } from "./interfaces/course";
 import coursedata from "./coursedata.json";
+import { CourseEditor } from "./CourseEditor";
 
 export function DisplayCourse(): JSX.Element {
+    //deleteCourse: (code: string) => void;
+    //editCourse: (code: string, newCourse: course) => void;
     const [Course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
-    const [courseList, setCourseList] = useState<string[]>([]); // a comprehensive course list for the semester
+    const [courseList, setCourseList] = useState<course[]>([]); // a comprehensive course list for the semester
+
     //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
     //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
+
+    const [editing, setEditing] = useState<boolean>(false);
 
     const COURSES: Record<string, Record<string, course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -33,16 +39,17 @@ export function DisplayCourse(): JSX.Element {
 
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
-        const newCourse = Course + " " + id;
+        const newCourseCode = Course + " " + id;
         // will only add course if valid -- work on displaying error message
         if (
-            newCourse.substring(0, 4) in COURSES &&
-            newCourse in COURSES[newCourse.substring(0, 4)]
+            newCourseCode.substring(0, 4) in COURSES &&
+            newCourseCode in COURSES[newCourseCode.substring(0, 4)]
         ) {
+            const newCourse = {
+                ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
+            };
             if (!courseList.includes(newCourse)) {
                 setCourseList([...courseList, newCourse]);
-                //creditVal = coursedata[Course][Course + " " + id][credits];
-                //setCredits(credits + 3);
             }
         }
         setID(""); // sets the id back to "" so that placeholder displays
@@ -53,47 +60,77 @@ export function DisplayCourse(): JSX.Element {
         setCourseList([]);
     }
 
-    function removeCourse(course: string) {
+    function removeCourse(courseRemove: course) {
         const updatedList = [...courseList];
-        const index = updatedList.indexOf(course);
+        const index = updatedList.indexOf(courseRemove);
         updatedList.splice(index, 1);
         setCourseList(updatedList);
     }
+
+    function changeEditing() {
+        setEditing(!editing);
+    }
+
+    function editCourse(code: string, newCourse: course) {
+        setCourseList(
+            courseList.map(
+                (Course: course): course =>
+                    Course.code === code ? newCourse : Course
+            )
+        );
+    }
+
+    /*         <CourseEditor>
+            changeEditing={changeEditing}
+            course={Course}
+            editCourse={editCourse}
+            deleteCourse={deleteCourse}
+        </CourseEditor>
+    ) : ( */
 
     return (
         <div>
             <h5>Courses: </h5>
             <div>Total Credits:</div>
-            {courseList.map((course: string) => (
-                <Container
-                    key={course}
-                    style={{ border: "1px solid white", padding: "6px" }}
-                >
-                    <div style={{ border: "1px solid black", padding: "6px" }}>
-                        <h6>
-                            {course}:{" "}
-                            {COURSES[course.substring(0, 4)][course].name}
-                        </h6>
-                        <p>
-                            {COURSES[course.substring(0, 4)][course].descr}
-                            <div>
-                                {" "}
-                                <p>
-                                    This class is worth{" "}
-                                    {
-                                        COURSES[course.substring(0, 4)][course]
-                                            .credits
-                                    }{" "}
-                                    credits
-                                </p>
-                            </div>
-                        </p>
-                        <Button onClick={() => removeCourse(course)}>
-                            Remove Course
-                        </Button>
-                    </div>
-                </Container>
-            ))}
+            {courseList.map((course: course) =>
+                editing ? (
+                    <CourseEditor
+                        changeEditing={changeEditing}
+                        course={course}
+                        editCourse={editCourse}
+                    ></CourseEditor>
+                ) : (
+                    <Container
+                        key={course.code}
+                        style={{ border: "1px solid white", padding: "6px" }}
+                    >
+                        <div
+                            style={{
+                                border: "1px solid black",
+                                padding: "6px"
+                            }}
+                        >
+                            <h6>
+                                {course.code}: {course.name}
+                            </h6>
+                            <p>
+                                {course.descr}
+                                <div>
+                                    {" "}
+                                    <p>
+                                        This class is worth {course.credits}{" "}
+                                        credits
+                                    </p>
+                                </div>
+                            </p>
+                            <Button onClick={changeEditing}>Edit Course</Button>
+                            <Button onClick={() => removeCourse(course)}>
+                                Remove Course
+                            </Button>
+                        </div>
+                    </Container>
+                )
+            )}
             <div></div>
             <Container>
                 <Row>
