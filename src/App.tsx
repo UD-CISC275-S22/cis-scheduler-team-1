@@ -3,12 +3,15 @@ import { Button } from "react-bootstrap";
 import { AddPlanModal } from "./AddPlanModal";
 import "./App.css";
 import { DisplayPlan } from "./DisplayPlan";
+//import { course as Course } from "./interfaces/course";
 import { degreeplan } from "./interfaces/degreeplan";
+//import CourseList from "./coursedata.json"
 //import { SemesterLayout } from "./semesterLayout";
 
 function App(): JSX.Element {
     const [plans, setPlans] = useState<degreeplan[]>([]);
     const [showAddDegree, setShowAddDegree] = useState(false);
+    // const [courses, setCourses] = useState<Course[]>(CourseList);
 
     // create handlers for opening and closing modal
     const handleCloseAddPlan = () => setShowAddDegree(false);
@@ -28,6 +31,10 @@ function App(): JSX.Element {
         }
         setPlans(updatedList);
     }
+
+    /* function editCourse(code: string, newCourse: Course){
+        setCourses(courses.map(course: Course): Course => (course.code === code ? newCourse: course));
+    } */
 
     return (
         <div className="App">
