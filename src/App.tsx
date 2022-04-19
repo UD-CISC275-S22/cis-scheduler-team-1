@@ -45,7 +45,6 @@ function App(): JSX.Element {
                 Click through course, semester, and degree options to plan your
                 next four years!
             </p>
-            Team 1: Jenn Werth and Disha Thakar
             <div>
                 <div>
                     {plans.map((plan: degreeplan) => (
