@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders the course name somewhere", () => {
+test("renders the application name somewhere", () => {
     render(<App />);
-    const linkElement = screen.getByText(/CISC275/i);
+    const linkElement = screen.getByText(/Scheduler/i);
     expect(linkElement).toBeInTheDocument();
 });
