@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { course } from "./interfaces/course";
+import { course as Course } from "./interfaces/course";
 import coursedata from "./coursedata.json";
 import { CourseEditor } from "./CourseEditor";
 
@@ -9,15 +9,21 @@ export function DisplayCourse(): JSX.Element {
     //editCourse: (code: string, newCourse: course) => void;
     const [Course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
-    const [courseList, setCourseList] = useState<course[]>([]); // a comprehensive course list for the semester
+    const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
 
     //const [credits, setCredits] = useState<number>(0); // number of credits summed from taken courses
     //const [valid, setValid] = useState<boolean>(true); // check if valid course name and code
+    //const [editing, setEditing] = useState<boolean>(false);
 
     const [editing, setEditing] = useState<boolean>(false);
 
-    const COURSES: Record<string, Record<string, course>> = coursedata;
+    const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
+    // const [thesecourses, setTheseCourses] = useState<Course[]>([]);
+
+    /*function changeEditing() {
+        setEditing(!editing);
+    }*/
 
     // updates the course that is being typed in
     function updateCourse(event: React.ChangeEvent<HTMLInputElement>) {
@@ -32,7 +38,7 @@ export function DisplayCourse(): JSX.Element {
         // example: HIST not HISTORY or HIST106
     }
 
-    // updates the id from text boz
+    // updates the id from text box
     function updateID(event: React.ChangeEvent<HTMLInputElement>) {
         setID(event.target.value.toUpperCase());
     }
@@ -60,7 +66,7 @@ export function DisplayCourse(): JSX.Element {
         setCourseList([]);
     }
 
-    function removeCourse(courseRemove: course) {
+    function removeCourse(courseRemove: Course) {
         const updatedList = [...courseList];
         const index = updatedList.indexOf(courseRemove);
         updatedList.splice(index, 1);
@@ -71,11 +77,11 @@ export function DisplayCourse(): JSX.Element {
         setEditing(!editing);
     }
 
-    function editCourse(code: string, newCourse: course) {
+    function editCourse(code: string, newCourse: Course) {
         setCourseList(
             courseList.map(
-                (Course: course): course =>
-                    Course.code === code ? newCourse : Course
+                (course: Course): Course =>
+                    course.code === code ? newCourse : course
             )
         );
     }
@@ -92,7 +98,7 @@ export function DisplayCourse(): JSX.Element {
         <div>
             <h5>Courses: </h5>
             <div>Total Credits:</div>
-            {courseList.map((course: course) =>
+            {courseList.map((course: Course) =>
                 editing ? (
                     <CourseEditor
                         changeEditing={changeEditing}
@@ -154,6 +160,8 @@ export function DisplayCourse(): JSX.Element {
                 <Button onClick={addCourse}>Add Course</Button>
                 <span> </span>
                 <Button onClick={clearCourses}>Clear Courses</Button>
+                <span></span>
+                <Button onClick={() => editCourse}>Edit Course</Button>
             </Container>
         </div>
     );
