@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { DisplayCourse } from "./DisplayCourse";
-import { course as Course } from "./interfaces/course";
-import { semester as Semester } from "./interfaces/semester";
+//import { course as Course } from "./interfaces/course";
+//import { semester as Semester } from "./interfaces/semester";
 
 export function SemesterLayout(): JSX.Element {
     const [semester, setSemester] = useState<string>(""); // current inputted semester
     const [semesterList, setSemesterList] = useState<string[]>([]); // store inputted semester into an array of semesters
-    const [semesterListReal, setSemesterListReal] = useState<Semester[]>([]);
+    //const [semesterListReal, setSemesterListReal] = useState<Semester[]>([]);
 
     /*function updateSemesterReal(id: number) {
         setSemesterListReal(semesterListReal.target.value);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ListGroup, Form, Container, Col, Row, Button } from "react-bootstrap";
+import { Form, Container, Col, Row, Button } from "react-bootstrap";
 import { course as Course } from "./interfaces/course";
-import coursedata from "./coursedata.json";
+//import coursedata from "./coursedata.json";
 
 /* interface CourseProps {
     course: Course;
@@ -50,7 +50,7 @@ export function CourseEditor(
                         </Form.Label>
                         <Col>
                             <Form.Control
-                                value={course.code}
+                                value={code}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setCode(event.target.value)}
@@ -64,7 +64,7 @@ export function CourseEditor(
                         </Form.Label>
                         <Col>
                             <Form.Control
-                                value={course.name}
+                                value={name}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setName(event.target.value)}
@@ -78,7 +78,7 @@ export function CourseEditor(
                         </Form.Label>
                         <Col>
                             <Form.Control
-                                value={course.credits}
+                                value={credits}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setCredits(event.target.value)}
