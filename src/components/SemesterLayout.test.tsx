@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import App from "../App";
 import userEvent from "@testing-library/user-event";
-import { SemesterLayout } from "./semesterLayout";
+import { SemesterLayout } from "./SemesterLayout";
 
 test("Renders semester layout that allows you to input courses", () => {
     render(<App />);

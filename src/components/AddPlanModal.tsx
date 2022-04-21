@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
-import { degreeplan } from "./interfaces/degreeplan";
+import { degreeplan } from "../interfaces/degreeplan";
 
 export function AddPlanModal({
     show,

@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { DisplayCourse } from "./DisplayCourse";
-//import { course as Course } from "./interfaces/course";
-//import { semester as Semester } from "./interfaces/semester";
 
 export function SemesterLayout(): JSX.Element {
     const [semester, setSemester] = useState<string>(""); // current inputted semester
     const [semesterList, setSemesterList] = useState<string[]>([]); // store inputted semester into an array of semesters
-    //const [semesterListReal, setSemesterListReal] = useState<Semester[]>([]);
-
-    /*function updateSemesterReal(id: number) {
-        setSemesterListReal(semesterListReal.target.value);
-    }*/
 
     function updateSemester(event: React.ChangeEvent<HTMLInputElement>) {
         setSemester(event.target.value);
@@ -32,22 +25,27 @@ export function SemesterLayout(): JSX.Element {
         setSemesterList(updatedList);
     }
 
-    return (
-        <div style={{ border: "1px solid black", padding: "10px" }}>
-            {semesterList.map((semester: string) => (
-                <Container key={semester}>
-                    <div key={semester}>
-                        <h4>{semester}</h4>
-                    </div>
-                    {/*there should be a map for semester here where semester is an interface not string[]*/}
-                    <DisplayCourse /*course={course}*/></DisplayCourse>
+    function clearSemesters() {
+        setSemesterList([]);
+    }
 
-                    <Button onClick={() => deleteSemester(semester)}>
-                        Delete Semester
-                    </Button>
-                    <hr></hr>
-                </Container>
-            ))}
+    return (
+        <div>
+            <div className="bg-white border m-2 p-2">
+                {semesterList.map((semester: string) => (
+                    <Container key={semester}>
+                        <div key={semester}>
+                            <h4>{semester}</h4>
+                        </div>
+                        <DisplayCourse></DisplayCourse>
+
+                        <Button onClick={() => deleteSemester(semester)}>
+                            Delete Semester
+                        </Button>
+                        <hr></hr>
+                    </Container>
+                ))}
+            </div>
             <Form.Group>
                 <Form.Control
                     value={semester}
@@ -56,6 +54,7 @@ export function SemesterLayout(): JSX.Element {
                 ></Form.Control>
             </Form.Group>
             <Button onClick={addSemester}>Add New Semester</Button>
+            <Button onClick={clearSemesters}>Clear Semesters</Button>
         </div>
     );
 }
