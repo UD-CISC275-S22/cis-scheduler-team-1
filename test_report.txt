@@ -16,7 +16,7 @@ All files            |   31.18 |     7.69 |   26.66 |   29.67 |
   CourseEditor.tsx   |       0 |      100 |       0 |       0 | 15-132            
   DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 8-128             
   DisplayPlan.tsx    |     100 |       50 |     100 |     100 | 12                
-  SemesterLayout.tsx |   21.42 |        0 |   14.28 |   21.42 | 10-29,36-41       
+  SemesterLayout.tsx |   21.42 |        0 |   14.28 |   21.42 | 10-29,38-43       
  src/interfaces      |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
   degreeplan.ts      |       0 |        0 |       0 |       0 |                   
@@ -26,5 +26,5 @@ All files            |   31.18 |     7.69 |   26.66 |   29.67 |
 Test Suites: 3 passed, 3 total
 Tests:       8 passed, 8 total
 Snapshots:   0 total
-Time:        3.835 s
+Time:        4.044 s
 Ran all test suites.
