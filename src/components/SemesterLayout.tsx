@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { CourseEditor } from "./CourseEditor";
 import { DisplayCourse } from "./DisplayCourse";
 
 export function SemesterLayout(): JSX.Element {
@@ -18,8 +17,6 @@ export function SemesterLayout(): JSX.Element {
         }
         setSemester("");
     }
-
-    function trackTotalCredits() {}
 
     function deleteSemester(semester: string) {
         const updatedList = [...semesterList];
