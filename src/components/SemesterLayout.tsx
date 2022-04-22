@@ -29,6 +29,8 @@ export function SemesterLayout(): JSX.Element {
         setSemesterList([]);
     }
 
+    //track total credits in semester function
+
     return (
         <div>
             <div className="bg-white border m-2 p-2">
