@@ -3,23 +3,23 @@ import { Button } from "react-bootstrap";
 import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
 import { DisplayPlan } from "./components/DisplayPlan";
-import { degreeplan } from "./interfaces/degreeplan";
+import { Degreeplan } from "./interfaces/degreeplan";
 
 function App(): JSX.Element {
-    const [plans, setPlans] = useState<degreeplan[]>([]);
+    const [plans, setPlans] = useState<Degreeplan[]>([]);
     const [showAddDegree, setShowAddDegree] = useState(false);
 
     // create handlers for opening and closing modal
     const handleCloseAddPlan = () => setShowAddDegree(false);
     const handleAddPlan = () => setShowAddDegree(true);
 
-    function addDegreePlan(newPlan: degreeplan) {
+    function addDegreePlan(newPlan: Degreeplan) {
         setPlans([...plans, newPlan]);
     }
     function deleteDegree(degree: string) {
         const updatedList = [...plans];
         const foundDegree = updatedList.find(
-            (element: degreeplan) => element.title === degree
+            (element: Degreeplan) => element.title === degree
         );
         if (foundDegree !== undefined) {
             const index = updatedList.indexOf(foundDegree);
@@ -39,7 +39,7 @@ function App(): JSX.Element {
             </p>
             <div>
                 <div>
-                    {plans.map((plan: degreeplan) => (
+                    {plans.map((plan: Degreeplan) => (
                         <div key={plan.id} className="bg-light border m-2 p-2">
                             <DisplayPlan plan={plan}></DisplayPlan>
                             <Button onClick={() => deleteDegree(plan.title)}>

@@ -1,4 +1,4 @@
-export interface course {
+export interface Course {
     code: string;
     name: string;
     descr: string;

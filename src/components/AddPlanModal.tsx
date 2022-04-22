@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
-import { degreeplan } from "../interfaces/degreeplan";
+import { Degreeplan } from "../interfaces/degreeplan";
 
 export function AddPlanModal({
     show,
@@ -9,7 +9,7 @@ export function AddPlanModal({
 }: {
     show: boolean;
     handleClose: () => void;
-    addPlan: (newPlan: degreeplan) => void;
+    addPlan: (newPlan: Degreeplan) => void;
 }) {
     type ChangeEvent = React.ChangeEvent<
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement

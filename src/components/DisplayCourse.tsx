@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { course as Course } from "../interfaces/course";
+import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
 import { CourseEditor } from "./CourseEditor";
 
