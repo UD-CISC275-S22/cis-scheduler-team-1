@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { DisplayCourse } from "./DisplayCourse";
+//import { Course } from "../interfaces/course";
 
 export function SemesterLayout(): JSX.Element {
     const [semester, setSemester] = useState<string>(""); // current inputted semester
