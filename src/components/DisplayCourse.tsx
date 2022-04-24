@@ -10,7 +10,7 @@ export function DisplayCourse(): JSX.Element {
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
 
-    const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
+    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const [editing, setEditing] = useState<boolean>(false);
 
@@ -104,7 +104,7 @@ export function DisplayCourse(): JSX.Element {
     return (
         <div>
             <h5>Courses: </h5>
-            <div>Total Credits: {creditCount} </div>
+            <div>Total Credits: {/*creditCount*/} </div>
             {courseList.map((course: Course) =>
                 editing ? (
                     <CourseEditor
