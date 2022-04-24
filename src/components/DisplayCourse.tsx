@@ -3,11 +3,14 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
 import { CourseEditor } from "./CourseEditor";
+//import { useDrag } from "react-dnd";
 
 export function DisplayCourse(): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
+
+    const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const [editing, setEditing] = useState<boolean>(false);
 
@@ -31,6 +34,18 @@ export function DisplayCourse(): JSX.Element {
     function updateID(event: React.ChangeEvent<HTMLInputElement>) {
         setID(event.target.value.toUpperCase());
     }
+
+    /*
+    function trackCredits(addedCourse: Course) {
+        if (parseInt(addedCourse.credits) === NaN) {
+            setCreditCount(creditCount + 3);
+        } else {
+            setCreditCount(creditCount + parseInt(addedCourse.credits));
+        }
+    }
+    */
+
+    /*Add to Line 135*/ /*<p>{trackCredits(course)}</p>;*/
 
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
@@ -89,7 +104,7 @@ export function DisplayCourse(): JSX.Element {
     return (
         <div>
             <h5>Courses: </h5>
-            <div>Total Credits:</div>
+            <div>Total Credits: {creditCount} </div>
             {courseList.map((course: Course) =>
                 editing ? (
                     <CourseEditor
@@ -121,6 +136,7 @@ export function DisplayCourse(): JSX.Element {
                                     </p>
                                 </div>
                             </p>
+
                             <Button onClick={changeEditing}>Edit Course</Button>
                             <Button onClick={() => removeCourse(course)}>
                                 Remove Course
