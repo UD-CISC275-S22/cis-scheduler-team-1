@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { course as Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
-import { CourseEditor } from "./CourseEditor";
+import { CourseViewer } from "./CourseViewer";
 
 export function DisplayCourse(): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
 
-    const [editing, setEditing] = useState<boolean>(false);
+    //const [editing, setEditing] = useState<boolean>(false);
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -73,10 +73,6 @@ export function DisplayCourse(): JSX.Element {
         );
     }
 
-    function changeEditing() {
-        setEditing(!editing);
-    }
-
     function editCourse(code: string, newCourse: Course) {
         setCourseList(
             courseList.map(
@@ -90,48 +86,21 @@ export function DisplayCourse(): JSX.Element {
         <div>
             <h5>Courses: </h5>
             <div>Total Credits:</div>
-            {courseList.map((course: Course) =>
-                editing ? (
-                    <CourseEditor
-                        changeEditing={changeEditing}
+            {courseList.map((course: Course) => (
+                <Container key={course.code}>
+                    <CourseViewer
+                        key={course.code}
                         course={course}
                         editCourse={editCourse}
-                    ></CourseEditor>
-                ) : (
-                    <Container
-                        key={course.code}
-                        style={{ border: "1px solid white", padding: "6px" }}
-                    >
-                        <div
-                            style={{
-                                border: "1px solid black",
-                                padding: "6px"
-                            }}
-                        >
-                            <h6>
-                                {course.code}: {course.name}
-                            </h6>
-                            <p>
-                                {course.descr}
-                                <div>
-                                    {" "}
-                                    <p>
-                                        This class is worth {course.credits}{" "}
-                                        credits
-                                    </p>
-                                </div>
-                            </p>
-                            <Button onClick={changeEditing}>Edit Course</Button>
-                            <Button onClick={() => removeCourse(course)}>
-                                Remove Course
-                            </Button>
-                            <Button onClick={() => resetCourse(course)}>
-                                Reset
-                            </Button>
-                        </div>
-                    </Container>
-                )
-            )}
+                    ></CourseViewer>
+                    <Button onClick={() => removeCourse(course)}>
+                        Remove Course
+                    </Button>
+                    <Button onClick={() => resetCourse(course)}>
+                        Reset Course
+                    </Button>
+                </Container>
+            ))}
             <div></div>
             <Container>
                 <Row>
@@ -155,7 +124,6 @@ export function DisplayCourse(): JSX.Element {
                 <Button onClick={addCourse}>Add Course</Button>
                 <span> </span>
                 <Button onClick={clearCourses}>Clear Courses</Button>
-                <span></span>
             </Container>
         </div>
     );
