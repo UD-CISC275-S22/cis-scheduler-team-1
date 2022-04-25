@@ -11,7 +11,7 @@ export function DisplayCourse(): JSX.Element {
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
 
     //const [editing, setEditing] = useState<boolean>(false);
-    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
+    const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -34,15 +34,20 @@ export function DisplayCourse(): JSX.Element {
         setID(event.target.value.toUpperCase());
     }
 
-    /*
     function trackCredits(addedCourse: Course) {
-        if (parseInt(addedCourse.credits) === NaN) {
+        if (isNaN(parseInt(addedCourse.credits))) {
             setCreditCount(creditCount + 3);
         } else {
-            setCreditCount(creditCount + parseInt(addedCourse.credits));
+            setCreditCount(
+                creditCount +
+                    parseInt(
+                        addedCourse.credits.substring(
+                            addedCourse.credits.length - 1
+                        )
+                    )
+            );
         }
     }
-    */
 
     /*Add to Line 135*/ /*<p>{trackCredits(course)}</p>;*/
 
@@ -59,6 +64,7 @@ export function DisplayCourse(): JSX.Element {
             };
             if (!courseList.includes(newCourse)) {
                 setCourseList([...courseList, newCourse]);
+                trackCredits(newCourse);
             }
         }
         setID(""); // sets the id back to "" so that placeholder displays
@@ -99,7 +105,13 @@ export function DisplayCourse(): JSX.Element {
     return (
         <div>
             <h5>Courses: </h5>
-            <div>Total Credits:</div>
+            <div>
+                Total Credits: {creditCount}
+                <p>
+                    NOTE: credit count assumes you are taking a class for the
+                    maximum number of credits, you may edit this in the course
+                </p>
+            </div>
             {courseList.map((course: Course) => (
                 <Container key={course.code}>
                     <CourseViewer
