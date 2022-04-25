@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { DisplayCourse } from "./DisplayCourse";
+//import { Course } from "../interfaces/course";
 
 export function SemesterLayout(): JSX.Element {
     const [semester, setSemester] = useState<string>(""); // current inputted semester
@@ -29,6 +30,8 @@ export function SemesterLayout(): JSX.Element {
         setSemesterList([]);
     }
 
+    //track total credits in semester function
+
     return (
         <div>
             <div className="bg-white border m-2 p-2">
@@ -38,7 +41,6 @@ export function SemesterLayout(): JSX.Element {
                             <h4>{semester}</h4>
                         </div>
                         <DisplayCourse></DisplayCourse>
-
                         <Button onClick={() => deleteSemester(semester)}>
                             Delete Semester
                         </Button>

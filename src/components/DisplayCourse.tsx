@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { course as Course } from "../interfaces/course";
+import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
 import { CourseViewer } from "./CourseViewer";
+//import { useDrag } from "react-dnd";
 
 export function DisplayCourse(): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
@@ -10,6 +11,7 @@ export function DisplayCourse(): JSX.Element {
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
 
     //const [editing, setEditing] = useState<boolean>(false);
+    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -31,6 +33,18 @@ export function DisplayCourse(): JSX.Element {
     function updateID(event: React.ChangeEvent<HTMLInputElement>) {
         setID(event.target.value.toUpperCase());
     }
+
+    /*
+    function trackCredits(addedCourse: Course) {
+        if (parseInt(addedCourse.credits) === NaN) {
+            setCreditCount(creditCount + 3);
+        } else {
+            setCreditCount(creditCount + parseInt(addedCourse.credits));
+        }
+    }
+    */
+
+    /*Add to Line 135*/ /*<p>{trackCredits(course)}</p>;*/
 
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {

@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { degreeplan } from "../interfaces/degreeplan";
+import { Degreeplan } from "../interfaces/degreeplan";
 import { SemesterLayout } from "./SemesterLayout";
 //import { SemesterLayout } from "./SemesterLayout";
 
-export function DisplayPlan({ plan }: { plan: degreeplan }): JSX.Element {
+export function DisplayPlan({ plan }: { plan: Degreeplan }): JSX.Element {
     return (
         <div>
             <Container>

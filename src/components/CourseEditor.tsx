@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { course } from "../interfaces/course";
+import { Course } from "../interfaces/course";
 
 export function CourseEditor({
     changeEditing,
@@ -8,8 +8,8 @@ export function CourseEditor({
     editCourse
 }: {
     changeEditing: () => void;
-    course: course;
-    editCourse: (code: string, newCourse: course) => void;
+    course: Course;
+    editCourse: (code: string, newCourse: Course) => void;
 }): JSX.Element {
     // create state variables for every attribute in course
     const [name, setName] = useState<string>(course.name); // original name for course
