@@ -2,26 +2,13 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
-<<<<<<< HEAD
 import { CourseViewer } from "./CourseViewer";
-=======
-import { CourseEditor } from "./CourseEditor";
->>>>>>> a040ba953ccc253f6e335f8dfcdb5caf799d16cf
-//import { useDrag } from "react-dnd";
 
 export function DisplayCourse(): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
-
-<<<<<<< HEAD
-    //const [editing, setEditing] = useState<boolean>(false);
     const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
-=======
-    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
-
-    const [editing, setEditing] = useState<boolean>(false);
->>>>>>> a040ba953ccc253f6e335f8dfcdb5caf799d16cf
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -44,7 +31,6 @@ export function DisplayCourse(): JSX.Element {
         setID(event.target.value.toUpperCase());
     }
 
-<<<<<<< HEAD
     function trackCredits(courses: Course[]): number {
         const creditList = courses.map((course: Course): number =>
             parseInt(course.credits.substring(course.credits.length - 1))
@@ -56,20 +42,6 @@ export function DisplayCourse(): JSX.Element {
         );
         return credits;
     }
-=======
-    /*
-    function trackCredits(addedCourse: Course) {
-        if (parseInt(addedCourse.credits) === NaN) {
-            setCreditCount(creditCount + 3);
-        } else {
-            setCreditCount(creditCount + parseInt(addedCourse.credits));
-        }
-    }
-    */
-
-    /*Add to Line 135*/ /*<p>{trackCredits(course)}</p>;*/
->>>>>>> a040ba953ccc253f6e335f8dfcdb5caf799d16cf
-
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
         const newCourseCode = course + " " + id;
@@ -132,7 +104,6 @@ export function DisplayCourse(): JSX.Element {
     return (
         <div>
             <h5>Courses: </h5>
-<<<<<<< HEAD
             <div>
                 Total Credits: {creditCount}
                 <p>
@@ -155,52 +126,6 @@ export function DisplayCourse(): JSX.Element {
                     </Button>
                 </Container>
             ))}
-=======
-            <div>Total Credits: {/*creditCount*/} </div>
-            {courseList.map((course: Course) =>
-                editing ? (
-                    <CourseEditor
-                        changeEditing={changeEditing}
-                        course={course}
-                        editCourse={editCourse}
-                    ></CourseEditor>
-                ) : (
-                    <Container
-                        key={course.code}
-                        style={{ border: "1px solid white", padding: "6px" }}
-                    >
-                        <div
-                            style={{
-                                border: "1px solid black",
-                                padding: "6px"
-                            }}
-                        >
-                            <h6>
-                                {course.code}: {course.name}
-                            </h6>
-                            <p>
-                                {course.descr}
-                                <div>
-                                    {" "}
-                                    <p>
-                                        This class is worth {course.credits}{" "}
-                                        credits
-                                    </p>
-                                </div>
-                            </p>
-
-                            <Button onClick={changeEditing}>Edit Course</Button>
-                            <Button onClick={() => removeCourse(course)}>
-                                Remove Course
-                            </Button>
-                            <Button onClick={() => resetCourse(course)}>
-                                Reset
-                            </Button>
-                        </div>
-                    </Container>
-                )
-            )}
->>>>>>> a040ba953ccc253f6e335f8dfcdb5caf799d16cf
             <div></div>
             <Container>
                 <Row>
