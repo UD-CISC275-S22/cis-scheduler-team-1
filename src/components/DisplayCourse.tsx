@@ -34,37 +34,30 @@ export function DisplayCourse(): JSX.Element {
         setID(event.target.value.toUpperCase());
     }
 
-    function trackCredits(addedCourse: Course) {
-        if (isNaN(parseInt(addedCourse.credits))) {
-            setCreditCount(creditCount + 3);
-        } else {
-            setCreditCount(
-                creditCount +
-                    parseInt(
-                        addedCourse.credits.substring(
-                            addedCourse.credits.length - 1
-                        )
-                    )
-            );
-        }
-    }
+    function trackCredits(courses: Course[]): number {
+        const creditList = courses.map((course: Course): number =>
+            parseInt(course.credits.substring(course.credits.length - 1))
+        );
 
-    /*Add to Line 135*/ /*<p>{trackCredits(course)}</p>;*/
+        const credits = creditList.reduce(
+            (total: number, credit: number) => total + credit,
+            0
+        );
+        return credits;
+    }
 
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
         const newCourseCode = course + " " + id;
         // will only add course if valid -- work on displaying error message
-        if (
-            newCourseCode.substring(0, 4) in COURSES &&
-            newCourseCode in COURSES[newCourseCode.substring(0, 4)]
-        ) {
+        if (course in COURSES && newCourseCode in COURSES[course]) {
             const newCourse = {
                 ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
             };
             if (!courseList.includes(newCourse)) {
                 setCourseList([...courseList, newCourse]);
-                trackCredits(newCourse);
+                const updatedCourses = [...courseList, newCourse];
+                setCreditCount(trackCredits(updatedCourses));
             }
         }
         setID(""); // sets the id back to "" so that placeholder displays
@@ -73,6 +66,7 @@ export function DisplayCourse(): JSX.Element {
 
     function clearCourses() {
         setCourseList([]);
+        setCreditCount(0);
     }
 
     function removeCourse(courseRemove: Course) {
@@ -80,26 +74,35 @@ export function DisplayCourse(): JSX.Element {
         const index = updatedList.indexOf(courseRemove);
         updatedList.splice(index, 1);
         setCourseList(updatedList);
+        setCreditCount(
+            creditCount -
+                parseInt(
+                    courseRemove.credits.substring(
+                        courseRemove.credits.length - 1
+                    )
+                )
+        );
+        setCreditCount(trackCredits(updatedList));
     }
 
     function resetCourse(courseReset: Course) {
         const reset =
             COURSES[courseReset.code.substring(0, 4)][courseReset.code];
-        setCourseList(
-            courseList.map(
-                (course: Course): Course =>
-                    course.code === courseReset.code ? reset : course
-            )
+        const updatedList = courseList.map(
+            (course: Course): Course =>
+                course.code === courseReset.code ? reset : course
         );
+        setCourseList(updatedList);
+        setCreditCount(trackCredits(updatedList));
     }
 
     function editCourse(code: string, newCourse: Course) {
-        setCourseList(
-            courseList.map(
-                (course: Course): Course =>
-                    course.code === code ? newCourse : course
-            )
+        const updatedList = courseList.map(
+            (course: Course): Course =>
+                course.code === code ? newCourse : course
         );
+        setCourseList(updatedList);
+        setCreditCount(trackCredits(updatedList));
     }
 
     return (
