@@ -74,13 +74,14 @@ PASS src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   31.18 |     7.69 |   26.66 |   29.67 |                   
+All files            |    26.6 |     7.69 |   24.48 |   25.23 |                   
  src                 |     100 |       50 |     100 |     100 |                   
   App.tsx            |     100 |       50 |     100 |     100 | 24                
- src/components      |   15.78 |     4.16 |   10.81 |   15.78 |                   
+ src/components      |   13.04 |     4.16 |    9.75 |   13.04 |                   
   AddPlanModal.tsx   |   61.53 |        0 |      40 |   61.53 | 40-43,81-93       
   CourseEditor.tsx   |       0 |      100 |       0 |       0 | 15-132            
-  DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 9-144             
+  CourseViewer.tsx   |       0 |        0 |       0 |       0 | 13-19             
+  DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 8-124             
   DisplayPlan.tsx    |     100 |       50 |     100 |     100 | 12                
   SemesterLayout.tsx |   21.42 |        0 |   14.28 |   21.42 | 11-30,39-44       
  src/interfaces      |       0 |        0 |       0 |       0 |                   
@@ -92,5 +93,5 @@ All files            |   31.18 |     7.69 |   26.66 |   29.67 |
 Test Suites: 1 failed, 3 passed, 4 total
 Tests:       1 failed, 8 passed, 9 total
 Snapshots:   0 total
-Time:        6.233 s
+Time:        4.889 s
 Ran all test suites.
