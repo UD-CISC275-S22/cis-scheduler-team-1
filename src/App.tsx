@@ -4,6 +4,7 @@ import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
 import { Degreeplan } from "./interfaces/degreeplan";
 import { PlanList } from "./components/PlanList";
+import { DisplayPlan } from "./components/DisplayPlan";
 
 function App(): JSX.Element {
     const [plans, setPlans] = useState<Degreeplan[]>([]);

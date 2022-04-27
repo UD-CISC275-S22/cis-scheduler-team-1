@@ -134,8 +134,12 @@ export function CourseEditor({
                         </Col>
                     </Form.Group>
                 </Col>
-                <Button onClick={saveChanges}>Save Changes</Button>
-                <Button onClick={close}>Cancel</Button>
+                <Button onClick={saveChanges} variant="success">
+                    Save Changes
+                </Button>
+                <Button onClick={close} variant="warning">
+                    Cancel
+                </Button>
             </Row>
         </Container>
     );

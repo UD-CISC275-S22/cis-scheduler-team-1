@@ -39,7 +39,7 @@ export function DisplayCourse({
     }
 
     // updates the id from text box
-    function updateID(event: React.ChangeEvent<HTMLInputElement>) {
+    function updateID(event: React.ChangeEvent<HTMLSelectElement>) {
         setID(event.target.value.toUpperCase());
     }
 
@@ -164,12 +164,18 @@ export function DisplayCourse({
                         ></Form.Control>
                     </Col>
                     <Col>
-                        <Form.Control
-                            type="number"
-                            value={id}
-                            onChange={updateID}
-                            placeholder="Type Course Number Here"
-                        ></Form.Control>
+                        <Form.Select value={id} onChange={updateID}>
+                            {Object.keys(
+                                course in COURSES ? COURSES[course] : {}
+                            ).map((course: string) => (
+                                <option
+                                    key={course.substring(5)}
+                                    value={course.substring(5)}
+                                >
+                                    {course.substring(5)}
+                                </option>
+                            ))}
+                        </Form.Select>
                     </Col>
                 </Row>
                 <Button onClick={addCourse}>Add Course</Button>
