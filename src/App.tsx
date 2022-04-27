@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
-import { DisplayPlan } from "./components/DisplayPlan";
 import { Degreeplan } from "./interfaces/degreeplan";
+import { PlanList } from "./components/PlanList";
 
 function App(): JSX.Element {
     const [plans, setPlans] = useState<Degreeplan[]>([]);
@@ -28,6 +28,15 @@ function App(): JSX.Element {
         setPlans(updatedList);
     }
 
+    function editDegree(id: number, newDegree: Degreeplan) {
+        setPlans(
+            plans.map(
+                (degree: Degreeplan): Degreeplan =>
+                    degree.id === id ? newDegree : degree
+            )
+        );
+    }
+
     return (
         <div className="App">
             <header className="App-header">
@@ -38,16 +47,11 @@ function App(): JSX.Element {
                 next four years!
             </p>
             <div>
-                <div>
-                    {plans.map((plan: Degreeplan) => (
-                        <div key={plan.id} className="bg-light border m-2 p-2">
-                            <DisplayPlan plan={plan}></DisplayPlan>
-                            <Button onClick={() => deleteDegree(plan.title)}>
-                                Delete Degree Plan
-                            </Button>
-                        </div>
-                    ))}
-                </div>
+                <PlanList
+                    plans={plans}
+                    deleteDegree={deleteDegree}
+                    editDegree={editDegree}
+                ></PlanList>
                 <Button onClick={handleAddPlan}>Create New Degree Plan</Button>
                 <AddPlanModal
                     show={showAddDegree}
