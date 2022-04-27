@@ -3,8 +3,20 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
 import { CourseViewer } from "./CourseViewer";
+import { Degreeplan } from "../interfaces/degreeplan";
+import { Semester } from "../interfaces/semester";
 
-export function DisplayCourse(): JSX.Element {
+export function DisplayCourse({
+    plan,
+    editDegree,
+    semester,
+    editSemester
+}: {
+    plan: Degreeplan;
+    editDegree: (id: number, newDegree: Degreeplan) => void;
+    semester: Semester;
+    editSemester: (id: number, newSemester: Semester) => void;
+}): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
@@ -51,9 +63,13 @@ export function DisplayCourse(): JSX.Element {
                 ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
             };
             if (!courseList.includes(newCourse)) {
-                setCourseList([...courseList, newCourse]);
                 const updatedCourses = [...courseList, newCourse];
+                setCourseList(updatedCourses);
                 setCreditCount(trackCredits(updatedCourses));
+                editSemester(semester.id, {
+                    ...semester,
+                    courses: updatedCourses
+                });
             }
         }
         setID(""); // sets the id back to "" so that placeholder displays
@@ -63,6 +79,10 @@ export function DisplayCourse(): JSX.Element {
     function clearCourses() {
         setCourseList([]);
         setCreditCount(0);
+        editSemester(semester.id, {
+            ...semester,
+            courses: []
+        });
     }
 
     function removeCourse(courseRemove: Course) {
@@ -79,6 +99,10 @@ export function DisplayCourse(): JSX.Element {
                 )
         );
         setCreditCount(trackCredits(updatedList));
+        editSemester(semester.id, {
+            ...semester,
+            courses: updatedList
+        });
     }
 
     function resetCourse(courseReset: Course) {
@@ -117,6 +141,8 @@ export function DisplayCourse(): JSX.Element {
                         key={course.code}
                         course={course}
                         editCourse={editCourse}
+                        plan={plan}
+                        editDegree={editDegree}
                     ></CourseViewer>
                     <Button onClick={() => removeCourse(course)}>
                         Remove Course
