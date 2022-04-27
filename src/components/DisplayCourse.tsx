@@ -141,46 +141,17 @@ export function DisplayCourse({
                         key={course.code}
                         course={course}
                         editCourse={editCourse}
-                    ></CourseEditor>
-                ) : (
-                    <Container
-                        key={course.code}
-                        style={{ border: "1px solid white", padding: "6px" }}
-                    >
-                        <div
-                            style={{
-                                border: "1px solid black",
-                                padding: "6px"
-                            }}
-                        >
-                            <h6>
-                                {course.code}: {course.name}
-                            </h6>
-                            <p>
-                                {course.descr}
-                                <div>
-                                    {" "}
-                                    <p>
-                                        This class is worth {course.credits}{" "}
-                                        credits
-                                    </p>
-                                </div>
-                            </p>
-
-                            <Button onClick={changeEditing}>Edit Course</Button>
-                            <Button onClick={() => removeCourse(course)}>
-                                Remove Course
-                            </Button>
-                            <Button
-                                onClick={() => resetCourse(course)}
-                                variant="outline-info"
-                            >
-                                Reset
-                            </Button>
-                        </div>
-                    </Container>
-                )
-            )}
+                        plan={plan}
+                        editDegree={editDegree}
+                    ></CourseViewer>
+                    <Button onClick={() => removeCourse(course)}>
+                        Remove Course
+                    </Button>
+                    <Button onClick={() => resetCourse(course)}>
+                        Reset Course
+                    </Button>
+                </Container>
+            ))}
             <div></div>
             <Container>
                 <Row>
@@ -189,7 +160,7 @@ export function DisplayCourse({
                             type="string"
                             value={course}
                             onChange={updateCourse}
-                            placeholder="Type Department ID"
+                            placeholder="Type Department ID Here"
                         ></Form.Control>
                     </Col>
                     <Col>
