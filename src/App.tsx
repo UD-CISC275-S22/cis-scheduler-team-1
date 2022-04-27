@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
-import { DisplayPlan } from "./components/DisplayPlan";
 import { Degreeplan } from "./interfaces/degreeplan";
+import { PlanList } from "./components/PlanList";
+import { DisplayPlan } from "./components/DisplayPlan";
 
 function App(): JSX.Element {
     const [plans, setPlans] = useState<Degreeplan[]>([]);
@@ -26,6 +27,15 @@ function App(): JSX.Element {
             updatedList.splice(index, 1);
         }
         setPlans(updatedList);
+    }
+
+    function editDegree(id: number, newDegree: Degreeplan) {
+        setPlans(
+            plans.map(
+                (degree: Degreeplan): Degreeplan =>
+                    degree.id === id ? newDegree : degree
+            )
+        );
     }
 
     return (
