@@ -13,6 +13,15 @@
     }
 }
 
+.Degree-design {
+    align-items: center;
+    background-color: greenyellow;
+    width: 100%;
+    justify-content: left;
+    flex-direction: column;
+    display: flex;
+}
+
 .App-header {
     width: 100%;
     background-color: #db84ba;

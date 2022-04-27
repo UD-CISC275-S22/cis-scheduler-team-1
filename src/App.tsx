@@ -37,18 +37,23 @@ function App(): JSX.Element {
                 Click through course, semester, and degree options to plan your
                 next four years!
             </p>
-            <div>
+            <div className="Degree-design">
                 <div>
                     {plans.map((plan: Degreeplan) => (
                         <div key={plan.id} className="bg-light border m-2 p-2">
                             <DisplayPlan plan={plan}></DisplayPlan>
-                            <Button onClick={() => deleteDegree(plan.title)}>
+                            <Button
+                                onClick={() => deleteDegree(plan.title)}
+                                variant="danger"
+                            >
                                 Delete Degree Plan
                             </Button>
                         </div>
                     ))}
                 </div>
-                <Button onClick={handleAddPlan}>Create New Degree Plan</Button>
+                <Button onClick={handleAddPlan} variant="primary">
+                    Create New Degree Plan
+                </Button>
                 <AddPlanModal
                     show={showAddDegree}
                     handleClose={handleCloseAddPlan}

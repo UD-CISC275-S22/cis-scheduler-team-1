@@ -31,7 +31,7 @@ export function DisplayCourse(): JSX.Element {
     }
 
     // updates the id from text box
-    function updateID(event: React.ChangeEvent<HTMLInputElement>) {
+    function updateID(event: React.ChangeEvent<HTMLSelectElement>) {
         setID(event.target.value.toUpperCase());
     }
 
@@ -141,7 +141,10 @@ export function DisplayCourse(): JSX.Element {
                             <Button onClick={() => removeCourse(course)}>
                                 Remove Course
                             </Button>
-                            <Button onClick={() => resetCourse(course)}>
+                            <Button
+                                onClick={() => resetCourse(course)}
+                                variant="outline-info"
+                            >
                                 Reset
                             </Button>
                         </div>
@@ -156,16 +159,22 @@ export function DisplayCourse(): JSX.Element {
                             type="string"
                             value={course}
                             onChange={updateCourse}
-                            placeholder="Type Department ID Here"
+                            placeholder="Type Department ID"
                         ></Form.Control>
                     </Col>
                     <Col>
-                        <Form.Control
-                            type="number"
-                            value={id}
-                            onChange={updateID}
-                            placeholder="Type Course Number Here"
-                        ></Form.Control>
+                        <Form.Select value={id} onChange={updateID}>
+                            {Object.keys(
+                                course in COURSES ? COURSES[course] : {}
+                            ).map((course: string) => (
+                                <option
+                                    key={course.substring(5)}
+                                    value={course.substring(5)}
+                                >
+                                    {course.substring(5)}
+                                </option>
+                            ))}
+                        </Form.Select>
                     </Col>
                 </Row>
                 <Button onClick={addCourse}>Add Course</Button>
