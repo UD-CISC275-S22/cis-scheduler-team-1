@@ -12,6 +12,7 @@ export function PlanList({
     deleteDegree: (id: string) => void;
     editDegree: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
+    // total credits for a plan is the sum of all "credits" fields in semesters[]
     return (
         <div>
             {plans.map((plan: Degreeplan) => (

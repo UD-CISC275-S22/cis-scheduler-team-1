@@ -12,16 +12,16 @@ export function SemesterLayout({
     deleteDegree: (id: string) => void;
     editDegree: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
-    const blankSemester = { id: 0, title: "", courses: [] };
+    const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
     const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester
     const [semesterList, setSemesterList] = useState<Semester[]>([]); // store inputted semester into an array of semesters
 
-    function updateSemester(event: React.ChangeEvent<HTMLInputElement>) {
+    function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
         setSemester({
             id: plan.id,
             title: event.target.value,
-            courses: []
-            //courseTotal: 0
+            courses: [],
+            credits: 0
         });
     }
 
@@ -37,16 +37,26 @@ export function SemesterLayout({
     }
 
     function editSemester(id: number, newSemester: Semester) {
-        setSemesterList(
-            semesterList.map(
-                (semester: Semester): Semester =>
-                    semester.id === id ? newSemester : semester
-            )
+        const updatedSemesters = semesterList.map(
+            (semester: Semester): Semester =>
+                semester.id === id ? newSemester : semester
         );
-        editDegree(id, {
+        setSemesterList(updatedSemesters);
+        editDegree(plan.id, {
             ...plan,
-            semesters: [...semesterList, semester]
+            semesters: updatedSemesters,
+            totalCredits: trackCredits(updatedSemesters)
         });
+    }
+
+    function trackCredits(semesters: Semester[]): number {
+        const semesterCredits = semesters.map(
+            (semester: Semester): number => semester.credits
+        );
+        const total = semesterCredits.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+        return total;
     }
 
     // semesters is a list of semesters os if we edit the courses we have to edit that semester adn then edit that semeseter in degree plan
@@ -58,7 +68,8 @@ export function SemesterLayout({
         setSemesterList(updatedList);
         editDegree(plan.id, {
             ...plan,
-            semesters: updatedList
+            semesters: updatedList,
+            totalCredits: trackCredits(updatedList)
         });
     }
 
@@ -66,7 +77,8 @@ export function SemesterLayout({
         setSemesterList([]);
         editDegree(plan.id, {
             ...plan,
-            semesters: []
+            semesters: [],
+            totalCredits: 0
         });
     }
 
@@ -96,7 +108,7 @@ export function SemesterLayout({
             <Form.Group>
                 <Form.Control
                     value={semester.title}
-                    onChange={updateSemester}
+                    onChange={inputSemester}
                     placeholder="Type semester here"
                 ></Form.Control>
             </Form.Group>

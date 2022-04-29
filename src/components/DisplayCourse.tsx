@@ -68,7 +68,8 @@ export function DisplayCourse({
                 setCreditCount(trackCredits(updatedCourses));
                 editSemester(semester.id, {
                     ...semester,
-                    courses: updatedCourses
+                    courses: updatedCourses,
+                    credits: trackCredits(updatedCourses)
                 });
             }
         }
@@ -101,7 +102,8 @@ export function DisplayCourse({
         setCreditCount(trackCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
-            courses: updatedList
+            courses: updatedList,
+            credits: trackCredits(updatedList)
         });
     }
 
@@ -114,6 +116,11 @@ export function DisplayCourse({
         );
         setCourseList(updatedList);
         setCreditCount(trackCredits(updatedList));
+        editSemester(semester.id, {
+            ...semester,
+            courses: updatedList,
+            credits: trackCredits(updatedList)
+        });
     }
 
     function editCourse(code: string, newCourse: Course) {
@@ -123,6 +130,11 @@ export function DisplayCourse({
         );
         setCourseList(updatedList);
         setCreditCount(trackCredits(updatedList));
+        editSemester(semester.id, {
+            ...semester,
+            courses: updatedList,
+            credits: trackCredits(updatedList)
+        });
     }
 
     return (

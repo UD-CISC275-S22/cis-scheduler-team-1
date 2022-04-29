@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { CoursePool } from "./CoursePool";
+import { RequirementView } from "./RequirementView";
 import { SemesterLayout } from "./SemesterLayout";
 
 export function DisplayPlan({
@@ -33,7 +34,12 @@ export function DisplayPlan({
                     </Container>
                 </Col>
                 <Col>
-                    <CoursePool></CoursePool>
+                    <Row>
+                        <RequirementView plan={plan}></RequirementView>
+                    </Row>
+                    <Row>
+                        <CoursePool></CoursePool>
+                    </Row>
                 </Col>
             </Row>
         </div>

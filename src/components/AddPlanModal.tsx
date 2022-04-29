@@ -29,8 +29,8 @@ export function AddPlanModal({
             type: type,
             semesters: [],
             reqs: false,
-            semestertotal: 0,
-            concentration: concentration
+            concentration: concentration,
+            totalCredits: 0
         });
         setId(id + 1); // increment id for next one ?
         handleClose();
