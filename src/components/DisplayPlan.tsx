@@ -69,15 +69,19 @@ export function DisplayPlan({
                 </Col>
                 <Col>
                     <Row>
-                        <RequirementView plan={plan}></RequirementView>
+                        <Container>
+                            <RequirementView plan={plan}></RequirementView>
+                        </Container>
                     </Row>
                     <Row>
-                        <CoursePool
-                            pool={pool}
-                            plan={plan}
-                            editPool={editPool}
-                            editSemester={editSemester}
-                        ></CoursePool>
+                        <Container>
+                            <CoursePool
+                                pool={pool}
+                                plan={plan}
+                                editPool={editPool}
+                                editSemester={editSemester}
+                            ></CoursePool>
+                        </Container>
                     </Row>
                 </Col>
             </Row>
