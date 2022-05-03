@@ -4,14 +4,17 @@ import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
 import { Degreeplan } from "./interfaces/degreeplan";
 import { PlanList } from "./components/PlanList";
+import { WelcomeModal } from "./components/WelcomeModal";
 
 function App(): JSX.Element {
     const [plans, setPlans] = useState<Degreeplan[]>([]);
     const [showAddDegree, setShowAddDegree] = useState(false);
+    const [showWelcomeModal, setShowWelcomeModal] = useState(true);
 
     // create handlers for opening and closing modal
     const handleCloseAddPlan = () => setShowAddDegree(false);
     const handleAddPlan = () => setShowAddDegree(true);
+    const handleWelcomeModal = () => setShowWelcomeModal(false);
 
     function addDegreePlan(newPlan: Degreeplan) {
         setPlans([...plans, newPlan]);
@@ -42,12 +45,12 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                Welcome to the University of Delaware Course Scheduler!
+                University of Delaware Undergraduate Course Scheduler
             </header>
-            <p>
-                Click through course, semester, and degree options to plan your
-                next four years!
-            </p>
+            <WelcomeModal
+                show={showWelcomeModal}
+                handleClose={handleWelcomeModal}
+            ></WelcomeModal>
             <div>
                 <PlanList
                     plans={plans}
