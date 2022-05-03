@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
-import { Degreeplan } from "../interfaces/degreeplan";
+import { Degreeplan, DegreeType } from "../interfaces/degreeplan";
 
 export function AddPlanModal({
     show,
@@ -14,10 +14,28 @@ export function AddPlanModal({
     type ChangeEvent = React.ChangeEvent<
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
     >;
-    type DegreeType = "BS" | "BA" | "";
+
+    const degreeTypes = [
+        "BS",
+        "BA",
+        "BSN",
+        "BFA",
+        "BM",
+        "BSEd",
+        "BBE",
+        "BChE",
+        "BCE",
+        "BCpE",
+        "BCEM",
+        "BEE",
+        "BENE",
+        "BMSE",
+        "BME",
+        ""
+    ];
 
     const [id, setId] = useState<number>(0);
-    const [type, setType] = useState<DegreeType>("BS");
+    const [type, setType] = useState<string>("");
     const [major, setMajor] = useState<string>("");
     const [concentration, setConcentration] = useState<string>("");
 
@@ -37,11 +55,7 @@ export function AddPlanModal({
     }
 
     function updateChoice(event: ChangeEvent) {
-        if (event.target.value == "BS") {
-            setType("BS");
-        } else {
-            setType("BA");
-        }
+        setType(event.target.value);
     }
 
     return (
@@ -61,12 +75,11 @@ export function AddPlanModal({
                                 onChange={updateChoice}
                                 placeholder="Select Degree Type"
                             >
-                                <option key="BS" value="BS">
-                                    Bachelor of Science (BS)
-                                </option>
-                                <option key="BA" value="BA">
-                                    Bachelor of Arts (BA)
-                                </option>
+                                {degreeTypes.map((type: string) => (
+                                    <option key={type} value={type}>
+                                        {type}
+                                    </option>
+                                ))}
                             </Form.Select>
                         </Row>
                         <Form.Label column sm={3}>

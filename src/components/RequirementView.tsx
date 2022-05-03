@@ -1,8 +1,11 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
+import majorlinks from "../data/majorlinks.json";
 
 export function RequirementView({ plan }: { plan: Degreeplan }): JSX.Element {
+    const LINKS: Record<string, Record<string, string>> = majorlinks;
+
     return (
         <div className="bg-white border m-2 p-2">
             <Container>
@@ -13,8 +16,19 @@ export function RequirementView({ plan }: { plan: Degreeplan }): JSX.Element {
                     4.
                 </p>
                 <Row>Total Semesters: {plan.semesters.length}</Row>
-                <Row>Total Credits: {plan.totalCredits} / 120</Row>
-                <h6>Major Required Classes: </h6>
+                <Row>Total Credits: {plan.totalCredits} / 124</Row>
+                <Row>
+                    <h6>Major Required Classes: </h6>
+                    Click the link to see a comprehensive list of the degree
+                    requirements for your major!{" "}
+                    <a
+                        href={LINKS[plan.type][plan.major]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Major Requirements
+                    </a>
+                </Row>
             </Container>
         </div>
     );
