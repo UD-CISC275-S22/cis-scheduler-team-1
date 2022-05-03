@@ -175,30 +175,32 @@ FAIL src/components/CourseEditor.test.tsx
       at Object.<anonymous> (src/components/CourseEditor.test.tsx:8:27)
 
 PASS src/App.test.tsx
----------------------|---------|----------|---------|---------|-------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
----------------------|---------|----------|---------|---------|-------------------
-All files            |   27.55 |     6.25 |   25.86 |   26.61 |                   
- src                 |      85 |       25 |   66.66 |   88.23 |                   
-  App.tsx            |      85 |       25 |   66.66 |   88.23 | 35-38             
- src/components      |   16.82 |     3.57 |   18.36 |   16.82 |                   
-  AddPlanModal.tsx   |   61.53 |        0 |      40 |   61.53 | 40-43,81-93       
-  CourseEditor.tsx   |       0 |      100 |       0 |       0 | 15-132            
-  CoursePool.tsx     |     100 |      100 |     100 |     100 |                   
-  CourseViewer.tsx   |       0 |        0 |       0 |       0 | 28-34             
-  DisplayCourse.tsx  |       0 |        0 |       0 |       0 | 20-171            
-  DisplayPlan.tsx    |     100 |       50 |     100 |     100 | 22                
-  PlanList.tsx       |     100 |      100 |     100 |     100 |                   
-  SemesterLayout.tsx |      20 |        0 |   11.11 |      20 | 20-67,79-89       
-  WelcomeModal.tsx   |     100 |      100 |     100 |     100 |                   
- src/interfaces      |       0 |        0 |       0 |       0 |                   
-  course.ts          |       0 |        0 |       0 |       0 |                   
-  degreeplan.ts      |       0 |        0 |       0 |       0 |                   
-  semester.ts        |       0 |        0 |       0 |       0 |                   
----------------------|---------|----------|---------|---------|-------------------
+----------------------|---------|----------|---------|---------|-------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------|---------|----------|---------|---------|-------------------
+All files             |   25.13 |     6.52 |   20.48 |   24.71 |                   
+ src                  |      85 |       25 |   66.66 |   88.23 |                   
+  App.tsx             |      85 |       25 |   66.66 |   88.23 | 37-40             
+ src/components       |   17.79 |     4.76 |   14.86 |   18.01 |                   
+  AddCourseModal.tsx  |   18.18 |      100 |   16.66 |   18.18 | 69-85,104         
+  AddPlanModal.tsx    |   61.53 |        0 |      40 |   61.53 | 40-43,81-93       
+  CourseEditor.tsx    |       0 |      100 |       0 |       0 | 15-132            
+  CoursePool.tsx      |   33.33 |     8.33 |    12.5 |   36.36 | 43-73,82-120      
+  CourseViewer.tsx    |       0 |        0 |       0 |       0 | 28-34             
+  DisplayCourse.tsx   |       0 |        0 |       0 |       0 | 24-195            
+  DisplayPlan.tsx     |   18.18 |       25 |   14.28 |   18.18 | 22-41             
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                   
+  RequirementView.tsx |     100 |      100 |     100 |     100 |                   
+  SemesterLayout.tsx  |   15.38 |        0 |    8.33 |   15.38 | 25-83,96-108      
+  WelcomeModal.tsx    |     100 |      100 |     100 |     100 |                   
+ src/interfaces       |       0 |        0 |       0 |       0 |                   
+  course.ts           |       0 |        0 |       0 |       0 |                   
+  degreeplan.ts       |       0 |        0 |       0 |       0 |                   
+  semester.ts         |       0 |        0 |       0 |       0 |                   
+----------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 2 failed, 2 passed, 4 total
 Tests:       2 failed, 6 passed, 8 total
 Snapshots:   0 total
-Time:        4.628 s
+Time:        5.055 s
 Ran all test suites.
