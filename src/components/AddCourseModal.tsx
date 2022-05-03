@@ -8,7 +8,6 @@ export function AddCourseModal({
     course,
     show,
     handleClose,
-    editDegree,
     plan,
     editSemester,
     editPool,
@@ -17,7 +16,6 @@ export function AddCourseModal({
     course: Course;
     show: boolean;
     handleClose: () => void;
-    editDegree: (id: number, plan: Degreeplan) => void;
     plan: Degreeplan;
     editSemester: (id: number, newSemester: Semester) => void;
     editPool: (courses: Course[]) => void;
@@ -28,7 +26,12 @@ export function AddCourseModal({
     >;
 
     // track which semester the user chooses to imput the course into
-    const [semester, setSemester] = useState<Semester>(plan.semesters[0]);
+    const [semester, setSemester] = useState<Semester>({
+        id: 0,
+        courses: [],
+        title: "",
+        credits: 0
+    });
 
     /*
     function trackCredits(courses: Course[]): number {

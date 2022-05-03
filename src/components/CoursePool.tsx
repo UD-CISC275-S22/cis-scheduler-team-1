@@ -9,13 +9,11 @@ import { Semester } from "../interfaces/semester";
 export function CoursePool({
     pool,
     plan,
-    editDegree,
     editPool,
     editSemester
 }: {
     pool: Course[];
     plan: Degreeplan;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
     editPool: (courses: Course[]) => void;
     editSemester: (id: number, newSemester: Semester) => void;
 }): JSX.Element {
@@ -134,7 +132,6 @@ export function CoursePool({
                     course={course}
                     show={showAddCourse}
                     handleClose={handleCloseAddCourse}
-                    editDegree={editDegree}
                     plan={plan}
                     editSemester={editSemester}
                     editPool={editPool}

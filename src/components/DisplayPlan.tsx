@@ -75,7 +75,6 @@ export function DisplayPlan({
                         <CoursePool
                             pool={pool}
                             plan={plan}
-                            editDegree={editDegree}
                             editPool={editPool}
                             editSemester={editSemester}
                         ></CoursePool>
