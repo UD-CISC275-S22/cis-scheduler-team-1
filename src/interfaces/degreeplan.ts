@@ -1,6 +1,6 @@
 import { Semester } from "./semester";
 
-export type DegreeType = "BS" | "BA" | "";
+//export type DegreeType = "BS" | "BA" | "";
 
 export interface Degreeplan {
     id: number;
@@ -11,5 +11,4 @@ export interface Degreeplan {
     semesters: Semester[];
     reqs: boolean; //if grad reqs are met
     totalCredits: number;
-    //semestertotal: number; //total number of semesters
 }

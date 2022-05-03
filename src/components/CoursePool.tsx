@@ -32,6 +32,8 @@ export function CoursePool({
         typ: ""
     });
 
+    //const [poolList, setPoolList] = useState<Course[]>(pool);
+
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     const [showAddCourse, setShowAddCourse] = useState<boolean>(false);
 
@@ -56,6 +58,10 @@ export function CoursePool({
         setID(event.target.value.toUpperCase());
     }
 
+    function remove(course: Course) {
+        editPool(pool.filter((current: Course): boolean => current !== course));
+    }
+
     function addCourse() {
         const newCourseCode = dept + " " + id;
         // will only add course if valid -- work on displaying error message
@@ -66,6 +72,7 @@ export function CoursePool({
             if (!pool.includes(newCourse)) {
                 const updatedCourses = [...pool, newCourse];
                 editPool(updatedCourses);
+                //setPoolList(updatedCourses);
                 setCourse(newCourse);
             }
         }
