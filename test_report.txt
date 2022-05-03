@@ -2,7 +2,25 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/components/AddPlanModal.test.tsx
+FAIL src/components/AddPlanModal.test.tsx
+  ● Renders degree plan modal when Create Degree Plan button is clicked
+
+    expect(received).toHaveLength(expected)
+
+    Expected length: 1
+    Received length: 2
+    Received array:  [<div aria-modal="true" class="modal" role="dialog" style="display: block;" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="modal-title h4">Welcome to the UDEL Course Planner!</div><button aria-label="Close" class="btn-close" type="button" /></div><div class="modal-body"><header>Plan out your time at Delaware using this tool! Click Create New Degree Plan to start and then add semesters. Then finally, add your choice of courses to see how your career at UD could pan out! Happy planning :)</header></div><div class="modal-footer"><img src="https://media.giphy.com/media/su8eWo17Mn4HdoPGOo/giphy.gif" width="500" /></div></div></div></div>, <div aria-modal="true" class="modal" role="dialog" style="display: block;" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="modal-title h4">Create New Degree Plan</div><button aria-label="Close" class="btn-close" type="button" /></div><div class="modal-body"><div class="row"><label class="form-label col-form-label col-sm-3" for="degreeId">Degree Type:</label><div class="row"><select class="form-select" id="degreeId" placeholder="Select Degree Type"><option value="BS">Bachelor of Science (BS)</option><option value="BA">Bachelor of Arts (BA)</option></select></div><label class="form-label col-form-label col-sm-3" for="degreeId">Major:</label><div class="row"><input class="form-control" id="degreeId" placeholder="Type your major here" value="" /></div><label class="form-label col-form-label col-sm-3" for="degreeId">Concentration (optional):</label><div class="row"><input class="form-control" id="degreeId" placeholder="Type your concentration here" value="" /></div></div></div><div class="modal-footer"><button class="btn btn-secondary" type="button">Close</button><button class="btn btn-primary" type="button">Save Changes</button></div></div></div></div>]
+
+      11 |     userEvent.click(button[0]);
+      12 |     const popUp = screen.getAllByRole("dialog");
+    > 13 |     expect(popUp).toHaveLength(1);
+         |                   ^
+      14 | });
+      15 |
+      16 | test("Can close modal by clicking save", () => {
+
+      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:13:19)
+
 PASS src/components/SemesterLayout.test.tsx
 FAIL src/components/CourseEditor.test.tsx
   ● Can save course field edits
@@ -27,10 +45,50 @@ FAIL src/components/CourseEditor.test.tsx
         [33mtype[39m=[32m"button"[39m
       [36m/>[39m
 
+      --------------------------------------------------dialog:
+
+      Name "":
+      [36m<div[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"modal"[39m
+        [33mrole[39m=[32m"dialog"[39m
+        [33mstyle[39m=[32m"display: block;"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Close":
+      [36m<button[39m
+        [33maria-label[39m=[32m"Close"[39m
+        [33mclass[39m=[32m"btn-close"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      banner:
+
+      Name "":
+      [36m<header />[39m
+
+      --------------------------------------------------
+      img:
+
+      Name "":
+      [36m<img[39m
+        [33msrc[39m=[32m"https://media.giphy.com/media/su8eWo17Mn4HdoPGOo/giphy.gif"[39m
+        [33mwidth[39m=[32m"500"[39m
+      [36m/>[39m
+
       --------------------------------------------------
 
     Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
+    [36m<body[39m
+      [33mclass[39m=[32m"modal-open"[39m
+      [33mdata-rr-ui-modal-open[39m=[32m""[39m
+      [33mstyle[39m=[32m"padding-right: 1024px;"[39m
+    [36m>[39m
       [36m<div>[39m
         [36m<div[39m
           [33mclass[39m=[32m"App"[39m
@@ -38,11 +96,9 @@ FAIL src/components/CourseEditor.test.tsx
           [36m<header[39m
             [33mclass[39m=[32m"App-header"[39m
           [36m>[39m
-            [0mWelcome to the University of Delaware Course Scheduler![0m
+            [0mUniversity of Delaware Undergraduate Course Scheduler[0m
           [36m</header>[39m
-          [36m<p>[39m
-            [0mClick through course, semester, and degree options to plan your next four years![0m
-          [36m</p>[39m
+          [36m<div />[39m
           [36m<div>[39m
             [36m<div />[39m
             [36m<button[39m
@@ -52,6 +108,54 @@ FAIL src/components/CourseEditor.test.tsx
               [0mCreate New Degree Plan[0m
             [36m</button>[39m
             [36m<div />[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"modal-backdrop show"[39m
+      [36m/>[39m
+      [36m<div[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"modal"[39m
+        [33mrole[39m=[32m"dialog"[39m
+        [33mstyle[39m=[32m"display: block;"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"modal-dialog"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"modal-content"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"modal-header"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"modal-title h4"[39m
+              [36m>[39m
+                [0mWelcome to the UDEL Course Planner![0m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Close"[39m
+                [33mclass[39m=[32m"btn-close"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"modal-body"[39m
+            [36m>[39m
+              [36m<header>[39m
+                [0mPlan out your time at Delaware using this tool! Click Create New Degree Plan to start and then add semesters. Then finally, add your choice of courses to see how your career at UD could pan out! Happy planning :)[0m
+              [36m</header>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"modal-footer"[39m
+            [36m>[39m
+              [36m<img[39m
+                [33msrc[39m=[32m"https://media.giphy.com/media/su8eWo17Mn4HdoPGOo/giphy.gif"[39m
+                [33mwidth[39m=[32m"500"[39m
+              [36m/>[39m
+            [36m</div>[39m
           [36m</div>[39m
         [36m</div>[39m
       [36m</div>[39m
@@ -74,10 +178,10 @@ PASS src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   26.01 |     6.25 |      25 |   24.79 |                   
- src                 |   88.23 |       25 |      75 |   86.66 |                   
-  App.tsx            |   88.23 |       25 |      75 |   86.66 | 32-35             
- src/components      |   16.03 |     3.57 |   16.66 |   16.03 |                   
+All files            |   27.55 |     6.25 |   25.86 |   26.61 |                   
+ src                 |      85 |       25 |   66.66 |   88.23 |                   
+  App.tsx            |      85 |       25 |   66.66 |   88.23 | 35-38             
+ src/components      |   16.82 |     3.57 |   18.36 |   16.82 |                   
   AddPlanModal.tsx   |   61.53 |        0 |      40 |   61.53 | 40-43,81-93       
   CourseEditor.tsx   |       0 |      100 |       0 |       0 | 15-132            
   CoursePool.tsx     |     100 |      100 |     100 |     100 |                   
@@ -86,14 +190,15 @@ All files            |   26.01 |     6.25 |      25 |   24.79 |
   DisplayPlan.tsx    |     100 |       50 |     100 |     100 | 22                
   PlanList.tsx       |     100 |      100 |     100 |     100 |                   
   SemesterLayout.tsx |      20 |        0 |   11.11 |      20 | 20-67,79-89       
+  WelcomeModal.tsx   |     100 |      100 |     100 |     100 |                   
  src/interfaces      |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
   degreeplan.ts      |       0 |        0 |       0 |       0 |                   
   semester.ts        |       0 |        0 |       0 |       0 |                   
 ---------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 1 failed, 3 passed, 4 total
-Tests:       1 failed, 7 passed, 8 total
+Test Suites: 2 failed, 2 passed, 4 total
+Tests:       2 failed, 6 passed, 8 total
 Snapshots:   0 total
-Time:        4.698 s
+Time:        4.628 s
 Ran all test suites.
