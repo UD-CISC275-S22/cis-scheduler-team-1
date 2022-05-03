@@ -42,7 +42,7 @@ export function SemesterLayout({
     }
 
     function editSemester(id: number, newSemester: Semester) {
-        const updatedSemesters = semesterList.map(
+        const updatedSemesters = plan.semesters.map(
             (semester: Semester): Semester =>
                 semester.id === id ? newSemester : semester
         );
@@ -92,7 +92,7 @@ export function SemesterLayout({
     return (
         <div>
             <div className="bg-white border m-2 p-2">
-                {semesterList.map((semester: Semester) => (
+                {plan.semesters.map((semester: Semester) => (
                     <Container key={semester.title}>
                         <div key={semester.title}>
                             <h4>{semester.title}</h4>

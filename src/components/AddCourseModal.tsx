@@ -10,20 +10,27 @@ export function AddCourseModal({
     handleClose,
     editDegree,
     plan,
-    add
+    editSemester,
+    editPool,
+    pool
 }: {
     course: Course;
     show: boolean;
     handleClose: () => void;
     editDegree: (id: number, plan: Degreeplan) => void;
     plan: Degreeplan;
-    add: (course: Course) => void;
+    editSemester: (id: number, newSemester: Semester) => void;
+    editPool: (courses: Course[]) => void;
+    pool: Course[];
 }) {
     type ChangeEvent = React.ChangeEvent<
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
     >;
-    const [semester, setSemester] = useState<string>("");
 
+    // track which semester the user chooses to imput the course into
+    const [semester, setSemester] = useState<Semester>(plan.semesters[0]);
+
+    /*
     function trackCredits(courses: Course[]): number {
         const creditList = courses.map((course: Course): number =>
             parseInt(course.credits.substring(course.credits.length - 1))
@@ -35,7 +42,7 @@ export function AddCourseModal({
         );
         return credits;
     }
-    function editSemester(id: number, newCourse: Course) {
+         function editSemester(id: number, newCourse: Course) {
         // find the selected semester in plan
         const selectedSemester = plan.semesters.filter(
             (current: Semester): boolean => current.title === semester
@@ -50,16 +57,29 @@ export function AddCourseModal({
             ...plan,
             semesters: updatedSemester
         });
-    }
+    } */
 
     // find the matching semester in the plan, add course to courses[] in the semester and update plan
     // so need to have editSemester function
     function saveAll() {
-        add(course);
+        //const updatedCourses = [...semester.courses, course];
+        editSemester(semester.id, {
+            ...semester,
+            courses: [...semester.courses, course]
+        });
+        const updated = pool.filter(
+            (current: Course): boolean => current !== course
+        );
+        editPool(updated);
         handleClose();
     }
+
     function updateChoice(event: ChangeEvent) {
-        setSemester(event.target.value);
+        const sem = plan.semesters.filter(
+            (semester: Semester): boolean =>
+                semester.title === event.target.value
+        );
+        setSemester(sem[0]);
     }
 
     return (
@@ -73,7 +93,7 @@ export function AddCourseModal({
                         <Form.Label>Select semester:</Form.Label>
                         <Row>
                             <Form.Select
-                                value={semester}
+                                value={semester.title}
                                 onChange={updateChoice}
                                 placeholder="Select Semester"
                             >

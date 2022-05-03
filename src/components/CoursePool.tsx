@@ -4,17 +4,20 @@ import { Course } from "../interfaces/course";
 import coursedata from "../data/coursedata.json";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { AddCourseModal } from "./AddCourseModal";
+import { Semester } from "../interfaces/semester";
 
 export function CoursePool({
     pool,
     plan,
     editDegree,
-    editPool
+    editPool,
+    editSemester
 }: {
     pool: Course[];
     plan: Degreeplan;
     editDegree: (id: number, newDegree: Degreeplan) => void;
     editPool: (courses: Course[]) => void;
+    editSemester: (id: number, newSemester: Semester) => void;
 }): JSX.Element {
     //const [poolList, setPoolList] = useState<Course[]>(pool); // a comprehensive course list for the pool
     //const [course, setCourse] = useState<Course>();
@@ -70,13 +73,6 @@ export function CoursePool({
         }
         setID(""); // sets the id back to "" so that placeholder displays
         setDept("");
-    }
-
-    function addToSemester(course: Course) {
-        const updated = pool.filter(
-            (current: Course): boolean => current.code !== course.code
-        );
-        editPool(updated);
     }
 
     return (
@@ -140,7 +136,9 @@ export function CoursePool({
                     handleClose={handleCloseAddCourse}
                     editDegree={editDegree}
                     plan={plan}
-                    add={addToSemester}
+                    editSemester={editSemester}
+                    editPool={editPool}
+                    pool={pool}
                 ></AddCourseModal>
             </Container>
         </div>
