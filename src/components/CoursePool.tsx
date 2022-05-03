@@ -58,10 +58,6 @@ export function CoursePool({
         setID(event.target.value.toUpperCase());
     }
 
-    function remove(course: Course) {
-        editPool(pool.filter((current: Course): boolean => current !== course));
-    }
-
     function addCourse() {
         const newCourseCode = dept + " " + id;
         // will only add course if valid -- work on displaying error message
