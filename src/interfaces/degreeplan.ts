@@ -10,5 +10,6 @@ export interface Degreeplan {
     type: DegreeType; // need to know if BS or BA (different breadth reqs)
     semesters: Semester[];
     reqs: boolean; //if grad reqs are met
-    semestertotal: number; //total number of semesters
+    totalCredits: number;
+    //semestertotal: number; //total number of semesters
 }

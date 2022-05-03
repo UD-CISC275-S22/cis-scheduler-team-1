@@ -10,12 +10,16 @@ export function DisplayCourse({
     plan,
     editDegree,
     semester,
-    editSemester
+    editSemester,
+    editPool,
+    pool
 }: {
     plan: Degreeplan;
     editDegree: (id: number, newDegree: Degreeplan) => void;
     semester: Semester;
     editSemester: (id: number, newSemester: Semester) => void;
+    editPool: (courses: Course[]) => void;
+    pool: Course[];
 }): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
@@ -68,7 +72,8 @@ export function DisplayCourse({
                 setCreditCount(trackCredits(updatedCourses));
                 editSemester(semester.id, {
                     ...semester,
-                    courses: updatedCourses
+                    courses: updatedCourses,
+                    credits: trackCredits(updatedCourses)
                 });
             }
         }
@@ -101,7 +106,8 @@ export function DisplayCourse({
         setCreditCount(trackCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
-            courses: updatedList
+            courses: updatedList,
+            credits: trackCredits(updatedList)
         });
     }
 
@@ -114,6 +120,11 @@ export function DisplayCourse({
         );
         setCourseList(updatedList);
         setCreditCount(trackCredits(updatedList));
+        editSemester(semester.id, {
+            ...semester,
+            courses: updatedList,
+            credits: trackCredits(updatedList)
+        });
     }
 
     function editCourse(code: string, newCourse: Course) {
@@ -123,6 +134,16 @@ export function DisplayCourse({
         );
         setCourseList(updatedList);
         setCreditCount(trackCredits(updatedList));
+        editSemester(semester.id, {
+            ...semester,
+            courses: updatedList,
+            credits: trackCredits(updatedList)
+        });
+    }
+
+    function addToPool(course: Course) {
+        removeCourse(course);
+        editPool([...pool, course]);
     }
 
     return (
@@ -149,6 +170,9 @@ export function DisplayCourse({
                     </Button>
                     <Button onClick={() => resetCourse(course)}>
                         Reset Course
+                    </Button>
+                    <Button onClick={() => addToPool(course)}>
+                        Move to Course Pool
                     </Button>
                 </Container>
             ))}

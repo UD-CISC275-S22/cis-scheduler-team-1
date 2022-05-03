@@ -19,6 +19,7 @@ function App(): JSX.Element {
     function addDegreePlan(newPlan: Degreeplan) {
         setPlans([...plans, newPlan]);
     }
+
     function deleteDegree(degree: string) {
         const updatedList = [...plans];
         const foundDegree = updatedList.find(
@@ -31,6 +32,7 @@ function App(): JSX.Element {
         setPlans(updatedList);
     }
 
+    //updates the list of degrees not the specific degree
     function editDegree(id: number, newDegree: Degreeplan) {
         setPlans(
             plans.map(

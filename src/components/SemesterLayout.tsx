@@ -3,25 +3,30 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { DisplayCourse } from "./DisplayCourse";
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 
 export function SemesterLayout({
     plan,
-    editDegree
+    editDegree,
+    editPool,
+    pool
 }: {
     plan: Degreeplan;
     deleteDegree: (id: string) => void;
     editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPool: (courses: Course[]) => void;
+    pool: Course[];
 }): JSX.Element {
-    const blankSemester = { id: 0, title: "", courses: [] };
+    const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
     const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester
     const [semesterList, setSemesterList] = useState<Semester[]>([]); // store inputted semester into an array of semesters
 
-    function updateSemester(event: React.ChangeEvent<HTMLInputElement>) {
+    function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
         setSemester({
-            id: plan.id,
+            id: plan.semesters.length, // always want semester id to increment
             title: event.target.value,
-            courses: []
-            //courseTotal: 0
+            courses: [],
+            credits: 0
         });
     }
 
@@ -37,16 +42,26 @@ export function SemesterLayout({
     }
 
     function editSemester(id: number, newSemester: Semester) {
-        setSemesterList(
-            semesterList.map(
-                (semester: Semester): Semester =>
-                    semester.id === id ? newSemester : semester
-            )
+        const updatedSemesters = plan.semesters.map(
+            (semester: Semester): Semester =>
+                semester.id === id ? newSemester : semester
         );
-        editDegree(id, {
+        setSemesterList(updatedSemesters);
+        editDegree(plan.id, {
             ...plan,
-            semesters: [...semesterList, semester]
+            semesters: updatedSemesters,
+            totalCredits: trackCredits(updatedSemesters)
         });
+    }
+
+    function trackCredits(semesters: Semester[]): number {
+        const semesterCredits = semesters.map(
+            (semester: Semester): number => semester.credits
+        );
+        const total = semesterCredits.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+        return total;
     }
 
     // semesters is a list of semesters os if we edit the courses we have to edit that semester adn then edit that semeseter in degree plan
@@ -58,7 +73,8 @@ export function SemesterLayout({
         setSemesterList(updatedList);
         editDegree(plan.id, {
             ...plan,
-            semesters: updatedList
+            semesters: updatedList,
+            totalCredits: trackCredits(updatedList)
         });
     }
 
@@ -66,7 +82,8 @@ export function SemesterLayout({
         setSemesterList([]);
         editDegree(plan.id, {
             ...plan,
-            semesters: []
+            semesters: [],
+            totalCredits: 0
         });
     }
 
@@ -75,7 +92,7 @@ export function SemesterLayout({
     return (
         <div>
             <div className="bg-white border m-2 p-2">
-                {semesterList.map((semester: Semester) => (
+                {plan.semesters.map((semester: Semester) => (
                     <Container key={semester.title}>
                         <div key={semester.title}>
                             <h4>{semester.title}</h4>
@@ -85,6 +102,8 @@ export function SemesterLayout({
                             semester={semester}
                             editDegree={editDegree}
                             editSemester={editSemester}
+                            editPool={editPool}
+                            pool={pool}
                         ></DisplayCourse>
                         <Button onClick={() => deleteSemester(semester)}>
                             Delete Semester
@@ -96,7 +115,7 @@ export function SemesterLayout({
             <Form.Group>
                 <Form.Control
                     value={semester.title}
-                    onChange={updateSemester}
+                    onChange={inputSemester}
                     placeholder="Type semester here"
                 ></Form.Control>
             </Form.Group>
