@@ -13,18 +13,8 @@
     }
 }
 
-.Degree-design {
-    align-items: center;
-    background-color: greenyellow;
-    width: 100%;
-    justify-content: left;
-    flex-direction: column;
-    display: flex;
-}
-
 .App-header {
     width: 100%;
-    background-color: #db84ba;
     min-height: 40vh;
     display: flex;
     flex-direction: column;
@@ -32,6 +22,7 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    background-image: url("https://marvel-b1-cdn.bc0a.com/f00000000164722/www.udel.edu/content/udel/en/faculty-staff/human-resources/careers/_jcr_content/par_udel_panel/panelforpages_615507452/par_1/columngenerator/par_0/calloutfullimage_839703812.img.jpg/1617374921995.jpg");
 }
 
 .App-link {
