@@ -3,14 +3,19 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { DisplayCourse } from "./DisplayCourse";
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 
 export function SemesterLayout({
     plan,
-    editDegree
+    editDegree,
+    editPool,
+    pool
 }: {
     plan: Degreeplan;
     deleteDegree: (id: string) => void;
     editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPool: (courses: Course[]) => void;
+    pool: Course[];
 }): JSX.Element {
     const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
     const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester
@@ -18,7 +23,7 @@ export function SemesterLayout({
 
     function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
         setSemester({
-            id: plan.id,
+            id: plan.semesters.length, // always want semester id to increment
             title: event.target.value,
             courses: [],
             credits: 0
@@ -97,6 +102,8 @@ export function SemesterLayout({
                             semester={semester}
                             editDegree={editDegree}
                             editSemester={editSemester}
+                            editPool={editPool}
+                            pool={pool}
                         ></DisplayCourse>
                         <Button onClick={() => deleteSemester(semester)}>
                             Delete Semester

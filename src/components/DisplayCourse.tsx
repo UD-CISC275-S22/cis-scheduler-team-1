@@ -10,12 +10,16 @@ export function DisplayCourse({
     plan,
     editDegree,
     semester,
-    editSemester
+    editSemester,
+    editPool,
+    pool
 }: {
     plan: Degreeplan;
     editDegree: (id: number, newDegree: Degreeplan) => void;
     semester: Semester;
     editSemester: (id: number, newSemester: Semester) => void;
+    editPool: (courses: Course[]) => void;
+    pool: Course[];
 }): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
@@ -137,6 +141,11 @@ export function DisplayCourse({
         });
     }
 
+    function addToPool(course: Course) {
+        removeCourse(course);
+        editPool([...pool, course]);
+    }
+
     return (
         <div>
             <h5>Courses: </h5>
@@ -161,6 +170,9 @@ export function DisplayCourse({
                     </Button>
                     <Button onClick={() => resetCourse(course)}>
                         Reset Course
+                    </Button>
+                    <Button onClick={() => addToPool(course)}>
+                        Move to Course Pool
                     </Button>
                 </Container>
             ))}

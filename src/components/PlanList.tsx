@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { DisplayPlan } from "./DisplayPlan";
 
@@ -12,7 +13,6 @@ export function PlanList({
     deleteDegree: (id: string) => void;
     editDegree: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
-    // total credits for a plan is the sum of all "credits" fields in semesters[]
     return (
         <div>
             {plans.map((plan: Degreeplan) => (
