@@ -32,6 +32,8 @@ export function CoursePool({
         typ: ""
     });
 
+    //const [poolList, setPoolList] = useState<Course[]>(pool);
+
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     const [showAddCourse, setShowAddCourse] = useState<boolean>(false);
 
@@ -66,6 +68,7 @@ export function CoursePool({
             if (!pool.includes(newCourse)) {
                 const updatedCourses = [...pool, newCourse];
                 editPool(updatedCourses);
+                //setPoolList(updatedCourses);
                 setCourse(newCourse);
             }
         }

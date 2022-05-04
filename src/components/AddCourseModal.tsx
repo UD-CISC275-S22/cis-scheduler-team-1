@@ -32,6 +32,7 @@ export function AddCourseModal({
         title: "",
         credits: 0
     });
+    const [id, setID] = useState<number>(0);
 
     /*
     function trackCredits(courses: Course[]): number {
@@ -66,7 +67,7 @@ export function AddCourseModal({
     // so need to have editSemester function
     function saveAll() {
         //const updatedCourses = [...semester.courses, course];
-        editSemester(semester.id, {
+        editSemester(id, {
             ...semester,
             courses: [...semester.courses, course]
         });
@@ -83,6 +84,7 @@ export function AddCourseModal({
                 semester.title === event.target.value
         );
         setSemester(sem[0]);
+        setID(sem[0].id);
     }
 
     return (
