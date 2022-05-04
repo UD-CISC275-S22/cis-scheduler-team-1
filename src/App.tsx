@@ -64,6 +64,7 @@ function App(): JSX.Element {
                     addPlan={addDegreePlan}
                 ></AddPlanModal>
             </div>
+            <footer>Developed by Disha Thakar and Jenn Werth</footer>
         </div>
     );
 }

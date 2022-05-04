@@ -1,5 +1,8 @@
 .App {
     text-align: center;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    background-color: rgb(148, 202, 233);
 }
 
 .App-logo {
@@ -20,8 +23,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(10px + 3vmin);
     color: white;
+    font-style: italic;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
     background-image: url("https://marvel-b1-cdn.bc0a.com/f00000000164722/www.udel.edu/content/udel/en/faculty-staff/human-resources/careers/_jcr_content/par_udel_panel/panelforpages_615507452/par_1/columngenerator/par_0/calloutfullimage_839703812.img.jpg/1617374921995.jpg");
 }
 
