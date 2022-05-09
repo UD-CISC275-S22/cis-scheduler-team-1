@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
+import majorlinkdata from "../data/majorlinks.json";
 
 export function AddPlanModal({
     show,
@@ -37,7 +38,9 @@ export function AddPlanModal({
     const [id, setId] = useState<number>(0);
     const [type, setType] = useState<string>("");
     const [major, setMajor] = useState<string>("");
-    const [concentration, setConcentration] = useState<string>("");
+    //const [concentration, setConcentration] = useState<string>("");
+
+    const MAJORS: Record<string, Record<string, string>> = majorlinkdata;
 
     function saveAll() {
         addPlan({
@@ -47,7 +50,7 @@ export function AddPlanModal({
             type: type,
             semesters: [],
             reqs: false,
-            concentration: concentration,
+            //concentration: concentration,
             totalCredits: 0
         });
         setId(id + 1); // increment id for next one ?
@@ -56,6 +59,16 @@ export function AddPlanModal({
 
     function updateChoice(event: ChangeEvent) {
         setType(event.target.value);
+    }
+
+    function updateMajor(event: React.ChangeEvent<HTMLSelectElement>) {
+        //setMajor(event.target.value);
+        if (
+            /^[a-zA-Z]+$/.test(event.target.value) ||
+            event.target.value === ""
+        ) {
+            setMajor(event.target.value);
+        }
     }
 
     return (
@@ -86,25 +99,20 @@ export function AddPlanModal({
                             Major:
                         </Form.Label>
                         <Row>
-                            <Form.Control
-                                placeholder="Type your major here"
+                            <Form.Select
+                                placeholder="Select your major here"
                                 value={major}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setMajor(event.target.value)}
-                            />
-                        </Row>
-                        <Form.Label column sm={3}>
-                            Concentration (optional):
-                        </Form.Label>
-                        <Row>
-                            <Form.Control
-                                placeholder="Type your concentration here"
-                                value={concentration}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setConcentration(event.target.value)}
-                            />
+                                onChange={updateMajor}
+                            >
+                                {console.log(MAJORS[type])}
+                                {Object.keys(MAJORS[type] || {}).map(
+                                    (major: string) => (
+                                        <option key={major} value={major}>
+                                            {major}
+                                        </option>
+                                    )
+                                )}
+                            </Form.Select>
                         </Row>
                     </Form.Group>
                 </Modal.Body>
