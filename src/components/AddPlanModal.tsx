@@ -16,6 +16,7 @@ export function AddPlanModal({
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
     >;
 
+    //degree types
     const degreeTypes = [
         "BS",
         "BA",
