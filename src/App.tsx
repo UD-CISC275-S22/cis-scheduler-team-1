@@ -33,7 +33,7 @@ function App(): JSX.Element {
     }
 
     //updates the list of degrees not the specific degree
-    function editDegree(id: number, newDegree: Degreeplan) {
+    function editPlan(id: number, newDegree: Degreeplan) {
         setPlans(
             plans.map(
                 (degree: Degreeplan): Degreeplan =>
@@ -55,7 +55,7 @@ function App(): JSX.Element {
                 <PlanList
                     plans={plans}
                     deleteDegree={deleteDegree}
-                    editDegree={editDegree}
+                    editPlan={editPlan}
                 ></PlanList>
                 <Button onClick={handleAddPlan}>Create New Degree Plan</Button>
                 <AddPlanModal

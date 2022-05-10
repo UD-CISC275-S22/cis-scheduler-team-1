@@ -10,16 +10,19 @@ import { SemesterLayout } from "./SemesterLayout";
 export function DisplayPlan({
     plan,
     deleteDegree,
-    editDegree
+    editPlan
 }: {
     plan: Degreeplan;
     deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
-    const [pool, setPool] = useState<Course[]>([]);
+    //const [pool, setPool] = useState<Course[]>([]);
 
     function editPool(newPool: Course[]) {
-        setPool(newPool);
+        editPlan(plan.id, {
+            ...plan,
+            pool: newPool
+        });
     }
 
     function trackCredits(semesters: Semester[]): number {
@@ -38,7 +41,7 @@ export function DisplayPlan({
                 semester.id === id ? newSemester : semester
         );
         //setSemesterList(updatedSemesters);
-        editDegree(plan.id, {
+        editPlan(plan.id, {
             ...plan,
             semesters: updatedSemesters,
             totalCredits: trackCredits(updatedSemesters)
@@ -58,10 +61,8 @@ export function DisplayPlan({
                         <div className="rounded-lg">
                             <SemesterLayout
                                 plan={plan}
-                                deleteDegree={deleteDegree}
-                                editDegree={editDegree}
+                                editPlan={editPlan}
                                 editPool={editPool}
-                                pool={pool}
                             ></SemesterLayout>
                         </div>
                         <hr></hr>
@@ -76,10 +77,10 @@ export function DisplayPlan({
                     <Row>
                         <Container>
                             <CoursePool
-                                pool={pool}
                                 plan={plan}
                                 editPool={editPool}
                                 editSemester={editSemester}
+                                editPlan={editPlan}
                             ></CoursePool>
                         </Container>
                     </Row>

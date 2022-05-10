@@ -7,19 +7,16 @@ import { Course } from "../interfaces/course";
 
 export function SemesterLayout({
     plan,
-    editDegree,
-    editPool,
-    pool
+    editPlan,
+    editPool
 }: {
     plan: Degreeplan;
-    deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newPlan: Degreeplan) => void;
     editPool: (courses: Course[]) => void;
-    pool: Course[];
 }): JSX.Element {
     const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
     const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester
-    const [semesterList, setSemesterList] = useState<Semester[]>([]); // store inputted semester into an array of semesters
+    //const [semesterList, setSemesterList] = useState<Semester[]>([]); // store inputted semester into an array of semesters
 
     function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
         setSemester({
@@ -32,11 +29,11 @@ export function SemesterLayout({
 
     // adds inputted semester to semester list, does not allow repeat semester names
     function addSemester() {
-        if (!semesterList.includes(semester) && semester.title !== "") {
-            setSemesterList([...semesterList, semester]);
-            editDegree(plan.id, {
+        if (!plan.semesters.includes(semester) && semester.title !== "") {
+            //setSemesterList([...semesterList, semester]);
+            editPlan(plan.id, {
                 ...plan,
-                semesters: [...semesterList, semester]
+                semesters: [...plan.semesters, semester]
             });
         }
     }
@@ -46,15 +43,15 @@ export function SemesterLayout({
             (semester: Semester): Semester =>
                 semester.id === id ? newSemester : semester
         );
-        setSemesterList(updatedSemesters);
-        editDegree(plan.id, {
+        //setSemesterList(updatedSemesters);
+        editPlan(plan.id, {
             ...plan,
             semesters: updatedSemesters,
-            totalCredits: trackCredits(updatedSemesters)
+            totalCredits: trackDegreeCredits(updatedSemesters)
         });
     }
 
-    function trackCredits(semesters: Semester[]): number {
+    function trackDegreeCredits(semesters: Semester[]): number {
         const semesterCredits = semesters.map(
             (semester: Semester): number => semester.credits
         );
@@ -67,20 +64,20 @@ export function SemesterLayout({
     // semesters is a list of semesters os if we edit the courses we have to edit that semester adn then edit that semeseter in degree plan
 
     function deleteSemester(semester: Semester) {
-        const updatedList = [...semesterList];
+        const updatedList = [...plan.semesters];
         const index = updatedList.indexOf(semester);
         updatedList.splice(index, 1);
-        setSemesterList(updatedList);
-        editDegree(plan.id, {
+        //setSemesterList(updatedList);
+        editPlan(plan.id, {
             ...plan,
             semesters: updatedList,
-            totalCredits: trackCredits(updatedList)
+            totalCredits: trackDegreeCredits(updatedList)
         });
     }
 
     function clearSemesters() {
-        setSemesterList([]);
-        editDegree(plan.id, {
+        //setSemesterList([]);
+        editPlan(plan.id, {
             ...plan,
             semesters: [],
             totalCredits: 0
@@ -100,10 +97,9 @@ export function SemesterLayout({
                         <DisplayCourse
                             plan={plan}
                             semester={semester}
-                            editDegree={editDegree}
+                            editPlan={editPlan}
                             editSemester={editSemester}
-                            editPool={editPool}
-                            pool={pool}
+                            trackDegreeCredits={trackDegreeCredits}
                         ></DisplayCourse>
                         <Button onClick={() => deleteSemester(semester)}>
                             Delete Semester

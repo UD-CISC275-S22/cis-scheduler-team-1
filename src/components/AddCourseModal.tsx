@@ -9,17 +9,17 @@ export function AddCourseModal({
     show,
     handleClose,
     plan,
+    editPlan,
     editSemester,
-    editPool,
-    pool
+    editPool
 }: {
     course: Course;
     show: boolean;
     handleClose: () => void;
     plan: Degreeplan;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
     editSemester: (id: number, newSemester: Semester) => void;
     editPool: (courses: Course[]) => void;
-    pool: Course[];
 }) {
     type ChangeEvent = React.ChangeEvent<
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -32,49 +32,39 @@ export function AddCourseModal({
         title: "",
         credits: 0
     });
-    const [id, setID] = useState<number>(0);
-
-    /*
-    function trackCredits(courses: Course[]): number {
-        const creditList = courses.map((course: Course): number =>
-            parseInt(course.credits.substring(course.credits.length - 1))
-        );
-
-        const credits = creditList.reduce(
-            (total: number, credit: number) => total + credit,
-            0
-        );
-        return credits;
-    }
-         function editSemester(id: number, newCourse: Course) {
-        // find the selected semester in plan
-        const selectedSemester = plan.semesters.filter(
-            (current: Semester): boolean => current.title === semester
-        );
-        const updatedCourseList = [...selectedSemester[0].courses, newCourse];
-        const updatedSemester = {
-            ...selectedSemester,
-            courses: updatedCourseList,
-            credits: trackCredits(updatedCourseList)
-        };
-        editDegree(plan.id, {
-            ...plan,
-            semesters: updatedSemester
-        });
-    } */
+    //const [id, setID] = useState<number>(0);
 
     // find the matching semester in the plan, add course to courses[] in the semester and update plan
     // so need to have editSemester function
     function saveAll() {
-        //const updatedCourses = [...semester.courses, course];
+        /*         //const updatedCourses = [...semester.courses, course];
         editSemester(id, {
             ...semester,
             courses: [...semester.courses, course]
         });
-        const updated = pool.filter(
+
+        // remove course from pool
+        const updated = plan.pool.filter(
             (current: Course): boolean => current !== course
         );
-        editPool(updated);
+        editPool(updated); */
+
+        const updatedCourses = [...semester.courses, course];
+        const updatedPool = plan.pool.filter(
+            (current: Course): boolean => current !== course
+        );
+        const updatedSem = {
+            ...semester,
+            courses: updatedCourses
+        };
+        const updatedSemesters = plan.semesters.map((current: Semester) =>
+            current.id === semester.id ? updatedSem : current
+        );
+        editPlan(plan.id, {
+            ...plan,
+            semesters: updatedSemesters,
+            pool: updatedPool
+        });
         handleClose();
     }
 
@@ -84,7 +74,7 @@ export function AddCourseModal({
                 semester.title === event.target.value
         );
         setSemester(sem[0]);
-        setID(sem[0].id);
+        //setID(sem[0].id);
     }
 
     return (

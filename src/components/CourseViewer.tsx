@@ -8,11 +8,11 @@ import { Degreeplan } from "../interfaces/degreeplan";
 {
     plans,
     deleteDegree,
-    editDegree
+    editPlan
 }: {
     plans: Degreeplan[];
     deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
 }
 */
 
@@ -22,8 +22,6 @@ export function CourseViewer({
 }: {
     course: Course;
     editCourse: (code: string, newCourse: Course) => void;
-    plan: Degreeplan;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
 

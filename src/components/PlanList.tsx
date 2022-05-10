@@ -6,11 +6,11 @@ import { DisplayPlan } from "./DisplayPlan";
 export function PlanList({
     plans,
     deleteDegree,
-    editDegree
+    editPlan
 }: {
     plans: Degreeplan[];
     deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     return (
         <div>
@@ -19,7 +19,7 @@ export function PlanList({
                     <DisplayPlan
                         plan={plan}
                         deleteDegree={deleteDegree}
-                        editDegree={editDegree}
+                        editPlan={editPlan}
                     ></DisplayPlan>
                     <Button onClick={() => deleteDegree(plan.title)}>
                         Delete Degree Plan

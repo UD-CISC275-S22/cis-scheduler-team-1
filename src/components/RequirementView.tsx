@@ -12,7 +12,7 @@ export function RequirementView({ plan }: { plan: Degreeplan }): JSX.Element {
                 <h4>Degree Fulfillments</h4>
                 <p>
                     In order to graduate with a bachelors degree you must
-                    complete 120 credits. Average of 2 semesters a year, max of
+                    complete 124 credits. Average of 2 semesters a year, max of
                     4.
                 </p>
                 <Row>Total Semesters: {plan.semesters.length}</Row>

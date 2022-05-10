@@ -7,15 +7,15 @@ import { AddCourseModal } from "./AddCourseModal";
 import { Semester } from "../interfaces/semester";
 
 export function CoursePool({
-    pool,
     plan,
     editPool,
-    editSemester
+    editSemester,
+    editPlan
 }: {
-    pool: Course[];
     plan: Degreeplan;
     editPool: (courses: Course[]) => void;
     editSemester: (id: number, newSemester: Semester) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     //const [poolList, setPoolList] = useState<Course[]>(pool); // a comprehensive course list for the pool
     //const [course, setCourse] = useState<Course>();
@@ -48,9 +48,6 @@ export function CoursePool({
         ) {
             setDept(event.target.value.toUpperCase().substring(0, 4));
         }
-        // if statement ensures that only letters are accepted, not numbers
-        // use substring 0:4 so that will only accet valid course titles
-        // example: HIST not HISTORY or HIST106
     }
 
     // updates the id from text box
@@ -65,8 +62,8 @@ export function CoursePool({
             const newCourse = {
                 ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
             };
-            if (!pool.includes(newCourse)) {
-                const updatedCourses = [...pool, newCourse];
+            if (!plan.pool.includes(newCourse)) {
+                const updatedCourses = [...plan.pool, newCourse];
                 editPool(updatedCourses);
                 //setPoolList(updatedCourses);
                 setCourse(newCourse);
@@ -76,12 +73,23 @@ export function CoursePool({
         setDept("");
     }
 
+    function clearPool() {
+        editPlan(plan.id, { ...plan, pool: [] });
+    }
+
+    function deleteCourse(course: Course) {
+        const updatedPool = plan.pool.filter(
+            (current: Course): boolean => current !== course
+        );
+        editPlan(plan.id, { ...plan, pool: updatedPool });
+    }
+
     return (
         <div className="bg-white border m-2 p-2">
             <Container>
                 <h4>Course Pool</h4>
                 <div>
-                    {pool.map((course: Course) => (
+                    {plan.pool.map((course: Course) => (
                         <Container
                             key={course.code}
                             className="bg-grey border m-2 p-2"
@@ -91,16 +99,30 @@ export function CoursePool({
                                     {course.code}: {course.name}
                                 </Col>
                                 <Col>
-                                    <Button
-                                        size="sm"
-                                        style={{
-                                            height: "30px",
-                                            width: "70px"
-                                        }}
-                                        onClick={handleAddCourse}
-                                    >
-                                        Add
-                                    </Button>
+                                    <Row>
+                                        <Button
+                                            size="sm"
+                                            style={{
+                                                height: "30px",
+                                                width: "70px"
+                                            }}
+                                            onClick={handleAddCourse}
+                                        >
+                                            Add
+                                        </Button>
+                                    </Row>
+                                    <Row>
+                                        <Button
+                                            size="sm"
+                                            style={{
+                                                height: "30px",
+                                                width: "70px"
+                                            }}
+                                            onClick={() => deleteCourse(course)}
+                                        >
+                                            Delete
+                                        </Button>
+                                    </Row>
                                 </Col>
                             </Row>
                         </Container>
@@ -130,15 +152,22 @@ export function CoursePool({
                         </Form.Select>
                     </Col>
                 </Row>
-                <Button onClick={addCourse}>Add Course</Button>
+                <Row>
+                    <Col>
+                        <Button onClick={addCourse}>Add to Pool</Button>
+                    </Col>
+                    <Col>
+                        <Button onClick={clearPool}>Empty Pool</Button>
+                    </Col>
+                </Row>
                 <AddCourseModal
                     course={course}
                     show={showAddCourse}
                     handleClose={handleCloseAddCourse}
                     plan={plan}
+                    editPlan={editPlan}
                     editSemester={editSemester}
                     editPool={editPool}
-                    pool={pool}
                 ></AddCourseModal>
             </Container>
         </div>

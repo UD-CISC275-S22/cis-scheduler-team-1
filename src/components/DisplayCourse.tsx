@@ -8,22 +8,20 @@ import { Semester } from "../interfaces/semester";
 
 export function DisplayCourse({
     plan,
-    editDegree,
+    editPlan,
     semester,
     editSemester,
-    editPool,
-    pool
+    trackDegreeCredits
 }: {
     plan: Degreeplan;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
     semester: Semester;
     editSemester: (id: number, newSemester: Semester) => void;
-    editPool: (courses: Course[]) => void;
-    pool: Course[];
+    trackDegreeCredits: (semesters: Semester[]) => number;
 }): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
-    const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
+    //const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
     const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
@@ -47,7 +45,7 @@ export function DisplayCourse({
         setID(event.target.value.toUpperCase());
     }
 
-    function trackCredits(courses: Course[]): number {
+    function trackSemCredits(courses: Course[]): number {
         const creditList = courses.map((course: Course): number =>
             parseInt(course.credits.substring(course.credits.length - 1))
         );
@@ -66,14 +64,14 @@ export function DisplayCourse({
             const newCourse = {
                 ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
             };
-            if (!courseList.includes(newCourse)) {
-                const updatedCourses = [...courseList, newCourse];
-                setCourseList(updatedCourses);
-                setCreditCount(trackCredits(updatedCourses));
+            if (!semester.courses.includes(newCourse)) {
+                const updatedCourses = [...semester.courses, newCourse];
+                //setCourseList(updatedCourses);
+                setCreditCount(trackSemCredits(updatedCourses));
                 editSemester(semester.id, {
                     ...semester,
                     courses: updatedCourses,
-                    credits: trackCredits(updatedCourses)
+                    credits: trackSemCredits(updatedCourses)
                 });
             }
         }
@@ -82,88 +80,105 @@ export function DisplayCourse({
     }
 
     function clearCourses() {
-        setCourseList([]);
+        editSemester(semester.id, {
+            ...semester,
+            courses: [],
+            credits: 0
+        });
+    }
+
+    /*
+            setCourseList([]);
         setCreditCount(0);
         editSemester(semester.id, {
             ...semester,
             courses: []
         });
-    }
+    */
 
     function removeCourse(courseRemove: Course) {
-        const updatedList = [...courseList];
-        const index = updatedList.indexOf(courseRemove);
-        updatedList.splice(index, 1);
-        setCourseList(updatedList);
-        setCreditCount(
-            creditCount -
-                parseInt(
-                    courseRemove.credits.substring(
-                        courseRemove.credits.length - 1
-                    )
-                )
+        const updatedList = semester.courses.filter(
+            (current: Course): boolean => current.name !== courseRemove.name
         );
-        setCreditCount(trackCredits(updatedList));
+        //setCourseList(updatedList);
+        //setCreditCount(trackCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
-            credits: trackCredits(updatedList)
+            credits: trackSemCredits(updatedList)
         });
     }
 
     function resetCourse(courseReset: Course) {
         const reset =
             COURSES[courseReset.code.substring(0, 4)][courseReset.code];
-        const updatedList = courseList.map(
+        const updatedList = semester.courses.map(
             (course: Course): Course =>
                 course.code === courseReset.code ? reset : course
         );
-        setCourseList(updatedList);
-        setCreditCount(trackCredits(updatedList));
+        //setCourseList(updatedList);
+        setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
-            credits: trackCredits(updatedList)
+            credits: trackSemCredits(updatedList)
         });
     }
 
     function editCourse(code: string, newCourse: Course) {
-        const updatedList = courseList.map(
+        const updatedList = semester.courses.map(
             (course: Course): Course =>
                 course.code === code ? newCourse : course
         );
-        setCourseList(updatedList);
-        setCreditCount(trackCredits(updatedList));
+        //setCourseList(updatedList);
+        setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
-            credits: trackCredits(updatedList)
+            credits: trackSemCredits(updatedList)
         });
     }
 
     function addToPool(course: Course) {
-        removeCourse(course);
-        editPool([...pool, course]);
+        // this line crashes the code -- without it, will remove normally
+        // will only perform the second function call, when one is commented out will perform the other
+        const updatedCourses = semester.courses.filter(
+            (current: Course): boolean => current !== course
+        );
+        const updatedCredits = trackSemCredits(updatedCourses);
+        const newSem = {
+            ...semester,
+            courses: updatedCourses,
+            credits: updatedCredits
+        };
+        const updatedSemesters = plan.semesters.map(
+            (current: Semester): Semester =>
+                current.id === semester.id ? newSem : current
+        );
+        editPlan(plan.id, {
+            ...plan,
+            semesters: updatedSemesters,
+            pool: [...plan.pool, course],
+            totalCredits: trackDegreeCredits(updatedSemesters)
+        });
     }
 
     return (
         <div>
             <h5>Courses: </h5>
             <div>
-                Total Credits: {creditCount}
+                Total Credits: {semester.credits}
                 <p>
                     NOTE: credit count assumes you are taking a class for the
                     maximum number of credits, you may edit this in the course
                 </p>
             </div>
-            {courseList.map((course: Course) => (
+            {semester.courses.map((course: Course) => (
                 <Container key={course.code}>
                     <CourseViewer
                         key={course.code}
                         course={course}
                         editCourse={editCourse}
-                        plan={plan}
-                        editDegree={editDegree}
                     ></CourseViewer>
                     <Button onClick={() => removeCourse(course)}>
                         Remove Course
@@ -189,6 +204,9 @@ export function DisplayCourse({
                     </Col>
                     <Col>
                         <Form.Select value={id} onChange={updateID}>
+                            <option key="default" value="Course ID">
+                                Select Course ID
+                            </option>
                             {Object.keys(
                                 course in COURSES ? COURSES[course] : {}
                             ).map((course: string) => (

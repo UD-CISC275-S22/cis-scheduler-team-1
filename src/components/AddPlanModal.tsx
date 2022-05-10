@@ -48,7 +48,8 @@ export function AddPlanModal({
             semesters: [],
             reqs: false,
             concentration: concentration,
-            totalCredits: 0
+            totalCredits: 0,
+            pool: []
         });
         setId(id + 1); // increment id for next one ?
         handleClose();
