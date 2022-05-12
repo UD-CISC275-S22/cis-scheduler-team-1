@@ -24,9 +24,13 @@ export function CourseViewer({
     editCourse: (code: string, newCourse: Course) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
+    const [moreDetails, setMoreDetails] = useState<boolean>(false);
 
     function changeEditing() {
         setEditing(!editing);
+    }
+    function changeMore() {
+        setMoreDetails(!moreDetails);
     }
 
     return editing ? (
@@ -35,7 +39,7 @@ export function CourseViewer({
             course={course}
             editCourse={editCourse}
         ></CourseEditor>
-    ) : (
+    ) : moreDetails ? (
         <Container
             key={course.code}
             style={{ border: "1px solid white", padding: "6px" }}
@@ -56,8 +60,30 @@ export function CourseViewer({
                         <p>This class is worth {course.credits} credits</p>
                     </div>
                 </p>
+                <Button size="sm" onClick={changeMore}>
+                    Show Less
+                </Button>
             </div>
             <Button onClick={changeEditing}>Edit Course</Button>
+        </Container>
+    ) : (
+        <Container
+            key={course.code}
+            style={{ border: "1px solid white", padding: "6px" }}
+        >
+            <div
+                style={{
+                    border: "1px solid black",
+                    padding: "6px"
+                }}
+            >
+                <h6>
+                    {course.code}: {course.name}
+                </h6>
+                <Button size="sm" onClick={changeMore}>
+                    Show More
+                </Button>
+            </div>
         </Container>
     );
 }

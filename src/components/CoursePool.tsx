@@ -139,6 +139,7 @@ export function CoursePool({
                     </Col>
                     <Col>
                         <Form.Select value={id} onChange={updateID}>
+                            <option key="select">Select Code</option>
                             {Object.keys(
                                 dept in COURSES ? COURSES[dept] : {}
                             ).map((course: string) => (

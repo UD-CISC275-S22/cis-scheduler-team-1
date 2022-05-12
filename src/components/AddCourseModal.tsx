@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
+import { createNonNullExpression } from "typescript";
 import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
@@ -66,14 +67,30 @@ export function AddCourseModal({
             pool: updatedPool
         });
         handleClose();
+
+        /*
+        const updatedCourses = [...semester.courses, newCourse];
+                //setCourseList(updatedCourses);
+                setCreditCount(trackSemCredits(updatedCourses));
+                editSemester(semester.id, {
+                    ...semester,
+                    courses: updatedCourses,
+                    credits: trackSemCredits(updatedCourses)
+        */
     }
 
     function updateChoice(event: ChangeEvent) {
+        // find the semester that was chosen
         const sem = plan.semesters.filter(
             (semester: Semester): boolean =>
                 semester.title === event.target.value
         );
-        setSemester(sem[0]);
+        setSemester({
+            id: sem[0].id,
+            title: sem[0].title,
+            credits: sem[0].credits,
+            courses: [...sem[0].courses, course]
+        });
         //setID(sem[0].id);
     }
 
@@ -94,7 +111,7 @@ export function AddCourseModal({
                             >
                                 {plan.semesters.map((semester: Semester) => (
                                     <option
-                                        key={semester.title}
+                                        key={semester.id}
                                         value={semester.title}
                                     >
                                         {semester.title}

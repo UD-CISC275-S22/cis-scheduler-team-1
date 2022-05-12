@@ -180,13 +180,13 @@ export function DisplayCourse({
                         course={course}
                         editCourse={editCourse}
                     ></CourseViewer>
-                    <Button onClick={() => removeCourse(course)}>
-                        Remove Course
+                    <Button size="sm" onClick={() => removeCourse(course)}>
+                        Remove
                     </Button>
-                    <Button onClick={() => resetCourse(course)}>
-                        Reset Course
+                    <Button size="sm" onClick={() => resetCourse(course)}>
+                        Reset
                     </Button>
-                    <Button onClick={() => addToPool(course)}>
+                    <Button size="sm" onClick={() => addToPool(course)}>
                         Move to Course Pool
                     </Button>
                 </Container>
