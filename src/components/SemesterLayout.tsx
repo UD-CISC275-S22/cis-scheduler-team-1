@@ -3,16 +3,13 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { DisplayCourse } from "./DisplayCourse";
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 
 export function SemesterLayout({
     plan,
-    editPlan,
-    editPool
+    editPlan
 }: {
     plan: Degreeplan;
     editPlan: (id: number, newPlan: Degreeplan) => void;
-    editPool: (courses: Course[]) => void;
 }): JSX.Element {
     const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
     const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester

@@ -16,11 +16,7 @@ export function PlanList({
         <div>
             {plans.map((plan: Degreeplan) => (
                 <div key={plan.id} className="bg-light border m-2 p-2">
-                    <DisplayPlan
-                        plan={plan}
-                        deleteDegree={deleteDegree}
-                        editPlan={editPlan}
-                    ></DisplayPlan>
+                    <DisplayPlan plan={plan} editPlan={editPlan}></DisplayPlan>
                     <Button onClick={() => deleteDegree(plan.title)}>
                         Delete Degree Plan
                     </Button>

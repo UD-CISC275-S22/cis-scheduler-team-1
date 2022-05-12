@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { CourseEditor } from "./CourseEditor";
 import { Course } from "../interfaces/course";
 import { Button, Container } from "react-bootstrap";
-import { Degreeplan } from "../interfaces/degreeplan";
-
 /*
 {
     plans,
@@ -63,8 +61,10 @@ export function CourseViewer({
                 <Button size="sm" onClick={changeMore}>
                     Show Less
                 </Button>
+                <Button size="sm" onClick={changeEditing}>
+                    Edit Course
+                </Button>
             </div>
-            <Button onClick={changeEditing}>Edit Course</Button>
         </Container>
     ) : (
         <Container
@@ -82,6 +82,9 @@ export function CourseViewer({
                 </h6>
                 <Button size="sm" onClick={changeMore}>
                     Show More
+                </Button>
+                <Button size="sm" onClick={changeEditing}>
+                    Edit Course
                 </Button>
             </div>
         </Container>

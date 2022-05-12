@@ -22,7 +22,7 @@ export function DisplayCourse({
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     //const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
-    const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
+    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -67,7 +67,7 @@ export function DisplayCourse({
             if (!semester.courses.includes(newCourse)) {
                 const updatedCourses = [...semester.courses, newCourse];
                 //setCourseList(updatedCourses);
-                setCreditCount(trackSemCredits(updatedCourses));
+                //setCreditCount(trackSemCredits(updatedCourses));
                 editSemester(semester.id, {
                     ...semester,
                     courses: updatedCourses,
@@ -117,7 +117,7 @@ export function DisplayCourse({
                 course.code === courseReset.code ? reset : course
         );
         //setCourseList(updatedList);
-        setCreditCount(trackSemCredits(updatedList));
+        //setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
@@ -131,7 +131,7 @@ export function DisplayCourse({
                 course.code === code ? newCourse : course
         );
         //setCourseList(updatedList);
-        setCreditCount(trackSemCredits(updatedList));
+        //setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,

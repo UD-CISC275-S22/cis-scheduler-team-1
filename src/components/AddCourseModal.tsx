@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Row } from "react-bootstrap";
-import { createNonNullExpression } from "typescript";
 import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
@@ -10,17 +9,13 @@ export function AddCourseModal({
     show,
     handleClose,
     plan,
-    editPlan,
-    editSemester,
-    editPool
+    editPlan
 }: {
     course: Course;
     show: boolean;
     handleClose: () => void;
     plan: Degreeplan;
     editPlan: (id: number, newDegree: Degreeplan) => void;
-    editSemester: (id: number, newSemester: Semester) => void;
-    editPool: (courses: Course[]) => void;
 }) {
     type ChangeEvent = React.ChangeEvent<
         HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
@@ -9,11 +9,9 @@ import { SemesterLayout } from "./SemesterLayout";
 
 export function DisplayPlan({
     plan,
-    deleteDegree,
     editPlan
 }: {
     plan: Degreeplan;
-    deleteDegree: (id: string) => void;
     editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     //const [pool, setPool] = useState<Course[]>([]);
@@ -62,7 +60,6 @@ export function DisplayPlan({
                             <SemesterLayout
                                 plan={plan}
                                 editPlan={editPlan}
-                                editPool={editPool}
                             ></SemesterLayout>
                         </div>
                         <hr></hr>

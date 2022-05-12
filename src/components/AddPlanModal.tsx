@@ -30,8 +30,7 @@ export function AddPlanModal({
         "BEE",
         "BENE",
         "BMSE",
-        "BME",
-        ""
+        "BME"
     ];
 
     const [id, setId] = useState<number>(0);
@@ -76,6 +75,7 @@ export function AddPlanModal({
                                 onChange={updateChoice}
                                 placeholder="Select Degree Type"
                             >
+                                <option key="select">Select Degree Type</option>
                                 {degreeTypes.map((type: string) => (
                                     <option key={type} value={type}>
                                         {type}

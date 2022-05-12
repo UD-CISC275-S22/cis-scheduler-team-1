@@ -9,7 +9,6 @@ import { Semester } from "../interfaces/semester";
 export function CoursePool({
     plan,
     editPool,
-    editSemester,
     editPlan
 }: {
     plan: Degreeplan;
@@ -167,8 +166,6 @@ export function CoursePool({
                     handleClose={handleCloseAddCourse}
                     plan={plan}
                     editPlan={editPlan}
-                    editSemester={editSemester}
-                    editPool={editPool}
                 ></AddCourseModal>
             </Container>
         </div>
