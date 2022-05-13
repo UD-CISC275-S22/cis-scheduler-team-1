@@ -39,7 +39,6 @@ export function AddPlanModal({
     const [id, setId] = useState<number>(0);
     const [type, setType] = useState<string>("");
     const [major, setMajor] = useState<string>("");
-    const [concentration, setConcentration] = useState<string>("");
 
     const MAJORS: Record<string, Record<string, string>> = majorlinkdata;
 
@@ -51,7 +50,6 @@ export function AddPlanModal({
             type: type,
             semesters: [],
             reqs: false,
-            concentration: concentration,
             totalCredits: 0
         });
         setId(id + 1); // increment id for next one ?
