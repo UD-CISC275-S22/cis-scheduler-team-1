@@ -52,9 +52,6 @@ export function DisplayPlan({
                 <Col xs={8} className="bg-grey border m-2 p-2">
                     <Container>
                         <h3 key={plan.title}>{plan.title}</h3>
-                        {plan.concentration !== "" && (
-                            <h4>Concentration: {plan.concentration}</h4>
-                        )}
                         <div className="rounded-lg">
                             <SemesterLayout
                                 plan={plan}
