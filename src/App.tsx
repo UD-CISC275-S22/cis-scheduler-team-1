@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { AddPlanModal } from "./components/AddPlanModal";
 import "./App.css";
+import sampleplan from "./data/sampleplan.json";
 import { Degreeplan } from "./interfaces/degreeplan";
 import { PlanList } from "./components/PlanList";
 import { WelcomeModal } from "./components/WelcomeModal";
+import { Course } from "./interfaces/course";
+import { Semester } from "./interfaces/semester";
 
 function App(): JSX.Element {
-    const [plans, setPlans] = useState<Degreeplan[]>([]);
     const [showAddDegree, setShowAddDegree] = useState(false);
     const [showWelcomeModal, setShowWelcomeModal] = useState(true);
 
@@ -15,6 +17,24 @@ function App(): JSX.Element {
     const handleCloseAddPlan = () => setShowAddDegree(false);
     const handleAddPlan = () => setShowAddDegree(true);
     const handleWelcomeModal = () => setShowWelcomeModal(false);
+
+    const PLAN = sampleplan.map(
+        (plan): Degreeplan => ({
+            ...plan,
+            semesters: plan.semesters.map(
+                (semester): Semester => ({
+                    ...semester,
+                    courses: semester.courses.map(
+                        (course): Course => ({ ...course })
+                    )
+                })
+            ),
+            reqs: false,
+            totalCredits: 30
+        })
+    );
+
+    const [plans, setPlans] = useState<Degreeplan[]>(PLAN);
 
     function addDegreePlan(newPlan: Degreeplan) {
         setPlans([...plans, newPlan]);
