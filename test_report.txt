@@ -113,7 +113,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at PlanList (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/PlanList.tsx:7:5)
           at div
           at div
-          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:10:31)
+          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:13:47)
       
       Consider adding an error boundary to your tree to customize error handling behavior.
       Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
@@ -225,7 +225,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at PlanList (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/PlanList.tsx:7:5)
           at div
           at div
-          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:10:31)
+          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:13:47)
       
       Consider adding an error boundary to your tree to customize error handling behavior.
       Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
@@ -337,7 +337,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at PlanList (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/PlanList.tsx:7:5)
           at div
           at div
-          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:10:31)
+          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:13:47)
       
       Consider adding an error boundary to your tree to customize error handling behavior.
       Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
@@ -449,7 +449,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at PlanList (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/PlanList.tsx:7:5)
           at div
           at div
-          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:10:31)
+          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:13:47)
       
       Consider adding an error boundary to your tree to customize error handling behavior.
       Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
@@ -762,7 +762,7 @@ FAIL src/components/SemesterLayout.test.tsx
           at PlanList (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/PlanList.tsx:7:5)
           at div
           at div
-          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:10:31)
+          at App (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/App.tsx:13:47)
       
       Consider adding an error boundary to your tree to customize error handling behavior.
       Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
@@ -843,12 +843,173 @@ FAIL src/components/CourseEditor.test.tsx
       [36m/>[39m
 
       --------------------------------------------------
+      heading:
+
+      Name "First Year CIS":
+      [36m<h3 />[39m
+
+      Name "Fall First Semester":
+      [36m<h4 />[39m
+
+      Name "Courses:":
+      [36m<h5 />[39m
+
+      Name "Spring Second Semester":
+      [36m<h4 />[39m
+
+      Name "Courses:":
+      [36m<h5 />[39m
+
+      Name "Degree Fulfillments":
+      [36m<h4 />[39m
+
+      Name "Major Required Classes:":
+      [36m<h6 />[39m
+
+      Name "Course Pool":
+      [36m<h4 />[39m
+
+      --------------------------------------------------
+      textbox:
+
+      Name "":
+      [36m<input[39m
+        [33mclass[39m=[32m"form-control"[39m
+        [33mplaceholder[39m=[32m"Type Department ID Here"[39m
+        [33mtype[39m=[32m"string"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<input[39m
+        [33mclass[39m=[32m"form-control"[39m
+        [33mplaceholder[39m=[32m"Type Department ID Here"[39m
+        [33mtype[39m=[32m"string"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<input[39m
+        [33mclass[39m=[32m"form-control"[39m
+        [33mplaceholder[39m=[32m"Type semester here"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<input[39m
+        [33mclass[39m=[32m"form-control"[39m
+        [33mplaceholder[39m=[32m"Department ID"[39m
+        [33mtype[39m=[32m"string"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      combobox:
+
+      Name "":
+      [36m<select[39m
+        [33mclass[39m=[32m"form-select"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<select[39m
+        [33mclass[39m=[32m"form-select"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<select[39m
+        [33mclass[39m=[32m"form-select"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
       button:
+
+      Name "Add Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Clear Courses":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Clear Courses":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add New Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Clear Semesters":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete Degree Plan":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
 
       Name "Create New Degree Plan":
       [36m<button[39m
         [33mclass[39m=[32m"btn btn-primary"[39m
         [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      separator:
+
+      Name "":
+      [36m<hr />[39m
+
+      Name "":
+      [36m<hr />[39m
+
+      Name "":
+      [36m<hr />[39m
+
+      --------------------------------------------------
+      link:
+
+      Name "Major Requirements":
+      [36m<a[39m
+        [33mhref[39m=[32m"https://catalog.udel.edu/preview_program.php?catoid=47&poid=34727&returnto=8860"[39m
+        [33mrel[39m=[32m"noopener noreferrer"[39m
+        [33mtarget[39m=[32m"_blank"[39m
       [36m/>[39m
 
       --------------------------------------------------
@@ -912,7 +1073,306 @@ FAIL src/components/CourseEditor.test.tsx
           [36m</header>[39m
           [36m<div />[39m
           [36m<div>[39m
-            [36m<div />[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+              [36m>[39m
+                [36m<div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"row"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"bg-grey border m-2 p-2 col-8"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"container"[39m
+                      [36m>[39m
+                        [36m<h3>[39m
+                          [0mFirst Year CIS[0m
+                        [36m</h3>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"rounded-lg"[39m
+                        [36m>[39m
+                          [36m<div>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"bg-white border m-2 p-2"[39m
+                            [36m>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"container"[39m
+                              [36m>[39m
+                                [36m<div>[39m
+                                  [36m<h4>[39m
+                                    [0mFall First Semester[0m
+                                  [36m</h4>[39m
+                                [36m</div>[39m
+                                [36m<div>[39m
+                                  [36m<h5>[39m
+                                    [0mCourses: [0m
+                                  [36m</h5>[39m
+                                  [36m<div>[39m
+                                    [0mTotal Credits: [0m
+                                    [0m0[0m
+                                    [36m<p>[39m
+                                      [0mNOTE: credit count assumes you are taking a class for the maximum number of credits, you may edit this in the course[0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div />[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"container"[39m
+                                  [36m>[39m
+                                    [36m<div[39m
+                                      [33mclass[39m=[32m"row"[39m
+                                    [36m>[39m
+                                      [36m<div[39m
+                                        [33mclass[39m=[32m"col"[39m
+                                      [36m>[39m
+                                        [36m<input[39m
+                                          [33mclass[39m=[32m"form-control"[39m
+                                          [33mplaceholder[39m=[32m"Type Department ID Here"[39m
+                                          [33mtype[39m=[32m"string"[39m
+                                          [33mvalue[39m=[32m""[39m
+                                        [36m/>[39m
+                                      [36m</div>[39m
+                                      [36m<div[39m
+                                        [33mclass[39m=[32m"col"[39m
+                                      [36m>[39m
+                                        [36m<select[39m
+                                          [33mclass[39m=[32m"form-select"[39m
+                                        [36m/>[39m
+                                      [36m</div>[39m
+                                    [36m</div>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"btn btn-primary"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mAdd Course[0m
+                                    [36m</button>[39m
+                                    [36m<span>[39m
+                                      [0m [0m
+                                    [36m</span>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"btn btn-primary"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mClear Courses[0m
+                                    [36m</button>[39m
+                                  [36m</div>[39m
+                                [36m</div>[39m
+                                [36m<button[39m
+                                  [33mclass[39m=[32m"btn btn-primary"[39m
+                                  [33mtype[39m=[32m"button"[39m
+                                [36m>[39m
+                                  [0mDelete Semester[0m
+                                [36m</button>[39m
+                                [36m<hr />[39m
+                              [36m</div>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"container"[39m
+                              [36m>[39m
+                                [36m<div>[39m
+                                  [36m<h4>[39m
+                                    [0mSpring Second Semester[0m
+                                  [36m</h4>[39m
+                                [36m</div>[39m
+                                [36m<div>[39m
+                                  [36m<h5>[39m
+                                    [0mCourses: [0m
+                                  [36m</h5>[39m
+                                  [36m<div>[39m
+                                    [0mTotal Credits: [0m
+                                    [0m0[0m
+                                    [36m<p>[39m
+                                      [0mNOTE: credit count assumes you are taking a class for the maximum number of credits, you may edit this in the course[0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div />[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"container"[39m
+                                  [36m>[39m
+                                    [36m<div[39m
+                                      [33mclass[39m=[32m"row"[39m
+                                    [36m>[39m
+                                      [36m<div[39m
+                                        [33mclass[39m=[32m"col"[39m
+                                      [36m>[39m
+                                        [36m<input[39m
+                                          [33mclass[39m=[32m"form-control"[39m
+                                          [33mplaceholder[39m=[32m"Type Department ID Here"[39m
+                                          [33mtype[39m=[32m"string"[39m
+                                          [33mvalue[39m=[32m""[39m
+                                        [36m/>[39m
+                                      [36m</div>[39m
+                                      [36m<div[39m
+                                        [33mclass[39m=[32m"col"[39m
+                                      [36m>[39m
+                                        [36m<select[39m
+                                          [33mclass[39m=[32m"form-select"[39m
+                                        [36m/>[39m
+                                      [36m</div>[39m
+                                    [36m</div>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"btn btn-primary"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mAdd Course[0m
+                                    [36m</button>[39m
+                                    [36m<span>[39m
+                                      [0m [0m
+                                    [36m</span>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"btn btn-primary"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mClear Courses[0m
+                                    [36m</button>[39m
+                                  [36m</div>[39m
+                                [36m</div>[39m
+                                [36m<button[39m
+                                  [33mclass[39m=[32m"btn btn-primary"[39m
+                                  [33mtype[39m=[32m"button"[39m
+                                [36m>[39m
+                                  [0mDelete Semester[0m
+                                [36m</button>[39m
+                                [36m<hr />[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                            [36m<div>[39m
+                              [36m<input[39m
+                                [33mclass[39m=[32m"form-control"[39m
+                                [33mplaceholder[39m=[32m"Type semester here"[39m
+                                [33mvalue[39m=[32m""[39m
+                              [36m/>[39m
+                            [36m</div>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mAdd New Semester[0m
+                            [36m</button>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mClear Semesters[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                        [36m<hr />[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"col"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"container"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"bg-white border m-2 p-2"[39m
+                          [36m>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"container"[39m
+                            [36m>[39m
+                              [36m<h4>[39m
+                                [0mDegree Fulfillments[0m
+                              [36m</h4>[39m
+                              [36m<p>[39m
+                                [0mIn order to graduate with a bachelors degree you must complete 120 credits. Average of 2 semesters a year, max of 4.[0m
+                              [36m</p>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"row"[39m
+                              [36m>[39m
+                                [0mTotal Semesters: [0m
+                                [0m2[0m
+                              [36m</div>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"row"[39m
+                              [36m>[39m
+                                [0mTotal Credits: [0m
+                                [0m30[0m
+                                [0m / 124[0m
+                              [36m</div>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"row"[39m
+                              [36m>[39m
+                                [36m<h6>[39m
+                                  [0mMajor Required Classes: [0m
+                                [36m</h6>[39m
+                                [0mClick the link to see a comprehensive list of the degree requirements for your major![0m
+                                [0m [0m
+                                [36m<a[39m
+                                  [33mhref[39m=[32m"https://catalog.udel.edu/preview_program.php?catoid=47&poid=34727&returnto=8860"[39m
+                                  [33mrel[39m=[32m"noopener noreferrer"[39m
+                                  [33mtarget[39m=[32m"_blank"[39m
+                                [36m>[39m
+                                  [0mMajor Requirements[0m
+                                [36m</a>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"container"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"bg-white border m-2 p-2"[39m
+                          [36m>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"container"[39m
+                            [36m>[39m
+                              [36m<h4>[39m
+                                [0mCourse Pool[0m
+                              [36m</h4>[39m
+                              [36m<div />[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"row"[39m
+                              [36m>[39m
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"col"[39m
+                                [36m>[39m
+                                  [36m<input[39m
+                                    [33mclass[39m=[32m"form-control"[39m
+                                    [33mplaceholder[39m=[32m"Department ID"[39m
+                                    [33mtype[39m=[32m"string"[39m
+                                    [33mvalue[39m=[32m""[39m
+                                  [36m/>[39m
+                                [36m</div>[39m
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"col"[39m
+                                [36m>[39m
+                                  [36m<select[39m
+                                    [33mclass[39m=[32m"form-select"[39m
+                                  [36m/>[39m
+                                [36m</div>[39m
+                              [36m</div>[39m
+                              [36m<button[39m
+                                [33mclass[39m=[32m"btn btn-primary"[39m
+                                [33mtype[39m=[32m"button"[39m
+                              [36m>[39m
+                                [0mAdd Course[0m
+                              [36m</button>[39m
+                              [36m<div />[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"btn btn-primary"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mDelete Degree Plan[0m
+                [36m</button>[39m
+              [36m</div>[39m
+            [36m</div>[39m
             [36m<button[39m
               [33mclass[39m=[32m"btn btn-primary"[39m
               [33mtype[39m=[32m"button"[39m
@@ -1000,20 +1460,20 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |   22.58 |     6.81 |   17.85 |   22.09 |                   
- src                  |      50 |        0 |   44.44 |   47.05 |                   
-  App.tsx             |      50 |        0 |   44.44 |   47.05 | 24-40             
- src/components       |   19.27 |      7.5 |   14.66 |   19.51 |                   
-  AddCourseModal.tsx  |   23.07 |      100 |   16.66 |   23.07 | 70-87,106         
+All files             |   28.42 |     9.09 |   24.13 |    28.1 |                   
+ src                  |   58.33 |        0 |   58.33 |   57.14 |                   
+  App.tsx             |   58.33 |        0 |   58.33 |   57.14 | 44-60             
+ src/components       |   24.09 |       10 |   18.66 |   24.39 |                   
+  AddCourseModal.tsx  |   30.76 |      100 |   33.33 |   30.76 | 70-87             
   AddPlanModal.tsx    |   76.92 |      100 |      50 |   76.92 | 60-69,109         
   CourseEditor.tsx    |       0 |      100 |       0 |       0 | 15-132            
   CoursePool.tsx      |   33.33 |     8.33 |    12.5 |   36.36 | 45-76,85-123      
   CourseViewer.tsx    |       0 |        0 |       0 |       0 | 28-34             
-  DisplayCourse.tsx   |       0 |        0 |       0 |       0 | 24-194            
+  DisplayCourse.tsx   |   11.53 |     6.25 |    5.26 |   11.53 | 33-145,159-194    
   DisplayPlan.tsx     |   18.18 |        0 |   14.28 |   18.18 | 22-41             
   PlanList.tsx        |   66.66 |      100 |   66.66 |   66.66 | 24                
   RequirementView.tsx |     100 |      100 |     100 |     100 |                   
-  SemesterLayout.tsx  |   15.38 |        0 |    8.33 |   15.38 | 25-83,96-108      
+  SemesterLayout.tsx  |   19.23 |        0 |   16.66 |   19.23 | 25-83,108         
   WelcomeModal.tsx    |     100 |      100 |     100 |     100 |                   
  src/interfaces       |       0 |        0 |       0 |       0 |                   
   course.ts           |       0 |        0 |       0 |       0 |                   
@@ -1024,5 +1484,5 @@ All files             |   22.58 |     6.81 |   17.85 |   22.09 |
 Test Suites: 3 failed, 1 passed, 4 total
 Tests:       7 failed, 1 passed, 8 total
 Snapshots:   0 total
-Time:        5.184 s
+Time:        7.453 s
 Ran all test suites.
