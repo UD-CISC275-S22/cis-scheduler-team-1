@@ -161,6 +161,11 @@ export function DisplayCourse({
             pool: [...plan.pool, course],
             totalCredits: trackDegreeCredits(updatedSemesters)
         });
+
+        console.log("updated pool");
+        console.log(plan.pool);
+        console.log([...plan.pool, course]);
+        console.log(course);
     }
 
     return (

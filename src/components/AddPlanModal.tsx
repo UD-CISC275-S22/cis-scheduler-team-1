@@ -71,7 +71,6 @@ export function AddPlanModal({
                         </Form.Label>
                         <Row>
                             <Form.Select
-                                value={type}
                                 onChange={updateChoice}
                                 placeholder="Select Degree Type"
                             >
@@ -89,7 +88,6 @@ export function AddPlanModal({
                         <Row>
                             <Form.Control
                                 placeholder="Type your major here"
-                                value={major}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setMajor(event.target.value)}

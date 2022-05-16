@@ -107,7 +107,6 @@ export function SemesterLayout({
             </div>
             <Form.Group>
                 <Form.Control
-                    value={semester.title}
                     onChange={inputSemester}
                     placeholder="Type semester here"
                 ></Form.Control>

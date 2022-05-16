@@ -28,65 +28,78 @@ export function AddCourseModal({
         title: "",
         credits: 0
     });
-    //const [id, setID] = useState<number>(0);
+
+    function trackSemCredits(courses: Course[]): number {
+        const creditList = courses.map((course: Course): number =>
+            parseInt(course.credits.substring(course.credits.length - 1))
+        );
+
+        const credits = creditList.reduce(
+            (total: number, credit: number) => total + credit,
+            0
+        );
+        return credits;
+    }
+
+    function trackDegreeCredits(semesters: Semester[]): number {
+        const semesterCredits = semesters.map(
+            (semester: Semester): number => semester.credits
+        );
+        const total = semesterCredits.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+        return total;
+    }
 
     // find the matching semester in the plan, add course to courses[] in the semester and update plan
     // so need to have editSemester function
     function saveAll() {
-        /*         //const updatedCourses = [...semester.courses, course];
-        editSemester(id, {
-            ...semester,
-            courses: [...semester.courses, course]
-        });
-
-        // remove course from pool
-        const updated = plan.pool.filter(
-            (current: Course): boolean => current !== course
-        );
-        editPool(updated); */
-
         const updatedCourses = [...semester.courses, course];
         const updatedPool = plan.pool.filter(
             (current: Course): boolean => current !== course
         );
         const updatedSem = {
             ...semester,
-            courses: updatedCourses
+            courses: updatedCourses,
+            credits: trackSemCredits(updatedCourses)
         };
+        setSemester(updatedSem);
+
+        console.log("use state semester title");
+        console.log(semester.title);
+
+        console.log("use state semester courses");
+        console.log(semester.courses);
+
+        console.log("updated semester title");
+        console.log(updatedSem.title);
+
+        console.log("updated semester courses");
+        console.log(updatedSem.courses);
+
         const updatedSemesters = plan.semesters.map((current: Semester) =>
             current.id === semester.id ? updatedSem : current
         );
         editPlan(plan.id, {
             ...plan,
             semesters: updatedSemesters,
-            pool: updatedPool
+            pool: updatedPool,
+            totalCredits: trackDegreeCredits(updatedSemesters)
         });
         handleClose();
-
-        /*
-        const updatedCourses = [...semester.courses, newCourse];
-                //setCourseList(updatedCourses);
-                setCreditCount(trackSemCredits(updatedCourses));
-                editSemester(semester.id, {
-                    ...semester,
-                    courses: updatedCourses,
-                    credits: trackSemCredits(updatedCourses)
-        */
     }
 
     function updateChoice(event: ChangeEvent) {
         // find the semester that was chosen
+        console.log("onChange called");
         const sem = plan.semesters.filter(
             (semester: Semester): boolean =>
                 semester.title === event.target.value
         );
-        setSemester({
-            id: sem[0].id,
-            title: sem[0].title,
-            credits: sem[0].credits,
-            courses: [...sem[0].courses, course]
-        });
-        //setID(sem[0].id);
+        setSemester(sem[0]);
+
+        console.log("sem[0] / selected semester");
+        console.log(sem[0].title);
     }
 
     return (
@@ -99,11 +112,8 @@ export function AddCourseModal({
                     <Form.Group controlId="degreeId" as={Row}>
                         <Form.Label>Select semester:</Form.Label>
                         <Row>
-                            <Form.Select
-                                value={semester.title}
-                                onChange={updateChoice}
-                                placeholder="Select Semester"
-                            >
+                            <Form.Select onChange={updateChoice}>
+                                <option>Select Semester</option>
                                 {plan.semesters.map((semester: Semester) => (
                                     <option
                                         key={semester.id}
