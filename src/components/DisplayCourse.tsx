@@ -27,7 +27,6 @@ export function DisplayCourse({
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
 
-    // updates the course that is being typed in
     function updateCourse(event: React.ChangeEvent<HTMLInputElement>) {
         if (
             /^[a-zA-Z]+$/.test(event.target.value) ||
