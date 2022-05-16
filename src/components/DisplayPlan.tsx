@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
@@ -15,6 +15,9 @@ export function DisplayPlan({
     editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     const [fullView, setFullView] = useState<boolean>(true);
+    const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
+
+    const [addedSemester, setAddedSemester] = useState<Semester>(blankSemester); // current inputted semester
 
     function changeFullView() {
         setFullView(!fullView);
@@ -37,6 +40,37 @@ export function DisplayPlan({
         return total;
     }
 
+    // semester edit functions
+
+    function clearSemesters() {
+        editPlan(plan.id, {
+            ...plan,
+            semesters: [],
+            totalCredits: 0
+        });
+    }
+
+    function addSemester() {
+        if (
+            !plan.semesters.includes(addedSemester) &&
+            addedSemester.title !== ""
+        ) {
+            editPlan(plan.id, {
+                ...plan,
+                semesters: [...plan.semesters, addedSemester]
+            });
+        }
+    }
+
+    function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
+        setAddedSemester({
+            id: plan.semesters.length, // always want semester id to increment
+            title: event.target.value,
+            courses: [],
+            credits: 0
+        });
+    }
+
     function editSemester(id: number, newSemester: Semester) {
         const updatedSemesters = plan.semesters.map(
             (semester: Semester): Semester =>
@@ -57,12 +91,28 @@ export function DisplayPlan({
                     <Container>
                         <h3 key={plan.title}>{plan.title}</h3>
                         <Button onClick={changeFullView}>Show Less</Button>
-                        <div className="rounded-lg">
-                            <SemesterLayout
-                                plan={plan}
-                                editPlan={editPlan}
-                            ></SemesterLayout>
-                        </div>
+                        {plan.semesters.map((semester: Semester) => (
+                            <Container key={semester.title}>
+                                <div key={semester.title}>
+                                    <h4>{semester.title}</h4>
+                                </div>
+                                <SemesterLayout
+                                    plan={plan}
+                                    editPlan={editPlan}
+                                    semester={semester}
+                                ></SemesterLayout>
+                            </Container>
+                        ))}
+                        <Form.Group>
+                            <Form.Control
+                                onChange={inputSemester}
+                                placeholder="Type semester here"
+                            ></Form.Control>
+                        </Form.Group>
+                        <Button onClick={addSemester}>Add New Semester</Button>
+                        <Button onClick={clearSemesters}>
+                            Clear Semesters
+                        </Button>
                         <hr></hr>
                     </Container>
                 </Col>
