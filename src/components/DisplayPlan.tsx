@@ -1,5 +1,5 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
@@ -14,7 +14,11 @@ export function DisplayPlan({
     plan: Degreeplan;
     editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
-    //const [pool, setPool] = useState<Course[]>([]);
+    const [fullView, setFullView] = useState<boolean>(true);
+
+    function changeFullView() {
+        setFullView(!fullView);
+    }
 
     function editPool(newPool: Course[]) {
         editPlan(plan.id, {
@@ -38,7 +42,6 @@ export function DisplayPlan({
             (semester: Semester): Semester =>
                 semester.id === id ? newSemester : semester
         );
-        //setSemesterList(updatedSemesters);
         editPlan(plan.id, {
             ...plan,
             semesters: updatedSemesters,
@@ -47,12 +50,13 @@ export function DisplayPlan({
     }
 
     // need the edit semester function here so that pool can access it
-    return (
+    return fullView ? (
         <div>
             <Row>
                 <Col xs={8} className="bg-grey border m-2 p-2">
                     <Container>
                         <h3 key={plan.title}>{plan.title}</h3>
+                        <Button onClick={changeFullView}>Show Less</Button>
                         <div className="rounded-lg">
                             <SemesterLayout
                                 plan={plan}
@@ -80,6 +84,11 @@ export function DisplayPlan({
                     </Row>
                 </Col>
             </Row>
+        </div>
+    ) : (
+        <div>
+            <h3 key={plan.title}>{plan.title}</h3>
+            <Button onClick={changeFullView}>Show More</Button>
         </div>
     );
 }
