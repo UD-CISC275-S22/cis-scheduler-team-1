@@ -51,8 +51,6 @@ export function AddCourseModal({
         return total;
     }
 
-    // find the matching semester in the plan, add course to courses[] in the semester and update plan
-    // so need to have editSemester function
     function saveAll() {
         const updatedCourses = [...semester.courses, course];
         const updatedPool = plan.pool.filter(
@@ -64,18 +62,6 @@ export function AddCourseModal({
             credits: trackSemCredits(updatedCourses)
         };
         setSemester(updatedSem);
-
-        console.log("use state semester title");
-        console.log(semester.title);
-
-        console.log("use state semester courses");
-        console.log(semester.courses);
-
-        console.log("updated semester title");
-        console.log(updatedSem.title);
-
-        console.log("updated semester courses");
-        console.log(updatedSem.courses);
 
         const updatedSemesters = plan.semesters.map((current: Semester) =>
             current.id === semester.id ? updatedSem : current

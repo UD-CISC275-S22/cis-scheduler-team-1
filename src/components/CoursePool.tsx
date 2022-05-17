@@ -63,7 +63,6 @@ export function CoursePool({
             if (!plan.pool.includes(newCourse)) {
                 const updatedCourses = [...plan.pool, newCourse];
                 editPool(updatedCourses);
-                //setPoolList(updatedCourses);
                 setCourse(newCourse);
             }
         }

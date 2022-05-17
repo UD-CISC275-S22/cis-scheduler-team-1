@@ -2,17 +2,6 @@ import React, { useState } from "react";
 import { CourseEditor } from "./CourseEditor";
 import { Course } from "../interfaces/course";
 import { Button, Container } from "react-bootstrap";
-/*
-{
-    plans,
-    deleteDegree,
-    editPlan
-}: {
-    plans: Degreeplan[];
-    deleteDegree: (id: string) => void;
-    editPlan: (id: number, newDegree: Degreeplan) => void;
-}
-*/
 
 export function CourseViewer({
     course,

@@ -61,13 +61,7 @@ export function AddPlanModal({
     }
 
     function updateMajor(event: React.ChangeEvent<HTMLSelectElement>) {
-        //setMajor(event.target.value);
-        /*if (
-            /^[a-zA-Z]+$/.test(event.target.value) ||
-            event.target.value === ""
-        ) {*/
         setMajor(event.target.value);
-        //}
     }
 
     return (
