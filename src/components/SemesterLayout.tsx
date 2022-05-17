@@ -1,44 +1,22 @@
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Degreeplan } from "../interfaces/degreeplan";
 import { DisplayCourse } from "./DisplayCourse";
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 
 export function SemesterLayout({
     plan,
-    editDegree,
-    editPool,
-    pool
+    editPlan,
+    semester
 }: {
     plan: Degreeplan;
-    deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
-    editPool: (courses: Course[]) => void;
-    pool: Course[];
+    editPlan: (id: number, newPlan: Degreeplan) => void;
+    semester: Semester;
 }): JSX.Element {
-    const blankSemester = { id: 0, title: "", courses: [], credits: 0 };
-    const [semester, setSemester] = useState<Semester>(blankSemester); // current inputted semester
-    const [semesterList, setSemesterList] = useState<Semester[]>([]); // store inputted semester into an array of semesters
+    const [fullView, setFullView] = useState<boolean>(true);
 
-    function inputSemester(event: React.ChangeEvent<HTMLInputElement>) {
-        setSemester({
-            id: plan.semesters.length, // always want semester id to increment
-            title: event.target.value,
-            courses: [],
-            credits: 0
-        });
-    }
-
-    // adds inputted semester to semester list, does not allow repeat semester names
-    function addSemester() {
-        if (!semesterList.includes(semester) && semester.title !== "") {
-            setSemesterList([...semesterList, semester]);
-            editDegree(plan.id, {
-                ...plan,
-                semesters: [...semesterList, semester]
-            });
-        }
+    function changeView() {
+        setFullView(!fullView);
     }
 
     function editSemester(id: number, newSemester: Semester) {
@@ -46,15 +24,14 @@ export function SemesterLayout({
             (semester: Semester): Semester =>
                 semester.id === id ? newSemester : semester
         );
-        setSemesterList(updatedSemesters);
-        editDegree(plan.id, {
+        editPlan(plan.id, {
             ...plan,
             semesters: updatedSemesters,
-            totalCredits: trackCredits(updatedSemesters)
+            totalCredits: trackDegreeCredits(updatedSemesters)
         });
     }
 
-    function trackCredits(semesters: Semester[]): number {
+    function trackDegreeCredits(semesters: Semester[]): number {
         const semesterCredits = semesters.map(
             (semester: Semester): number => semester.credits
         );
@@ -64,63 +41,37 @@ export function SemesterLayout({
         return total;
     }
 
-    // semesters is a list of semesters os if we edit the courses we have to edit that semester adn then edit that semeseter in degree plan
-
     function deleteSemester(semester: Semester) {
-        const updatedList = [...semesterList];
+        const updatedList = [...plan.semesters];
         const index = updatedList.indexOf(semester);
         updatedList.splice(index, 1);
-        setSemesterList(updatedList);
-        editDegree(plan.id, {
+        editPlan(plan.id, {
             ...plan,
             semesters: updatedList,
-            totalCredits: trackCredits(updatedList)
+            totalCredits: trackDegreeCredits(updatedList)
         });
     }
 
-    function clearSemesters() {
-        setSemesterList([]);
-        editDegree(plan.id, {
-            ...plan,
-            semesters: [],
-            totalCredits: 0
-        });
-    }
-
-    //track total credits in semester function
-
-    return (
+    return fullView ? (
         <div>
+            <Button onClick={changeView}>Show Less</Button>
             <div className="bg-white border m-2 p-2">
-                {plan.semesters.map((semester: Semester) => (
-                    <Container key={semester.title}>
-                        <div key={semester.title}>
-                            <h4>{semester.title}</h4>
-                        </div>
-                        <DisplayCourse
-                            plan={plan}
-                            semester={semester}
-                            editDegree={editDegree}
-                            editSemester={editSemester}
-                            editPool={editPool}
-                            pool={pool}
-                        ></DisplayCourse>
-                        <Button onClick={() => deleteSemester(semester)}>
-                            Delete Semester
-                        </Button>
-                        <hr></hr>
-                    </Container>
-                ))}
+                <DisplayCourse
+                    plan={plan}
+                    semester={semester}
+                    editPlan={editPlan}
+                    editSemester={editSemester}
+                    trackDegreeCredits={trackDegreeCredits}
+                ></DisplayCourse>
+                <Button onClick={() => deleteSemester(semester)}>
+                    Delete Semester
+                </Button>
+                <hr></hr>
             </div>
-            <Form.Group>
-                <Form.Control
-                    value={semester.title}
-                    onChange={inputSemester}
-                    placeholder="Type semester here"
-                ></Form.Control>
-            </Form.Group>
-            <Button onClick={addSemester}>Add New Semester</Button>
-            <Button onClick={clearSemesters}>Clear Semesters</Button>
+        </div>
+    ) : (
+        <div>
+            <Button onClick={changeView}>Show More</Button>
         </div>
     );
 }

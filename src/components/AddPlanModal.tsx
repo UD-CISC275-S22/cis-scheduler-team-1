@@ -32,8 +32,7 @@ export function AddPlanModal({
         "BEE",
         "BENE",
         "BMSE",
-        "BME",
-        ""
+        "BME"
     ];
 
     const [id, setId] = useState<number>(0);
@@ -50,7 +49,8 @@ export function AddPlanModal({
             type: type,
             semesters: [],
             reqs: false,
-            totalCredits: 0
+            totalCredits: 0,
+            pool: []
         });
         setId(id + 1); // increment id for next one ?
         handleClose();
@@ -83,10 +83,10 @@ export function AddPlanModal({
                         </Form.Label>
                         <Row>
                             <Form.Select
-                                value={type}
                                 onChange={updateChoice}
                                 placeholder="Select Degree Type"
                             >
+                                <option key="select">Select Degree Type</option>
                                 {degreeTypes.map((type: string) => (
                                     <option key={type} value={type}>
                                         {type}
@@ -100,7 +100,6 @@ export function AddPlanModal({
                         <Row>
                             <Form.Select
                                 placeholder="Select your major here"
-                                value={major}
                                 onChange={updateMajor}
                             >
                                 {console.log(MAJORS[type])}

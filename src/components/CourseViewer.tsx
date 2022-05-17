@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { CourseEditor } from "./CourseEditor";
 import { Course } from "../interfaces/course";
 import { Button, Container } from "react-bootstrap";
-import { Degreeplan } from "../interfaces/degreeplan";
-
 /*
 {
     plans,
     deleteDegree,
-    editDegree
+    editPlan
 }: {
     plans: Degreeplan[];
     deleteDegree: (id: string) => void;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
+    editPlan: (id: number, newDegree: Degreeplan) => void;
 }
 */
 
@@ -22,13 +20,15 @@ export function CourseViewer({
 }: {
     course: Course;
     editCourse: (code: string, newCourse: Course) => void;
-    plan: Degreeplan;
-    editDegree: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
+    const [moreDetails, setMoreDetails] = useState<boolean>(false);
 
     function changeEditing() {
         setEditing(!editing);
+    }
+    function changeMore() {
+        setMoreDetails(!moreDetails);
     }
 
     return editing ? (
@@ -37,7 +37,7 @@ export function CourseViewer({
             course={course}
             editCourse={editCourse}
         ></CourseEditor>
-    ) : (
+    ) : moreDetails ? (
         <Container
             key={course.code}
             style={{ border: "1px solid white", padding: "6px" }}
@@ -58,8 +58,35 @@ export function CourseViewer({
                         <p>This class is worth {course.credits} credits</p>
                     </div>
                 </p>
+                <Button size="sm" onClick={changeMore}>
+                    Show Less
+                </Button>
+                <Button size="sm" onClick={changeEditing}>
+                    Edit Course
+                </Button>
             </div>
-            <Button onClick={changeEditing}>Edit Course</Button>
+        </Container>
+    ) : (
+        <Container
+            key={course.code}
+            style={{ border: "1px solid white", padding: "6px" }}
+        >
+            <div
+                style={{
+                    border: "1px solid black",
+                    padding: "6px"
+                }}
+            >
+                <h6>
+                    {course.code}: {course.name}
+                </h6>
+                <Button size="sm" onClick={changeMore}>
+                    Show More
+                </Button>
+                <Button size="sm" onClick={changeEditing}>
+                    Edit Course
+                </Button>
+            </div>
         </Container>
     );
 }

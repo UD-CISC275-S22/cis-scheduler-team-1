@@ -1,3 +1,4 @@
+import { Course } from "./course";
 import { Semester } from "./semester";
 
 //export type DegreeType = "BS" | "BA" | "";
@@ -10,4 +11,5 @@ export interface Degreeplan {
     semesters: Semester[];
     reqs: boolean; //if grad reqs are met
     totalCredits: number;
+    pool: Course[]; // course pool for semester
 }
