@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-FAIL src/components/AddPlanModal.test.tsx
+FAIL src/tests/AddPlanModal.test.tsx
   ● Console
 
     console.log
@@ -68,7 +68,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at fireClick (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:150:20)
           at clickElement (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:91:5)
           at Object.click (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:140:5)
-          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/AddPlanModal.test.tsx:24:15)
+          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/tests/AddPlanModal.test.tsx:24:15)
           at Promise.then.completed (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:391:28)
           at new Promise (<anonymous>)
           at callAsyncCircusFn (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:316:10)
@@ -180,7 +180,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at fireClick (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:150:20)
           at clickElement (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:91:5)
           at Object.click (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:140:5)
-          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/AddPlanModal.test.tsx:36:15)
+          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/tests/AddPlanModal.test.tsx:36:15)
           at Promise.then.completed (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:391:28)
           at new Promise (<anonymous>)
           at callAsyncCircusFn (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:316:10)
@@ -292,7 +292,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at fireClick (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:150:20)
           at clickElement (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:91:5)
           at Object.click (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:140:5)
-          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/AddPlanModal.test.tsx:50:15)
+          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/tests/AddPlanModal.test.tsx:50:15)
           at Promise.then.completed (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:391:28)
           at new Promise (<anonymous>)
           at callAsyncCircusFn (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:316:10)
@@ -404,7 +404,7 @@ FAIL src/components/AddPlanModal.test.tsx
           at fireClick (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:150:20)
           at clickElement (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:91:5)
           at Object.click (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:140:5)
-          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/AddPlanModal.test.tsx:64:15)
+          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/tests/AddPlanModal.test.tsx:64:15)
           at Promise.then.completed (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:391:28)
           at new Promise (<anonymous>)
           at callAsyncCircusFn (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:316:10)
@@ -479,7 +479,7 @@ FAIL src/components/AddPlanModal.test.tsx
       15 |
       16 | test("Can close modal by clicking save", () => {
 
-      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:13:19)
+      at Object.<anonymous> (src/tests/AddPlanModal.test.tsx:13:19)
 
   ● Can close modal by clicking save
 
@@ -524,7 +524,7 @@ FAIL src/components/AddPlanModal.test.tsx
       at fireClick (node_modules/@testing-library/user-event/dist/click.js:150:20)
       at clickElement (node_modules/@testing-library/user-event/dist/click.js:91:5)
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
-      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:24:15)
+      at Object.<anonymous> (src/tests/AddPlanModal.test.tsx:24:15)
 
   ● Saving information allows user to see semester layout
 
@@ -569,7 +569,7 @@ FAIL src/components/AddPlanModal.test.tsx
       at fireClick (node_modules/@testing-library/user-event/dist/click.js:150:20)
       at clickElement (node_modules/@testing-library/user-event/dist/click.js:91:5)
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
-      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:36:15)
+      at Object.<anonymous> (src/tests/AddPlanModal.test.tsx:36:15)
 
   ● Can add additional degree plans, add Plan button remains visible
 
@@ -614,7 +614,7 @@ FAIL src/components/AddPlanModal.test.tsx
       at fireClick (node_modules/@testing-library/user-event/dist/click.js:150:20)
       at clickElement (node_modules/@testing-library/user-event/dist/click.js:91:5)
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
-      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:50:15)
+      at Object.<anonymous> (src/tests/AddPlanModal.test.tsx:50:15)
 
   ● Can delete degree plan
 
@@ -659,9 +659,9 @@ FAIL src/components/AddPlanModal.test.tsx
       at fireClick (node_modules/@testing-library/user-event/dist/click.js:150:20)
       at clickElement (node_modules/@testing-library/user-event/dist/click.js:91:5)
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
-      at Object.<anonymous> (src/components/AddPlanModal.test.tsx:64:15)
+      at Object.<anonymous> (src/tests/AddPlanModal.test.tsx:64:15)
 
-FAIL src/components/SemesterLayout.test.tsx
+FAIL src/tests/SemesterLayout.test.tsx
   ● Console
 
     console.log
@@ -717,7 +717,7 @@ FAIL src/components/SemesterLayout.test.tsx
           at fireClick (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:150:20)
           at clickElement (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:91:5)
           at Object.click (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/@testing-library/user-event/dist/click.js:140:5)
-          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/components/SemesterLayout.test.tsx:16:15)
+          at Object.<anonymous> (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/src/tests/SemesterLayout.test.tsx:16:15)
           at Promise.then.completed (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:391:28)
           at new Promise (<anonymous>)
           at callAsyncCircusFn (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jest-circus/build/utils.js:316:10)
@@ -819,9 +819,9 @@ FAIL src/components/SemesterLayout.test.tsx
       at fireClick (node_modules/@testing-library/user-event/dist/click.js:150:20)
       at clickElement (node_modules/@testing-library/user-event/dist/click.js:91:5)
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
-      at Object.<anonymous> (src/components/SemesterLayout.test.tsx:16:15)
+      at Object.<anonymous> (src/tests/SemesterLayout.test.tsx:16:15)
 
-FAIL src/components/CourseEditor.test.tsx
+FAIL src/tests/CourseEditor.test.tsx
   ● Console
 
     console.log
@@ -1578,7 +1578,34 @@ FAIL src/components/CourseEditor.test.tsx
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
       at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
       at getAllByRole (node_modules/@testing-library/dom/dist/query-helpers.js:130:15)
-      at Object.<anonymous> (src/components/CourseEditor.test.tsx:8:27)
+      at Object.<anonymous> (src/tests/CourseEditor.test.tsx:8:27)
+
+FAIL src/tests/WelcomeModal.test.tsx
+  ● Console
+
+    console.log
+      undefined
+
+      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
+
+  ● WecomeModal Test › Opening the website shows the pop-up Welcome Message
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      12 |             "Welcome To The UDEL Course Planner!"
+      13 |         );
+    > 14 |         expect(typeText).toBeInTheDocument();
+         |                          ^
+      15 |     });
+      16 | });
+      17 |
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/WelcomeModal.test.tsx:14:26)
 
 PASS src/App.test.tsx
   ● Console
@@ -1612,8 +1639,8 @@ All files             |      25 |    14.81 |    21.9 |   24.52 |
   semester.ts         |       0 |        0 |       0 |       0 |                   
 ----------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 3 failed, 1 passed, 4 total
-Tests:       7 failed, 1 passed, 8 total
+Test Suites: 4 failed, 1 passed, 5 total
+Tests:       8 failed, 1 passed, 9 total
 Snapshots:   0 total
-Time:        11.452 s
+Time:        12.211 s
 Ran all test suites.
