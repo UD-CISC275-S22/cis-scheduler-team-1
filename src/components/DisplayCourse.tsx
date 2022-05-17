@@ -21,8 +21,6 @@ export function DisplayCourse({
 }): JSX.Element {
     const [course, setCourse] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
-    //const [courseList, setCourseList] = useState<Course[]>([]); // a comprehensive course list for the semester
-    //const [creditCount, setCreditCount] = useState<number>(0); //credit count is originally zero and is then continually updated
 
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     // creates a dictionary (record) or dictionaries of courses using json data
@@ -34,9 +32,6 @@ export function DisplayCourse({
         ) {
             setCourse(event.target.value.toUpperCase().substring(0, 4));
         }
-        // if statement ensures that only letters are accepted, not numbers
-        // use substring 0:4 so that will only accet valid course titles
-        // example: HIST not HISTORY or HIST106
     }
 
     // updates the id from text box
@@ -58,7 +53,6 @@ export function DisplayCourse({
     // combines the course and id and adds the course to the course list, adds appropriate credits
     function addCourse() {
         const newCourseCode = course + " " + id;
-        // will only add course if valid -- work on displaying error message
         if (course in COURSES && newCourseCode in COURSES[course]) {
             const newCourse = {
                 ...COURSES[newCourseCode.substring(0, 4)][newCourseCode]
@@ -141,11 +135,6 @@ export function DisplayCourse({
             pool: [...plan.pool, course],
             totalCredits: trackDegreeCredits(updatedSemesters)
         });
-
-        console.log("updated pool");
-        console.log(plan.pool);
-        console.log([...plan.pool, course]);
-        console.log(course);
     }
 
     return (
