@@ -96,7 +96,6 @@ export function AddPlanModal({
                                 placeholder="Select your major here"
                                 onChange={updateMajor}
                             >
-                                {console.log(MAJORS[type])}
                                 {Object.keys(MAJORS[type] || {}).map(
                                     (major: string) => (
                                         <option key={major} value={major}>
