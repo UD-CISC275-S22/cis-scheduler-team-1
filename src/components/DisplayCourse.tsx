@@ -65,8 +65,6 @@ export function DisplayCourse({
             };
             if (!semester.courses.includes(newCourse)) {
                 const updatedCourses = [...semester.courses, newCourse];
-                //setCourseList(updatedCourses);
-                //setCreditCount(trackSemCredits(updatedCourses));
                 editSemester(semester.id, {
                     ...semester,
                     courses: updatedCourses,
@@ -86,21 +84,10 @@ export function DisplayCourse({
         });
     }
 
-    /*
-            setCourseList([]);
-        setCreditCount(0);
-        editSemester(semester.id, {
-            ...semester,
-            courses: []
-        });
-    */
-
     function removeCourse(courseRemove: Course) {
         const updatedList = semester.courses.filter(
             (current: Course): boolean => current.name !== courseRemove.name
         );
-        //setCourseList(updatedList);
-        //setCreditCount(trackCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
@@ -115,8 +102,6 @@ export function DisplayCourse({
             (course: Course): Course =>
                 course.code === courseReset.code ? reset : course
         );
-        //setCourseList(updatedList);
-        //setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
@@ -129,8 +114,6 @@ export function DisplayCourse({
             (course: Course): Course =>
                 course.code === code ? newCourse : course
         );
-        //setCourseList(updatedList);
-        //setCreditCount(trackSemCredits(updatedList));
         editSemester(semester.id, {
             ...semester,
             courses: updatedList,
@@ -139,8 +122,6 @@ export function DisplayCourse({
     }
 
     function addToPool(course: Course) {
-        // this line crashes the code -- without it, will remove normally
-        // will only perform the second function call, when one is commented out will perform the other
         const updatedCourses = semester.courses.filter(
             (current: Course): boolean => current !== course
         );

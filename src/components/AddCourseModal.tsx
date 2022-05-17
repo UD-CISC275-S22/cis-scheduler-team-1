@@ -100,6 +100,8 @@ export function AddCourseModal({
 
         console.log("sem[0] / selected semester");
         console.log(sem[0].title);
+        console.log("pool courses:");
+        console.log(plan.pool);
     }
 
     return (
