@@ -2,28 +2,9 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
+PASS src/tests/DisplayPlan.test.tsx (5.251 s)
 FAIL src/tests/AddPlanModal.test.tsx
   ● Console
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       Error: Uncaught [TypeError: Cannot read properties of undefined (reading '')]
@@ -89,11 +70,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
       at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
 
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
     console.error
       The above error occurred in the <RequirementView> component:
       
@@ -126,16 +102,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:23426:7)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       Error: Uncaught [TypeError: Cannot read properties of undefined (reading '')]
@@ -201,11 +167,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
       at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
 
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
     console.error
       The above error occurred in the <RequirementView> component:
       
@@ -238,16 +199,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:23426:7)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       Error: Uncaught [TypeError: Cannot read properties of undefined (reading '')]
@@ -313,11 +264,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
       at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
 
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
     console.error
       The above error occurred in the <RequirementView> component:
       
@@ -350,16 +296,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:23426:7)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       Error: Uncaught [TypeError: Cannot read properties of undefined (reading '')]
@@ -424,11 +360,6 @@ FAIL src/tests/AddPlanModal.test.tsx
       at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
       at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
       at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       The above error occurred in the <RequirementView> component:
@@ -664,16 +595,6 @@ FAIL src/tests/AddPlanModal.test.tsx
 FAIL src/tests/SemesterLayout.test.tsx
   ● Console
 
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
     console.error
       Error: Uncaught [TypeError: Cannot read properties of undefined (reading '')]
           at reportException (/home/runner/work/cis-scheduler-team-1/cis-scheduler-team-1/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
@@ -737,11 +658,6 @@ FAIL src/tests/SemesterLayout.test.tsx
       at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
       at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
       at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
 
     console.error
       The above error occurred in the <RequirementView> component:
@@ -821,14 +737,8 @@ FAIL src/tests/SemesterLayout.test.tsx
       at Object.click (node_modules/@testing-library/user-event/dist/click.js:140:5)
       at Object.<anonymous> (src/tests/SemesterLayout.test.tsx:16:15)
 
+PASS src/tests/CoursePool.test.tsx
 FAIL src/tests/CourseEditor.test.tsx
-  ● Console
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
   ● Can save course field edits
 
     TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/Edit Course Fields Within Semester /i`
@@ -1581,13 +1491,6 @@ FAIL src/tests/CourseEditor.test.tsx
       at Object.<anonymous> (src/tests/CourseEditor.test.tsx:8:27)
 
 FAIL src/tests/WelcomeModal.test.tsx
-  ● Console
-
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
   ● WecomeModal Test › Opening the website shows the pop-up Welcome Message
 
     expect(received).toBeInTheDocument()
@@ -1607,40 +1510,33 @@ FAIL src/tests/WelcomeModal.test.tsx
       at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
       at Object.<anonymous> (src/tests/WelcomeModal.test.tsx:14:26)
 
-PASS src/App.test.tsx
-  ● Console
+PASS src/tests/App.test.tsx
+----------------------|---------|----------|---------|---------|--------------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s        
+----------------------|---------|----------|---------|---------|--------------------------
+All files             |   46.07 |    38.88 |   45.71 |      46 |                          
+ src                  |   95.83 |       75 |   91.66 |     100 |                          
+  App.tsx             |   95.83 |       75 |   91.66 |     100 | 49                       
+ src/components       |   39.44 |       36 |   39.78 |   39.66 |                          
+  AddCourseModal.tsx  |      10 |        0 |   15.38 |      10 | 33-90                    
+  AddPlanModal.tsx    |    92.3 |      100 |   83.33 |    92.3 | 64                       
+  CourseEditor.tsx    |       0 |      100 |       0 |       0 | 15-132                   
+  CoursePool.tsx      |   36.66 |    33.33 |   30.76 |   37.93 | 38-39,53-81,106-118      
+  CourseViewer.tsx    |      60 |       50 |   33.33 |      60 | 17-20                    
+  DisplayCourse.tsx   |   41.86 |    16.66 |    40.9 |   41.86 | 29-39,55-111,157-160,187 
+  DisplayPlan.tsx     |   52.63 |     62.5 |      50 |   52.63 | 27-40,74-78              
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                          
+  RequirementView.tsx |     100 |      100 |     100 |     100 |                          
+  SemesterLayout.tsx  |      50 |       50 |   55.55 |      50 | 23-27,45-48,66           
+  WelcomeModal.tsx    |     100 |      100 |     100 |     100 |                          
+ src/interfaces       |       0 |        0 |       0 |       0 |                          
+  course.ts           |       0 |        0 |       0 |       0 |                          
+  degreeplan.ts       |       0 |        0 |       0 |       0 |                          
+  semester.ts         |       0 |        0 |       0 |       0 |                          
+----------------------|---------|----------|---------|---------|--------------------------
 
-    console.log
-      undefined
-
-      at AddPlanModal (src/components/AddPlanModal.tsx:105:42)
-
-----------------------|---------|----------|---------|---------|-------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------|---------|----------|---------|---------|-------------------
-All files             |      25 |    14.81 |    21.9 |   24.52 |                   
- src                  |   58.33 |        0 |   58.33 |   57.14 |                   
-  App.tsx             |   58.33 |        0 |   58.33 |   57.14 | 45-61             
- src/components       |   20.83 |       16 |    17.2 |   20.94 |                   
-  AddCourseModal.tsx  |    7.89 |        0 |   15.38 |    7.89 | 33-104            
-  AddPlanModal.tsx    |   76.92 |      100 |      50 |   76.92 | 60-69,108         
-  CourseEditor.tsx    |       0 |      100 |       0 |       0 | 15-132            
-  CoursePool.tsx      |   23.33 |     8.33 |    7.69 |   24.13 | 38-82,91-144      
-  CourseViewer.tsx    |      60 |       50 |   33.33 |      60 | 28-31             
-  DisplayCourse.tsx   |   10.63 |     5.55 |    9.09 |   10.63 | 31-148,168-198    
-  DisplayPlan.tsx     |   26.31 |     12.5 |   16.66 |   26.31 | 23-79             
-  PlanList.tsx        |   66.66 |      100 |   66.66 |   66.66 | 20                
-  RequirementView.tsx |     100 |      100 |     100 |     100 |                   
-  SemesterLayout.tsx  |    12.5 |       25 |   11.11 |    12.5 | 19-48,66          
-  WelcomeModal.tsx    |     100 |      100 |     100 |     100 |                   
- src/interfaces       |       0 |        0 |       0 |       0 |                   
-  course.ts           |       0 |        0 |       0 |       0 |                   
-  degreeplan.ts       |       0 |        0 |       0 |       0 |                   
-  semester.ts         |       0 |        0 |       0 |       0 |                   
-----------------------|---------|----------|---------|---------|-------------------
-
-Test Suites: 4 failed, 1 passed, 5 total
-Tests:       8 failed, 1 passed, 9 total
+Test Suites: 4 failed, 3 passed, 7 total
+Tests:       8 failed, 9 passed, 17 total
 Snapshots:   0 total
-Time:        12.211 s
+Time:        15.952 s
 Ran all test suites.
