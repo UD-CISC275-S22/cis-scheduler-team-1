@@ -80,14 +80,12 @@ test("can clear all semesters", () => {
 });
 
 test("Can collapse semester (show less)", () => {
-    //const DEFAULT = screen.getByText("CISC 108");
     const LESSbutton = screen.getAllByRole("button", { name: /Show Less/i });
     userEvent.click(LESSbutton[1]);
     expect(LESSbutton[1]).toBeInTheDocument();
 });
 
 test("Can show more once collapsed semester (show more button)", () => {
-    //const DEFAULT = screen.getByText("CISC 108");
     const LESSbutton = screen.getAllByRole("button", { name: /Show Less/i });
     userEvent.click(LESSbutton[1]);
     const MOREbutton = screen.getAllByRole("button", { name: /Show More/i });
@@ -95,11 +93,24 @@ test("Can show more once collapsed semester (show more button)", () => {
 });
 
 test("Can move courses from semesters to pool", () => {
-    //const DEFAULT = screen.getByText("CISC 108");
     const MOVEbutton = screen.getAllByRole("button", {
         name: /Move to Course Pool/i
     });
     userEvent.click(MOVEbutton[0]);
+});
+
+test("Can clear courses from semesters", () => {
+    const CLEAR = screen.getAllByRole("button", {
+        name: /Clear Courses/i
+    });
+    userEvent.click(CLEAR[0]);
+});
+
+test("Can delete semester", () => {
+    const DELETE = screen.getAllByRole("button", {
+        name: /Delete Semester/i
+    });
+    userEvent.click(DELETE[0]);
 });
 
 // Plan List coverage applied here too

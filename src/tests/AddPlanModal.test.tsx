@@ -3,73 +3,86 @@ import { render, screen } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
+beforeEach(() => {
+    render(<App />);
+});
+
 test("Renders degree plan modal when Create Degree Plan button is clicked", () => {
-    render(<App />);
     const button = screen.getAllByRole("button", {
         name: /Create New Degree Plan/i
     });
     userEvent.click(button[0]);
-    const popUp = screen.getAllByRole("dialog");
-    expect(popUp).toHaveLength(1);
+    const popUp = screen.getAllByRole("dialog"); // two dialogs in a modal, major and type
+    expect(popUp).toHaveLength(2);
 });
 
-test("Can close modal by clicking save", () => {
-    render(<App />);
-    const button = screen.getAllByRole("button", {
+test("Modal closes on close", () => {
+    const CREATEbutton = screen.getAllByRole("button", {
         name: /Create New Degree Plan/i
     });
-    userEvent.click(button[0]);
-    const save = screen.getByRole("button", { name: /Save/i });
-    expect(save).toBeInTheDocument();
-    userEvent.click(save);
-    expect(save).not.toBeVisible();
-    // after clicking save the modal closes (save button would no longer be visible)
+    userEvent.click(CREATEbutton[0]);
+    const CLOSEbutton = screen.getAllByRole("button", {
+        name: /Close/i
+    });
+    userEvent.click(CLOSEbutton[0]);
+    expect(CLOSEbutton[0]).not.toBeInTheDocument();
 });
 
-test("Saving information allows user to see semester layout", () => {
-    render(<App />);
-    const button = screen.getAllByRole("button", {
+test("Modal closes on save", () => {
+    const hideButton = screen.getAllByRole("button", { name: /Show Less/i });
+    userEvent.click(hideButton[0]);
+    const CREATEbutton = screen.getAllByRole("button", {
         name: /Create New Degree Plan/i
     });
-    userEvent.click(button[0]);
-    const save = screen.getByRole("button", { name: /Save/i });
-    userEvent.click(save);
-    const semesterlayout = screen.getByRole("button", {
-        name: /Add New Semester/i
+    userEvent.click(CREATEbutton[0]);
+
+    const BOXES = screen.getAllByRole("combobox");
+    userEvent.selectOptions(BOXES[0], "BA");
+    // userEvent.selectOptions(BOXES[1], "Computer Science");
+
+    const SAVEbutton = screen.getAllByRole("button", {
+        name: /Save/i
     });
-    expect(semesterlayout).toBeInTheDocument();
+    userEvent.click(SAVEbutton[0]);
+    expect(SAVEbutton[0]).not.toBeInTheDocument();
 });
 
-test("Can add additional degree plans, add Plan button remains visible", () => {
-    render(<App />);
-    const button = screen.getAllByRole("button", {
+test("Adds new degree plan save", () => {
+    const hideButton = screen.getAllByRole("button", { name: /Show Less/i });
+    userEvent.click(hideButton[0]);
+    const CREATEbutton = screen.getAllByRole("button", {
         name: /Create New Degree Plan/i
     });
-    userEvent.click(button[0]);
-    const save = screen.getByRole("button", { name: /Save/i });
-    userEvent.click(save);
-    userEvent.click(button[0]);
-    userEvent.click(save);
-    const semester = screen.getAllByText(/BS/i);
-    expect(semester).toHaveLength(2);
+    userEvent.click(CREATEbutton[0]);
+
+    const BOXES = screen.getAllByRole("combobox");
+    userEvent.selectOptions(BOXES[0], "BA");
+    userEvent.selectOptions(BOXES[1], "Computer Science");
+
+    const SAVEbutton = screen.getAllByRole("button", {
+        name: /Save/i
+    });
+    userEvent.click(SAVEbutton[0]);
+    const newdegree = screen.getByRole("heading", { name: /BA/ });
+    expect(newdegree).toBeInTheDocument();
 });
 
-test("Can delete degree plan", () => {
-    render(<App />);
-    const button = screen.getAllByRole("button", {
+test("Can add different degrees", () => {
+    const hideButton = screen.getAllByRole("button", { name: /Show Less/i });
+    userEvent.click(hideButton[0]);
+    const CREATEbutton = screen.getAllByRole("button", {
         name: /Create New Degree Plan/i
     });
-    userEvent.click(button[0]);
-    const save = screen.getByRole("button", { name: /Save/i });
-    userEvent.click(save);
-    const semesterButton = screen.getByRole("button", {
-        name: /Add New Semester/i
+    userEvent.click(CREATEbutton[0]);
+
+    const BOXES = screen.getAllByRole("combobox");
+    userEvent.selectOptions(BOXES[0], "BS");
+    userEvent.selectOptions(BOXES[1], "Computer Science");
+
+    const SAVEbutton = screen.getAllByRole("button", {
+        name: /Save/i
     });
-    const deleteButton = screen.getByRole("button", {
-        name: /Delete Degree Plan/i
-    });
-    userEvent.click(deleteButton);
-    expect(semesterButton).not.toBeInTheDocument();
-    // deleting degree plan deletes the semester layout within it
-    // this means semester features would no longer be visible, so this tests to see if button is deleted
+    userEvent.click(SAVEbutton[0]);
+    const newdegree = screen.getByRole("heading", { name: /BS/ });
+    expect(newdegree).toBeInTheDocument();
 });
