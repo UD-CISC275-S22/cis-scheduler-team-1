@@ -18,3 +18,10 @@ test("can edit semesters", () => {
     const DELETE = screen.getAllByRole("button", { name: /Remove/i });
     userEvent.click(DELETE[0]);
 });
+
+/* test("Will not create semester if nothing inputted", () => {
+    render(<SemesterLayout />);
+    const typebox = screen.getByPlaceholderText(/Type semester here/i);
+    userEvent.click(typebox);
+    expect(screen).not.toContainElement("button", { name: /Add Course/i });
+}); */
