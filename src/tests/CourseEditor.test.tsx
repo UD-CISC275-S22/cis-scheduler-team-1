@@ -62,3 +62,18 @@ test("Can type into the course editors and cancel", () => {
     const CANCEL = screen.getAllByRole("button", { name: /Cancel/i });
     userEvent.click(CANCEL[0]);
 });
+
+test("Can change credits of a course and save", () => {
+    const hideButton = screen.getAllByRole("button", { name: /Show Less/i });
+    userEvent.click(hideButton[1]);
+    const button = screen.getAllByRole("button", {
+        name: /Edit Course/i
+    });
+    userEvent.click(button[0]);
+    const EDITboxes = screen.getAllByRole("textbox");
+    userEvent.type(EDITboxes[2], "{selectall}{delete}");
+    userEvent.type(EDITboxes[2], "1");
+
+    const SAVE = screen.getAllByRole("button", { name: /Save Changes/i });
+    userEvent.click(SAVE[0]);
+});

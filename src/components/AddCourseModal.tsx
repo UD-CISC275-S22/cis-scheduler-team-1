@@ -77,17 +77,11 @@ export function AddCourseModal({
 
     function updateChoice(event: ChangeEvent) {
         // find the semester that was chosen
-        console.log("onChange called");
         const sem = plan.semesters.filter(
             (semester: Semester): boolean =>
                 semester.title === event.target.value
         );
         setSemester(sem[0]);
-
-        console.log("sem[0] / selected semester");
-        console.log(sem[0].title);
-        console.log("pool courses:");
-        console.log(plan.pool);
     }
 
     return (
