@@ -41,7 +41,6 @@ export function DisplayPlan({
     }
 
     // semester edit functions
-
     function clearSemesters() {
         editPlan(plan.id, {
             ...plan,
@@ -83,7 +82,6 @@ export function DisplayPlan({
         });
     }
 
-    // need the edit semester function here so that pool can access it
     return fullView ? (
         <div>
             <Row>

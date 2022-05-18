@@ -33,4 +33,3 @@ export function RequirementView({ plan }: { plan: Degreeplan }): JSX.Element {
         </div>
     );
 }
-// map unfulfilled major requirements from data after we scrape

@@ -61,13 +61,7 @@ export function AddPlanModal({
     }
 
     function updateMajor(event: React.ChangeEvent<HTMLSelectElement>) {
-        //setMajor(event.target.value);
-        /*if (
-            /^[a-zA-Z]+$/.test(event.target.value) ||
-            event.target.value === ""
-        ) {*/
         setMajor(event.target.value);
-        //}
     }
 
     return (
@@ -102,7 +96,6 @@ export function AddPlanModal({
                                 placeholder="Select your major here"
                                 onChange={updateMajor}
                             >
-                                {console.log(MAJORS[type])}
                                 {Object.keys(MAJORS[type] || {}).map(
                                     (major: string) => (
                                         <option key={major} value={major}>

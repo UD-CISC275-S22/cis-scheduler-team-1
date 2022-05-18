@@ -16,8 +16,6 @@ export function CoursePool({
     editSemester: (id: number, newSemester: Semester) => void;
     editPlan: (id: number, newDegree: Degreeplan) => void;
 }): JSX.Element {
-    //const [poolList, setPoolList] = useState<Course[]>(pool); // a comprehensive course list for the pool
-    //const [course, setCourse] = useState<Course>();
     const [dept, setDept] = useState<string>(""); // current inputted course that was typed in
     const [id, setID] = useState<string>(""); // course id that was typed in
     const [course, setCourse] = useState<Course>({
@@ -31,14 +29,15 @@ export function CoursePool({
         typ: ""
     });
 
-    //const [poolList, setPoolList] = useState<Course[]>(pool);
-
     const COURSES: Record<string, Record<string, Course>> = coursedata;
     const [showAddCourse, setShowAddCourse] = useState<boolean>(false);
 
     // create handlers for opening and closing modal
     const handleCloseAddCourse = () => setShowAddCourse(false);
-    const handleAddCourse = () => setShowAddCourse(true);
+    function moveCourse(course: Course) {
+        setCourse(course);
+        setShowAddCourse(true);
+    }
 
     function updateCourse(event: React.ChangeEvent<HTMLInputElement>) {
         if (
@@ -64,7 +63,6 @@ export function CoursePool({
             if (!plan.pool.includes(newCourse)) {
                 const updatedCourses = [...plan.pool, newCourse];
                 editPool(updatedCourses);
-                //setPoolList(updatedCourses);
                 setCourse(newCourse);
             }
         }
@@ -105,7 +103,7 @@ export function CoursePool({
                                                 height: "30px",
                                                 width: "70px"
                                             }}
-                                            onClick={handleAddCourse}
+                                            onClick={() => moveCourse(course)}
                                         >
                                             Add
                                         </Button>
