@@ -2,12 +2,12 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/DisplayPlan.test.tsx (5.947 s)
-PASS src/tests/CoursePool.test.tsx
+PASS src/tests/DisplayPlan.test.tsx (7.978 s)
+PASS src/tests/CoursePool.test.tsx (7.119 s)
 PASS src/tests/AddPlanModal.test.tsx
-PASS src/tests/CourseEditor.test.tsx
+PASS src/tests/CourseEditor.test.tsx (7.037 s)
 PASS src/tests/AddCourseModal.test.tsx
-PASS src/tests/DisplayCourse.test.tsx
+PASS src/tests/DisplayCourse.test.tsx (5.249 s)
   ● Console
 
     console.error
@@ -122,5 +122,5 @@ All files             |   95.97 |    79.62 |   95.23 |   95.89 |
 Test Suites: 8 passed, 8 total
 Tests:       36 passed, 36 total
 Snapshots:   0 total
-Time:        27.716 s
+Time:        38.064 s
 Ran all test suites.
